@@ -15,6 +15,11 @@
 		479E315123EC43E6000EBA39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 479E314F23EC43E6000EBA39 /* LaunchScreen.storyboard */; };
 		479E315C23EC43E6000EBA39 /* Batman__helpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E315B23EC43E6000EBA39 /* Batman__helpTests.swift */; };
 		479E316723EC43E6000EBA39 /* Batman__helpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E316623EC43E6000EBA39 /* Batman__helpUITests.swift */; };
+		479E317623EC4515000EBA39 /* DatabaseAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E317423EC4515000EBA39 /* DatabaseAccess.swift */; };
+		479E317723EC4515000EBA39 /* CharacterSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E317523EC4515000EBA39 /* CharacterSingleton.swift */; };
+		479E317B23EC452B000EBA39 /* SceneLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E317823EC452A000EBA39 /* SceneLocation.swift */; };
+		479E317C23EC452B000EBA39 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E317923EC452A000EBA39 /* Character.swift */; };
+		479E317D23EC452B000EBA39 /* CharacterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E317A23EC452B000EBA39 /* CharacterType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +54,11 @@
 		479E316223EC43E6000EBA39 /* Batman, helpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Batman, helpUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		479E316623EC43E6000EBA39 /* Batman__helpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Batman__helpUITests.swift; sourceTree = "<group>"; };
 		479E316823EC43E6000EBA39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		479E317423EC4515000EBA39 /* DatabaseAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseAccess.swift; sourceTree = "<group>"; };
+		479E317523EC4515000EBA39 /* CharacterSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSingleton.swift; sourceTree = "<group>"; };
+		479E317823EC452A000EBA39 /* SceneLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneLocation.swift; sourceTree = "<group>"; };
+		479E317923EC452A000EBA39 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		479E317A23EC452B000EBA39 /* CharacterType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +115,8 @@
 				479E314A23EC43E5000EBA39 /* Main.storyboard */,
 				479E314D23EC43E6000EBA39 /* Assets.xcassets */,
 				479E314F23EC43E6000EBA39 /* LaunchScreen.storyboard */,
+				479E317F23EC4605000EBA39 /* Database */,
+				479E317E23EC4600000EBA39 /* Model */,
 				479E315223EC43E6000EBA39 /* Info.plist */,
 			);
 			path = "Batman, help";
@@ -126,6 +138,25 @@
 				479E316823EC43E6000EBA39 /* Info.plist */,
 			);
 			path = "Batman, helpUITests";
+			sourceTree = "<group>";
+		};
+		479E317E23EC4600000EBA39 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				479E317923EC452A000EBA39 /* Character.swift */,
+				479E317A23EC452B000EBA39 /* CharacterType.swift */,
+				479E317823EC452A000EBA39 /* SceneLocation.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		479E317F23EC4605000EBA39 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				479E317523EC4515000EBA39 /* CharacterSingleton.swift */,
+				479E317423EC4515000EBA39 /* DatabaseAccess.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +291,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				479E314923EC43E5000EBA39 /* ViewController.swift in Sources */,
+				479E317B23EC452B000EBA39 /* SceneLocation.swift in Sources */,
+				479E317C23EC452B000EBA39 /* Character.swift in Sources */,
+				479E317723EC4515000EBA39 /* CharacterSingleton.swift in Sources */,
 				479E314523EC43E5000EBA39 /* AppDelegate.swift in Sources */,
+				479E317D23EC452B000EBA39 /* CharacterType.swift in Sources */,
+				479E317623EC4515000EBA39 /* DatabaseAccess.swift in Sources */,
 				479E314723EC43E5000EBA39 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
