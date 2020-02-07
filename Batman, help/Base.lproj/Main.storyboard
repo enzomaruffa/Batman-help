@@ -67,7 +67,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="City Map" id="0zc-Os-Z15"/>
                     <connections>
+                        <outlet property="mapView" destination="a6k-qu-Qgo" id="SAn-Xn-AhW"/>
                         <outlet property="menuContainer" destination="kl1-jd-xES" id="F6q-d6-43O"/>
+                        <outlet property="tableButton" destination="nP2-Zk-KPf" id="JLc-VT-3SQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

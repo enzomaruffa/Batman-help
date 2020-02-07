@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationUsageDescription</key>
+	<string>Batman needs to know your location so he can help you whenever you need!</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Batman really likes to keep a track of everyone. Allow him to help you!</string>
 	<key>UIUserInterfaceStyle</key>
 	<string>Dark</string>
 	<key>CFBundleDevelopmentRegion</key>

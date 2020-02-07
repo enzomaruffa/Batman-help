@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import MapKit
 
-class CharacterSingleton: DatabaseAccess {
+class Singleton: DatabaseAccess {
     
-    static var shared = CharacterSingleton()
+    static var shared = Singleton()
     
     var characters: [Character] = []
     var sceneLocations: [SceneLocation] = []
@@ -26,6 +27,25 @@ class CharacterSingleton: DatabaseAccess {
         characters.append(character)
         character = Character(id: 4, type: .villain, name: "Two Faces", assetName: "two-faces", occupation: "Deputy")
         characters.append(character)
+        
+        
+        var location = CLLocationCoordinate2D(latitude: -25.452767, longitude: -49.249728)
+        var place = SceneLocation(name: "Bat-Academy", location: location)
+        sceneLocations.append(place)
+        
+        
+        location = CLLocationCoordinate2D(latitude: -25.352767, longitude: -49.249728)
+        place = SceneLocation(name: "Local 1", location: location)
+        sceneLocations.append(place)
+        
+        
+        location = CLLocationCoordinate2D(latitude: -25.452767, longitude: -49.349728)
+        place = SceneLocation(name: "Local 2", location: location)
+        sceneLocations.append(place)
+        
+        location = CLLocationCoordinate2D(latitude: -25.252767, longitude: -49.149728)
+        var scene = SceneLocation(character: character, location: location)
+        sceneLocations.append(scene)
         
     }
     
