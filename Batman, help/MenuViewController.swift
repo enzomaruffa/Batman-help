@@ -17,8 +17,10 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var menuContainer: UIView!
     @IBOutlet weak var mapView: MKMapView!
     
-    @IBOutlet weak var tableButton: UIImageView!
+    @IBOutlet weak var wikiButton: UIImageView!
+    @IBOutlet weak var reportButton: UIImageView!
     
+    //MARK: - Variables
     var locationManager: CLLocationManager?
     var currentLocation: MKUserLocation?
     
@@ -33,6 +35,8 @@ class MenuViewController: UIViewController {
     
     var scenes: [SceneLocation] = []
     
+    var showingButtons = false
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +45,16 @@ class MenuViewController: UIViewController {
 
         menuContainer.layer.cornerRadius = menuContainer.frame.height/2
         
-        // Do any additional setup after loading the view.
+        wikiButton.alpha = 0
+        reportButton.alpha = 0
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     //MARK: - Functions
@@ -92,12 +105,63 @@ class MenuViewController: UIViewController {
     }
     
     //MARK: - Actions Outlets
-    @IBAction func imageTapped(_ sender: Any) {
-        // Show other menu options
+    @IBAction func centralTapped(_ sender: Any) {
+        print("central tapped")
+        if !showingButtons {
+            UIView.animate(withDuration: 0.6, animations: {
+                self.self.wikiButton.alpha = 1
+                self.reportButton.alpha = 1
+            })
+        } else {
+            UIView.animate(withDuration: 0.4, animations: {
+                self.wikiButton.alpha = 0
+                self.reportButton.alpha = 0
+            })
+        }
+        showingButtons.toggle()
+    }
+    
+    //MARK: - Functions
+    @IBAction func reportPressed(_ sender: Any) {
+        self.presentPhotoPicker(sourceType: .camera)
+    }
+    
+    func presentPhotoPicker(sourceType: UIImagePickerController.SourceType) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = sourceType
+        present(picker, animated: true)
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "report" {
+            let image = sender as? UIImage
+            let vc = segue.destination as? ReportViewController
+            vc!.crimeImage = image
+        }
     }
     
 }
 
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+extension MenuViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    // MARK: - Handling Image Picker Selection
+    
+    internal func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        
+        // We always expect `imagePickerController(:didFinishPickingMediaWithInfo:)` to supply the original image.
+        let image = info[.originalImage] as! UIImage
+        
+        // Segue to view with this image
+        performSegue(withIdentifier: "report", sender: image)
+    }
+}
+
+
+// MARK: - CLLocationManagerDelegate
 extension MenuViewController: CLLocationManagerDelegate {
     
     private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -121,9 +185,9 @@ extension MenuViewController: CLLocationManagerDelegate {
             currentLocation = nil
         }
     }
-
 }
 
+// MARK: - MKMapViewDelegate
 extension MenuViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
@@ -171,10 +235,9 @@ extension MenuViewController: MKMapViewDelegate {
     }
 }
 
+// MARK: - CLLocationCoordinate2D: Equatable
 extension CLLocationCoordinate2D: Equatable {
     public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
         lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
     }
-    
-    
 }

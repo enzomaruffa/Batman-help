@@ -21,7 +21,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kl1-jd-xES">
                                 <rect key="frame" x="145" y="738" width="124" height="124"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="batman-button" translatesAutoresizingMaskIntoConstraints="NO" id="oTv-fp-JEF">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="batman-button" translatesAutoresizingMaskIntoConstraints="NO" id="oTv-fp-JEF">
                                         <rect key="frame" x="0.0" y="0.0" width="124" height="124"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
@@ -39,7 +39,7 @@
                                     <constraint firstItem="oTv-fp-JEF" firstAttribute="height" secondItem="kl1-jd-xES" secondAttribute="height" id="yWo-R2-fal"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nP2-Zk-KPf">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="batman-blue" translatesAutoresizingMaskIntoConstraints="NO" id="nP2-Zk-KPf" userLabel="Wiki Button">
                                 <rect key="frame" x="239" y="643.5" width="74.5" height="74.5"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -49,15 +49,28 @@
                                     <outletCollection property="gestureRecognizers" destination="hjc-VU-o3A" appends="YES" id="6Yl-go-ahQ"/>
                                 </connections>
                             </imageView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="batman-red" translatesAutoresizingMaskIntoConstraints="NO" id="L4x-5K-Tm7" userLabel="Report Button">
+                                <rect key="frame" x="100.5" y="643.5" width="74.5" height="74.5"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="L4x-5K-Tm7" secondAttribute="height" multiplier="1:1" id="CUm-kw-r4g"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="xwJ-qJ-LVp" appends="YES" id="NjS-3a-0xA"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="oTv-fp-JEF" firstAttribute="top" secondItem="nP2-Zk-KPf" secondAttribute="bottom" constant="20" id="0oa-Ah-v1m"/>
                             <constraint firstAttribute="trailing" secondItem="a6k-qu-Qgo" secondAttribute="trailing" id="5h5-yg-3B8"/>
+                            <constraint firstItem="oTv-fp-JEF" firstAttribute="leading" secondItem="L4x-5K-Tm7" secondAttribute="trailing" constant="-30" id="6CW-TA-WLO"/>
+                            <constraint firstItem="L4x-5K-Tm7" firstAttribute="height" secondItem="nP2-Zk-KPf" secondAttribute="height" id="F68-OO-A9v"/>
                             <constraint firstItem="kl1-jd-xES" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="PtP-fZ-1H4"/>
                             <constraint firstItem="kl1-jd-xES" firstAttribute="centerX" secondItem="a6k-qu-Qgo" secondAttribute="centerX" id="Rdz-VQ-Ybm"/>
                             <constraint firstAttribute="bottom" secondItem="a6k-qu-Qgo" secondAttribute="bottom" id="aP3-BO-S5B"/>
                             <constraint firstItem="kl1-jd-xES" firstAttribute="width" secondItem="a6k-qu-Qgo" secondAttribute="width" multiplier="0.3" id="asB-FZ-UVd"/>
+                            <constraint firstItem="oTv-fp-JEF" firstAttribute="top" secondItem="L4x-5K-Tm7" secondAttribute="bottom" constant="20" id="eJF-9z-DpD"/>
                             <constraint firstItem="a6k-qu-Qgo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gC5-Wh-blw"/>
                             <constraint firstItem="a6k-qu-Qgo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gUA-bY-NAD"/>
                             <constraint firstItem="nP2-Zk-KPf" firstAttribute="height" secondItem="oTv-fp-JEF" secondAttribute="height" multiplier="0.6" id="oor-NM-d9G"/>
@@ -69,13 +82,15 @@
                     <connections>
                         <outlet property="mapView" destination="a6k-qu-Qgo" id="SAn-Xn-AhW"/>
                         <outlet property="menuContainer" destination="kl1-jd-xES" id="F6q-d6-43O"/>
-                        <outlet property="tableButton" destination="nP2-Zk-KPf" id="JLc-VT-3SQ"/>
+                        <outlet property="reportButton" destination="L4x-5K-Tm7" id="Bnw-wp-P2x"/>
+                        <outlet property="wikiButton" destination="nP2-Zk-KPf" id="vQg-9X-bSq"/>
+                        <segue destination="atq-aC-81o" kind="show" identifier="report" id="mY1-tO-11L"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="XZ4-Uc-Xdr" userLabel="Central Button Tap Gesture">
                     <connections>
-                        <action selector="imageTapped:" destination="BYZ-38-t0r" id="ES6-yW-4s4"/>
+                        <action selector="centralTapped:" destination="BYZ-38-t0r" id="ES6-yW-4s4"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="hjc-VU-o3A" userLabel="Wiki Button Tap Gesture">
@@ -83,10 +98,83 @@
                         <segue destination="xBB-4Y-FMs" kind="show" id="PWN-DR-1iZ"/>
                     </connections>
                 </tapGestureRecognizer>
+                <tapGestureRecognizer id="xwJ-qJ-LVp" userLabel="Report Tap Gesture">
+                    <connections>
+                        <action selector="reportPressed:" destination="BYZ-38-t0r" id="xBc-Qd-GHh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="105.80357142857143"/>
         </scene>
-        <!--View Controller-->
+        <!--Report Crime-->
+        <scene sceneID="1CP-0r-zLS">
+            <objects>
+                <viewController id="atq-aC-81o" customClass="ReportViewController" customModule="Batman__help" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JRf-VT-Ita">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4YV-ZQ-7wy">
+                                <rect key="frame" x="83.5" y="149" width="247.5" height="405"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4YV-ZQ-7wy" secondAttribute="height" multiplier="11:18" id="1nf-h6-zN1"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Cl-wB-H59">
+                                <rect key="frame" x="30" y="624.5" width="82" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="-29.488878, 48.3213213" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tI0-mI-N20">
+                                <rect key="frame" x="122" y="626" width="262" height="21"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;I think that Bane is here!&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvc-9e-lTE">
+                                <rect key="frame" x="83.5" y="574" width="247.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="batman-button" translatesAutoresizingMaskIntoConstraints="NO" id="MVO-R4-fxx">
+                                <rect key="frame" x="172" y="792" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="5qq-fh-a0I"/>
+                                    <constraint firstAttribute="width" secondItem="MVO-R4-fxx" secondAttribute="height" multiplier="1:1" id="Mp5-lo-Xgj"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="pvc-9e-lTE" firstAttribute="centerX" secondItem="4YV-ZQ-7wy" secondAttribute="centerX" id="4Ty-b0-yZ0"/>
+                            <constraint firstItem="3Cl-wB-H59" firstAttribute="leading" secondItem="jU5-gX-w6O" secondAttribute="leading" constant="30" id="5r6-wy-6fb"/>
+                            <constraint firstItem="4YV-ZQ-7wy" firstAttribute="centerX" secondItem="jU5-gX-w6O" secondAttribute="centerX" id="7ji-zj-aKB"/>
+                            <constraint firstItem="pvc-9e-lTE" firstAttribute="width" secondItem="4YV-ZQ-7wy" secondAttribute="width" id="BxB-hs-VeE"/>
+                            <constraint firstItem="jU5-gX-w6O" firstAttribute="bottom" secondItem="MVO-R4-fxx" secondAttribute="bottom" id="TBa-3R-WfZ"/>
+                            <constraint firstItem="4YV-ZQ-7wy" firstAttribute="height" secondItem="JRf-VT-Ita" secondAttribute="height" multiplier="0.452009" id="dOz-Xh-LMI"/>
+                            <constraint firstItem="3Cl-wB-H59" firstAttribute="top" secondItem="pvc-9e-lTE" secondAttribute="bottom" constant="30" id="mEZ-4d-5hY"/>
+                            <constraint firstItem="tI0-mI-N20" firstAttribute="centerY" secondItem="3Cl-wB-H59" secondAttribute="centerY" id="ohE-bA-xcq"/>
+                            <constraint firstItem="MVO-R4-fxx" firstAttribute="centerX" secondItem="jU5-gX-w6O" secondAttribute="centerX" id="ooP-ha-ePu"/>
+                            <constraint firstItem="jU5-gX-w6O" firstAttribute="trailing" secondItem="tI0-mI-N20" secondAttribute="trailing" constant="30" id="qcP-Uy-T3u"/>
+                            <constraint firstItem="tI0-mI-N20" firstAttribute="leading" secondItem="3Cl-wB-H59" secondAttribute="trailing" constant="10" id="t1f-ee-hKM"/>
+                            <constraint firstItem="pvc-9e-lTE" firstAttribute="top" secondItem="4YV-ZQ-7wy" secondAttribute="bottom" constant="20" id="vXh-2L-52v"/>
+                            <constraint firstItem="4YV-ZQ-7wy" firstAttribute="top" secondItem="jU5-gX-w6O" secondAttribute="top" constant="61" id="yZu-Rz-cEn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jU5-gX-w6O"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Report Crime" id="uAg-rT-wZC"/>
+                    <connections>
+                        <outlet property="crimeImageView" destination="4YV-ZQ-7wy" id="fLy-vs-6oX"/>
+                        <outlet property="crimeLabel" destination="pvc-9e-lTE" id="Flx-sE-zRt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K3j-74-S6w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1047.8260869565217" y="835.71428571428567"/>
+        </scene>
+        <!--Wiki-->
         <scene sceneID="boj-Ui-qmF">
             <objects>
                 <viewController id="xBB-4Y-FMs" sceneMemberID="viewController">
@@ -128,7 +216,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Zn-aG-gyw"/>
                     </view>
-                    <navigationItem key="navigationItem" id="gc0-jo-qVi"/>
+                    <navigationItem key="navigationItem" title="Wiki" id="gc0-jo-qVi"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGM-AS-QoN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -154,6 +242,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="batman-blue" width="155" height="222"/>
         <image name="batman-button" width="600" height="600"/>
+        <image name="batman-red" width="155" height="222"/>
     </resources>
 </document>
