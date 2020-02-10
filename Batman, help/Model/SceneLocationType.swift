@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum SceneLocationType {
+enum SceneLocationType: String {
     case place
     case scene
 }

@@ -44,7 +44,7 @@ class Singleton: DatabaseAccess {
         sceneLocations.append(place)
         
         location = CLLocationCoordinate2D(latitude: -25.252767, longitude: -49.149728)
-        var scene = SceneLocation(character: character, location: location)
+        var scene = SceneLocation(character: character.id, location: location)
         sceneLocations.append(scene)
         
     }

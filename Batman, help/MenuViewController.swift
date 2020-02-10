@@ -98,7 +98,7 @@ class MenuViewController: UIViewController {
                 annotation.coordinate = scene.location
                 annotation.title = scene.name
                 annotation.subtitle = scene.type == .place ? "Place" : "Scene"
-                mapView.addAnnotation(annotation)
+                self.mapView.addAnnotation(annotation)
             }
         }
             

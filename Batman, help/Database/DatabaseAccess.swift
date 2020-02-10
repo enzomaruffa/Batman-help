@@ -9,7 +9,7 @@
 import Foundation
 
 protocol DatabaseAccess {
-    func getAllCharacters(_ closure: ([Character]) -> ())
-    func getAllScenes(_ closure: ([SceneLocation]) -> ())
+    func getAllCharacters(_ closure: @escaping ([Character]) -> ())
+    func getAllScenes(_ closure: @escaping ([SceneLocation]) -> ())
     func addScene(scene: SceneLocation)
 }

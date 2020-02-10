@@ -10,14 +10,14 @@ import MapKit
 
 class SceneLocation {
     
-    let character: Character?
+    let character: Int?
     let name: String?
     let location: CLLocationCoordinate2D
-    let sceneResolved = false
+    var sceneResolved = false
     let creationDate: Date
     let type: SceneLocationType
     
-    internal init(character: Character, location: CLLocationCoordinate2D) {
+    internal init(character: Int, location: CLLocationCoordinate2D) {
         self.character = character
         self.name = nil
         self.location = location
@@ -32,4 +32,13 @@ class SceneLocation {
         self.creationDate = Date()
         self.type = .place
     }
+    
+    internal init(character: Int?, name: String?, location: CLLocationCoordinate2D, creationDate: Date, type: SceneLocationType) {
+        self.character = character
+        self.name = name
+        self.location = location
+        self.creationDate = creationDate
+        self.type = type
+    }
+    
 }
