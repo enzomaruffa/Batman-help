@@ -46,7 +46,10 @@ class CharacterListViewController: UIViewController {
             
         }
         
-        characterCollection.reloadData()
+        characterCollection.performBatchUpdates({
+            let indexSet = IndexSet(integer: 0)
+            self.characterCollection.reloadSections(indexSet)
+        }, completion: nil)
     }
     
     

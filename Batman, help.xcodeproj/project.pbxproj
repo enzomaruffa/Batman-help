@@ -208,10 +208,10 @@
 				473CC54F23F2E83B0005AA26 /* Cells */,
 				473CC54D23F2E8260005AA26 /* Controllers */,
 				479E317F23EC4605000EBA39 /* Database */,
+				473CC54E23F2E8300005AA26 /* Extensions */,
 				479E317E23EC4600000EBA39 /* Model */,
 				470FC07323EE0CC8001A59A1 /* MLModels */,
 				479E315223EC43E6000EBA39 /* Info.plist */,
-				473CC54E23F2E8300005AA26 /* Extensions */,
 			);
 			path = "Batman, help";
 			sourceTree = "<group>";
