@@ -7,6 +7,14 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="batmfa__.ttf">
+            <string>BatmanForeverAlternate</string>
+        </array>
+        <array key="batmfo__.ttf">
+            <string>BatmanForeverOutline</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--City Map-->
         <scene sceneID="tne-QT-ifu">
@@ -61,7 +69,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.015686274509803921" green="0.074509803921568626" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="a6k-qu-Qgo" secondAttribute="trailing" id="5h5-yg-3B8"/>
                             <constraint firstItem="hiX-pE-jbp" firstAttribute="trailing" secondItem="oTv-fp-JEF" secondAttribute="leading" id="Bfg-zE-BQ8"/>
@@ -111,30 +119,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4YV-ZQ-7wy">
-                                <rect key="frame" x="83.5" y="149" width="247.5" height="405"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="4YV-ZQ-7wy" secondAttribute="height" multiplier="11:18" id="1nf-h6-zN1"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Cl-wB-H59">
-                                <rect key="frame" x="30" y="624.5" width="82" height="24"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="-29.488878, 48.3213213" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tI0-mI-N20">
-                                <rect key="frame" x="122" y="626" width="262" height="21"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;I think that Bane is here!&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvc-9e-lTE">
-                                <rect key="frame" x="83.5" y="574" width="247.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCf-fQ-HSN" userLabel="Send button">
                                 <rect key="frame" x="172" y="772" width="70" height="70"/>
                                 <constraints>
@@ -146,30 +130,88 @@
                                     <action selector="sendPressed:" destination="atq-aC-81o" eventType="touchUpInside" id="WdD-eH-Kit"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZVJ-nJ-e5P">
+                                <rect key="frame" x="0.0" y="83" width="414" height="313.5"/>
+                            </mapView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4YV-ZQ-7wy">
+                                <rect key="frame" x="20" y="299" width="187" height="255"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4YV-ZQ-7wy" secondAttribute="height" multiplier="11:15" id="1nf-h6-zN1"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6C-6y-QAk">
+                                <rect key="frame" x="227" y="514" width="167" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="OyO-su-o5d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="BatmanForeverOutline" family="BatmanForeverOutline" pointSize="19"/>
+                                <state key="normal" title="CHANGE">
+                                    <color key="titleColor" red="0.027450980390000001" green="0.81176470590000005" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nb7-zF-m6a">
+                                <rect key="frame" x="20" y="636" width="374" height="32"/>
+                                <segments>
+                                    <segment title="BETA"/>
+                                    <segment title="ALPHA"/>
+                                    <segment title="OMEGA"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="threatLevelChanged:" destination="atq-aC-81o" eventType="valueChanged" id="3oY-hk-sYU"/>
+                                </connections>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THREAT LEVEL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTt-14-Krk">
+                                <rect key="frame" x="20" y="594" width="374" height="22"/>
+                                <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                <color key="textColor" red="0.027450980390000001" green="0.81176470590000005" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvc-9e-lTE">
+                                <rect key="frame" x="215" y="410" width="179" height="94"/>
+                                <string key="text">I think that 
+Bane 
+is here!</string>
+                                <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.015686274509803921" green="0.074509803921568626" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="pvc-9e-lTE" firstAttribute="centerX" secondItem="4YV-ZQ-7wy" secondAttribute="centerX" id="4Ty-b0-yZ0"/>
-                            <constraint firstItem="3Cl-wB-H59" firstAttribute="leading" secondItem="jU5-gX-w6O" secondAttribute="leading" constant="30" id="5r6-wy-6fb"/>
-                            <constraint firstItem="4YV-ZQ-7wy" firstAttribute="centerX" secondItem="jU5-gX-w6O" secondAttribute="centerX" id="7ji-zj-aKB"/>
-                            <constraint firstItem="pvc-9e-lTE" firstAttribute="width" secondItem="4YV-ZQ-7wy" secondAttribute="width" id="BxB-hs-VeE"/>
+                            <constraint firstItem="w6C-6y-QAk" firstAttribute="leading" secondItem="4YV-ZQ-7wy" secondAttribute="trailing" constant="20" id="0df-Gb-DqU"/>
+                            <constraint firstItem="jU5-gX-w6O" firstAttribute="trailing" secondItem="nb7-zF-m6a" secondAttribute="trailing" constant="20" id="1pd-ej-90T"/>
+                            <constraint firstItem="nb7-zF-m6a" firstAttribute="top" secondItem="mTt-14-Krk" secondAttribute="bottom" constant="20" id="2Q0-ma-eHP"/>
+                            <constraint firstItem="pvc-9e-lTE" firstAttribute="trailing" secondItem="jU5-gX-w6O" secondAttribute="trailing" constant="-20" id="2s7-VZ-6Vt"/>
+                            <constraint firstItem="jU5-gX-w6O" firstAttribute="trailing" secondItem="mTt-14-Krk" secondAttribute="trailing" constant="20" id="3gO-oO-ACl"/>
+                            <constraint firstItem="ZVJ-nJ-e5P" firstAttribute="leading" secondItem="4YV-ZQ-7wy" secondAttribute="leading" constant="-20" id="6bO-OE-EEh"/>
+                            <constraint firstItem="pvc-9e-lTE" firstAttribute="top" secondItem="ZVJ-nJ-e5P" secondAttribute="bottom" constant="13.5" id="ENG-hc-6f2"/>
+                            <constraint firstItem="4YV-ZQ-7wy" firstAttribute="centerY" secondItem="ZVJ-nJ-e5P" secondAttribute="bottom" constant="30" id="FCO-iJ-lvq"/>
                             <constraint firstItem="hCf-fQ-HSN" firstAttribute="centerX" secondItem="jU5-gX-w6O" secondAttribute="centerX" id="Gfl-3Q-Mn0"/>
+                            <constraint firstItem="pvc-9e-lTE" firstAttribute="leading" secondItem="4YV-ZQ-7wy" secondAttribute="trailing" constant="8" id="JiH-xA-tQ9"/>
+                            <constraint firstItem="ZVJ-nJ-e5P" firstAttribute="height" secondItem="JRf-VT-Ita" secondAttribute="height" multiplier="0.35" id="Lwd-7V-4YA"/>
+                            <constraint firstItem="mTt-14-Krk" firstAttribute="top" secondItem="4YV-ZQ-7wy" secondAttribute="bottom" constant="40" id="Ra8-wk-oNd"/>
+                            <constraint firstItem="jU5-gX-w6O" firstAttribute="trailing" secondItem="ZVJ-nJ-e5P" secondAttribute="trailing" id="SBJ-NR-A0Q"/>
+                            <constraint firstItem="nb7-zF-m6a" firstAttribute="leading" secondItem="jU5-gX-w6O" secondAttribute="leading" constant="20" id="SYU-qe-qUS"/>
+                            <constraint firstItem="jU5-gX-w6O" firstAttribute="top" secondItem="ZVJ-nJ-e5P" secondAttribute="top" constant="5" id="Uf3-ax-hS6"/>
+                            <constraint firstItem="w6C-6y-QAk" firstAttribute="top" secondItem="pvc-9e-lTE" secondAttribute="bottom" constant="10" id="WCM-go-gvc"/>
+                            <constraint firstItem="ZVJ-nJ-e5P" firstAttribute="centerX" secondItem="4YV-ZQ-7wy" secondAttribute="trailing" id="Ycw-BU-ptQ"/>
                             <constraint firstItem="jU5-gX-w6O" firstAttribute="bottom" secondItem="hCf-fQ-HSN" secondAttribute="bottom" constant="20" id="cUw-Kg-KwT"/>
-                            <constraint firstItem="4YV-ZQ-7wy" firstAttribute="height" secondItem="JRf-VT-Ita" secondAttribute="height" multiplier="0.452009" id="dOz-Xh-LMI"/>
-                            <constraint firstItem="3Cl-wB-H59" firstAttribute="top" secondItem="pvc-9e-lTE" secondAttribute="bottom" constant="30" id="mEZ-4d-5hY"/>
-                            <constraint firstItem="tI0-mI-N20" firstAttribute="centerY" secondItem="3Cl-wB-H59" secondAttribute="centerY" id="ohE-bA-xcq"/>
-                            <constraint firstItem="jU5-gX-w6O" firstAttribute="trailing" secondItem="tI0-mI-N20" secondAttribute="trailing" constant="30" id="qcP-Uy-T3u"/>
-                            <constraint firstItem="tI0-mI-N20" firstAttribute="leading" secondItem="3Cl-wB-H59" secondAttribute="trailing" constant="10" id="t1f-ee-hKM"/>
-                            <constraint firstItem="pvc-9e-lTE" firstAttribute="top" secondItem="4YV-ZQ-7wy" secondAttribute="bottom" constant="20" id="vXh-2L-52v"/>
-                            <constraint firstItem="4YV-ZQ-7wy" firstAttribute="top" secondItem="jU5-gX-w6O" secondAttribute="top" constant="61" id="yZu-Rz-cEn"/>
+                            <constraint firstItem="w6C-6y-QAk" firstAttribute="bottom" secondItem="4YV-ZQ-7wy" secondAttribute="bottom" id="ceA-I5-iM2"/>
+                            <constraint firstItem="ZVJ-nJ-e5P" firstAttribute="leading" secondItem="jU5-gX-w6O" secondAttribute="leading" id="gf1-TP-02Y"/>
+                            <constraint firstItem="jU5-gX-w6O" firstAttribute="trailing" secondItem="w6C-6y-QAk" secondAttribute="trailing" constant="20" id="nZO-mj-dra"/>
+                            <constraint firstItem="mTt-14-Krk" firstAttribute="leading" secondItem="jU5-gX-w6O" secondAttribute="leading" constant="20" id="ssQ-nF-PYq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jU5-gX-w6O"/>
                     </view>
                     <navigationItem key="navigationItem" title="Report Crime" id="uAg-rT-wZC"/>
                     <connections>
+                        <outlet property="changeVillainButton" destination="w6C-6y-QAk" id="6bH-Ma-o9V"/>
                         <outlet property="crimeImageView" destination="4YV-ZQ-7wy" id="fLy-vs-6oX"/>
                         <outlet property="crimeLabel" destination="pvc-9e-lTE" id="Flx-sE-zRt"/>
-                        <outlet property="locationLabel" destination="tI0-mI-N20" id="nv1-qv-Lrp"/>
+                        <outlet property="mapView" destination="ZVJ-nJ-e5P" id="Tkz-bg-Wbr"/>
+                        <outlet property="threatLevelLabel" destination="mTt-14-Krk" id="u6o-H8-jHW"/>
+                        <outlet property="threatSelector" destination="nb7-zF-m6a" id="nJ0-kD-8NC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K3j-74-S6w" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -185,16 +227,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="szI-os-0AE">
-                                <rect key="frame" x="111.5" y="118" width="191" height="32"/>
+                                <rect key="frame" x="20" y="118" width="374" height="32"/>
                                 <segments>
                                     <segment title="Heroes"/>
                                     <segment title="All"/>
                                     <segment title="Villains"/>
                                 </segments>
+                                <connections>
+                                    <action selector="characterSegmentedChange:" destination="xBB-4Y-FMs" eventType="valueChanged" id="oO4-tF-Ylj"/>
+                                </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xay-Eu-fCE">
                                 <rect key="frame" x="0.0" y="169" width="414" height="693"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="0.015686274509803921" green="0.074509803921568626" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="84Y-vv-n8b">
                                     <size key="itemSize" width="190" height="246"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -213,27 +258,27 @@
                                                     <rect key="frame" x="10" y="10" width="170" height="226"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="characters-batman" translatesAutoresizingMaskIntoConstraints="NO" id="0aV-cQ-no5">
-                                                            <rect key="frame" x="0.0" y="17" width="170" height="168.5"/>
+                                                            <rect key="frame" x="0.0" y="20" width="170" height="169"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Batman" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DR9-hb-ZJJ">
-                                                            <rect key="frame" x="10" y="195.5" width="150" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <rect key="frame" x="10" y="199" width="150" height="17"/>
+                                                            <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="17"/>
+                                                            <color key="textColor" red="0.027450980390000001" green="0.81176470590000005" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hero" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQA-iT-ih0">
-                                                            <rect key="frame" x="17" y="0.0" width="136" height="17"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <rect key="frame" x="17" y="5" width="136" height="15"/>
+                                                            <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="14"/>
                                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <color key="backgroundColor" red="0.050980392156862744" green="0.14509803921568626" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="DR9-hb-ZJJ" secondAttribute="bottom" constant="10" id="6ht-xf-g9u"/>
                                                         <constraint firstItem="iQA-iT-ih0" firstAttribute="centerX" secondItem="0aV-cQ-no5" secondAttribute="centerX" id="8BC-AA-0kb"/>
                                                         <constraint firstAttribute="trailing" secondItem="DR9-hb-ZJJ" secondAttribute="trailing" constant="10" id="B7G-VN-uwM"/>
-                                                        <constraint firstItem="iQA-iT-ih0" firstAttribute="top" secondItem="t09-6R-T1i" secondAttribute="top" id="Fe6-Gh-IpW"/>
+                                                        <constraint firstItem="iQA-iT-ih0" firstAttribute="top" secondItem="t09-6R-T1i" secondAttribute="top" constant="5" id="Fe6-Gh-IpW"/>
                                                         <constraint firstItem="DR9-hb-ZJJ" firstAttribute="leading" secondItem="t09-6R-T1i" secondAttribute="leading" constant="10" id="NP0-Cp-nzs"/>
                                                         <constraint firstItem="0aV-cQ-no5" firstAttribute="leading" secondItem="t09-6R-T1i" secondAttribute="leading" id="bV5-ot-erL"/>
                                                         <constraint firstItem="iQA-iT-ih0" firstAttribute="bottom" secondItem="0aV-cQ-no5" secondAttribute="top" id="fGQ-dH-1gj"/>
@@ -262,12 +307,14 @@
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.015686274509803921" green="0.074509803921568626" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="szI-os-0AE" firstAttribute="centerX" secondItem="xay-Eu-fCE" secondAttribute="centerX" id="59r-ew-eg7"/>
                             <constraint firstItem="szI-os-0AE" firstAttribute="top" secondItem="1Zn-aG-gyw" secondAttribute="top" constant="30" id="Cbl-hc-aGh"/>
+                            <constraint firstItem="szI-os-0AE" firstAttribute="leading" secondItem="1Zn-aG-gyw" secondAttribute="leading" constant="20" id="Em3-ch-bqN"/>
                             <constraint firstItem="xay-Eu-fCE" firstAttribute="leading" secondItem="1Zn-aG-gyw" secondAttribute="leading" id="Ijz-Cq-XAy"/>
                             <constraint firstItem="1Zn-aG-gyw" firstAttribute="bottom" secondItem="xay-Eu-fCE" secondAttribute="bottom" id="JuY-nx-pEP"/>
+                            <constraint firstItem="1Zn-aG-gyw" firstAttribute="trailing" secondItem="szI-os-0AE" secondAttribute="trailing" constant="20" id="QV6-e2-EbJ"/>
                             <constraint firstItem="xay-Eu-fCE" firstAttribute="trailing" secondItem="1Zn-aG-gyw" secondAttribute="trailing" id="iba-VB-vDQ"/>
                             <constraint firstItem="xay-Eu-fCE" firstAttribute="top" secondItem="szI-os-0AE" secondAttribute="bottom" constant="20" id="z91-Na-IMf"/>
                         </constraints>
@@ -276,11 +323,12 @@
                     <navigationItem key="navigationItem" title="Wiki" id="gc0-jo-qVi"/>
                     <connections>
                         <outlet property="characterCollection" destination="xay-Eu-fCE" id="Rr2-LD-KpQ"/>
+                        <outlet property="characterSegmented" destination="szI-os-0AE" id="ra4-Nl-dm0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGM-AS-QoN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1831.8840579710147" y="105.80357142857143"/>
+            <point key="canvasLocation" x="1913" y="106"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mFW-xs-ngv">
@@ -290,6 +338,12 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vbd-95-ulb">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.027450980390000001" green="0.81176470590000005" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.015686274509803921" green="0.074509803921568626" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="18"/>
+                            <color key="textColor" red="0.027450980392156862" green="0.81176470588235294" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

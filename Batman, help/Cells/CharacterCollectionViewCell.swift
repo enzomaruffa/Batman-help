@@ -26,6 +26,12 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         self.characterAlignment.text = character.type.rawValue
         
         self.cellContainer.layer.cornerRadius = 4
-        self.cellContainer.backgroundColor = character.type == .hero ? .blue : .red
+        
+        if character.type == .villain {
+            self.characterName.textColor = UIColor(displayP3Red: 245/255, green: 51/255, blue: 28/255, alpha: 1)
+        } else {
+            self.characterName.textColor = UIColor(displayP3Red: 7/255, green: 207/255, blue: 246/255, alpha: 1)
+        }
+        
     }
 }

@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 import CoreLocation
 
-
 class MenuViewController: UIViewController {
     
     //MARK: - Variable Outlets

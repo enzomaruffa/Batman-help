@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		470FC07023EE0B22001A59A1 /* Some Filters - v1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 470FC06F23EE0B21001A59A1 /* Some Filters - v1.mlmodel */; };
+		470FC07223EE0CBF001A59A1 /* No filters - v2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 470FC07123EE0CBF001A59A1 /* No filters - v2.mlmodel */; };
+		470FC07523EE0D38001A59A1 /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470FC07423EE0D38001A59A1 /* ReportViewController.swift */; };
+		470FC07B23EF68C8001A59A1 /* More Filters - v3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 470FC07A23EF68C8001A59A1 /* More Filters - v3.mlmodel */; };
+		470FC07F23F17A2D001A59A1 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470FC07E23F17A2D001A59A1 /* CloudKitManager.swift */; };
+		470FC08123F17ABE001A59A1 /* ConsoleDebugLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470FC08023F17ABE001A59A1 /* ConsoleDebugLogger.swift */; };
+		473CC54023F2C8DC0005AA26 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 473CC53F23F2C8DC0005AA26 /* CloudKit.framework */; };
+		473CC54223F2CC180005AA26 /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CC54123F2CC180005AA26 /* CharacterListViewController.swift */; };
+		473CC54423F2D2C30005AA26 /* CharacterPowerstats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CC54323F2D2C30005AA26 /* CharacterPowerstats.swift */; };
+		473CC54623F2E3190005AA26 /* CKAsset+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CC54523F2E3190005AA26 /* CKAsset+.swift */; };
+		473CC54823F2E32C0005AA26 /* CLLocationCoordinate2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CC54723F2E32C0005AA26 /* CLLocationCoordinate2D+.swift */; };
+		473CC54A23F2E7210005AA26 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CC54923F2E7210005AA26 /* UIImage+.swift */; };
+		473CC55123F2EA470005AA26 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 473CC55023F2EA470005AA26 /* CharacterCollectionViewCell.swift */; };
+		476D4E3523ECF0420057FE6E /* SceneLocationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476D4E3423ECF0420057FE6E /* SceneLocationType.swift */; };
 		479E314523EC43E5000EBA39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E314423EC43E5000EBA39 /* AppDelegate.swift */; };
 		479E314723EC43E5000EBA39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E314623EC43E5000EBA39 /* SceneDelegate.swift */; };
 		479E314923EC43E5000EBA39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E314823EC43E5000EBA39 /* ViewController.swift */; };
@@ -16,10 +30,14 @@
 		479E315C23EC43E6000EBA39 /* Batman__helpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E315B23EC43E6000EBA39 /* Batman__helpTests.swift */; };
 		479E316723EC43E6000EBA39 /* Batman__helpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E316623EC43E6000EBA39 /* Batman__helpUITests.swift */; };
 		479E317623EC4515000EBA39 /* DatabaseAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E317423EC4515000EBA39 /* DatabaseAccess.swift */; };
-		479E317723EC4515000EBA39 /* CharacterSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E317523EC4515000EBA39 /* CharacterSingleton.swift */; };
+		479E317723EC4515000EBA39 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E317523EC4515000EBA39 /* Singleton.swift */; };
 		479E317B23EC452B000EBA39 /* SceneLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E317823EC452A000EBA39 /* SceneLocation.swift */; };
 		479E317C23EC452B000EBA39 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E317923EC452A000EBA39 /* Character.swift */; };
 		479E317D23EC452B000EBA39 /* CharacterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E317A23EC452B000EBA39 /* CharacterType.swift */; };
+		479E318123EC4FD3000EBA39 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E318023EC4FD3000EBA39 /* MenuViewController.swift */; };
+		479E318323EC9E3A000EBA39 /* superhero-api.py in Resources */ = {isa = PBXBuildFile; fileRef = 479E318223EC9E3A000EBA39 /* superhero-api.py */; };
+		47B7455023F33BB0007328FD /* batmfo__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47B7454F23F33BB0007328FD /* batmfo__.ttf */; };
+		47B7455223F33BBB007328FD /* batmfa__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47B7455123F33BBA007328FD /* batmfa__.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +58,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		470FC06F23EE0B21001A59A1 /* Some Filters - v1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "Some Filters - v1.mlmodel"; sourceTree = "<group>"; };
+		470FC07123EE0CBF001A59A1 /* No filters - v2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "No filters - v2.mlmodel"; sourceTree = "<group>"; };
+		470FC07423EE0D38001A59A1 /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		470FC07A23EF68C8001A59A1 /* More Filters - v3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "More Filters - v3.mlmodel"; sourceTree = "<group>"; };
+		470FC07E23F17A2D001A59A1 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		470FC08023F17ABE001A59A1 /* ConsoleDebugLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleDebugLogger.swift; sourceTree = "<group>"; };
+		473CC53D23F2C8D90005AA26 /* Batman, help.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Batman, help.entitlements"; sourceTree = "<group>"; };
+		473CC53F23F2C8DC0005AA26 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		473CC54123F2CC180005AA26 /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
+		473CC54323F2D2C30005AA26 /* CharacterPowerstats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterPowerstats.swift; sourceTree = "<group>"; };
+		473CC54523F2E3190005AA26 /* CKAsset+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CKAsset+.swift"; sourceTree = "<group>"; };
+		473CC54723F2E32C0005AA26 /* CLLocationCoordinate2D+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+.swift"; sourceTree = "<group>"; };
+		473CC54923F2E7210005AA26 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		473CC55023F2EA470005AA26 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
+		476D4E3423ECF0420057FE6E /* SceneLocationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLocationType.swift; sourceTree = "<group>"; };
 		479E314123EC43E5000EBA39 /* Batman, help.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Batman, help.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		479E314423EC43E5000EBA39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		479E314623EC43E5000EBA39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,10 +88,14 @@
 		479E316623EC43E6000EBA39 /* Batman__helpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Batman__helpUITests.swift; sourceTree = "<group>"; };
 		479E316823EC43E6000EBA39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		479E317423EC4515000EBA39 /* DatabaseAccess.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseAccess.swift; sourceTree = "<group>"; };
-		479E317523EC4515000EBA39 /* CharacterSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterSingleton.swift; sourceTree = "<group>"; };
+		479E317523EC4515000EBA39 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		479E317823EC452A000EBA39 /* SceneLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneLocation.swift; sourceTree = "<group>"; };
 		479E317923EC452A000EBA39 /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		479E317A23EC452B000EBA39 /* CharacterType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterType.swift; sourceTree = "<group>"; };
+		479E318023EC4FD3000EBA39 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		479E318223EC9E3A000EBA39 /* superhero-api.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; name = "superhero-api.py"; path = "Batman, help/superhero-api.py"; sourceTree = "<group>"; };
+		47B7454F23F33BB0007328FD /* batmfo__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = batmfo__.ttf; sourceTree = "<group>"; };
+		47B7455123F33BBA007328FD /* batmfa__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = batmfa__.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				473CC54023F2C8DC0005AA26 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,13 +124,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		470FC07323EE0CC8001A59A1 /* MLModels */ = {
+			isa = PBXGroup;
+			children = (
+				470FC07A23EF68C8001A59A1 /* More Filters - v3.mlmodel */,
+				470FC06F23EE0B21001A59A1 /* Some Filters - v1.mlmodel */,
+				470FC07123EE0CBF001A59A1 /* No filters - v2.mlmodel */,
+			);
+			path = MLModels;
+			sourceTree = "<group>";
+		};
+		473CC53E23F2C8DC0005AA26 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				473CC53F23F2C8DC0005AA26 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		473CC54D23F2E8260005AA26 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				479E318023EC4FD3000EBA39 /* MenuViewController.swift */,
+				470FC07423EE0D38001A59A1 /* ReportViewController.swift */,
+				473CC54123F2CC180005AA26 /* CharacterListViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		473CC54E23F2E8300005AA26 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				473CC54523F2E3190005AA26 /* CKAsset+.swift */,
+				473CC54723F2E32C0005AA26 /* CLLocationCoordinate2D+.swift */,
+				473CC54923F2E7210005AA26 /* UIImage+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		473CC54F23F2E83B0005AA26 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				473CC55023F2EA470005AA26 /* CharacterCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		479E313823EC43E5000EBA39 = {
 			isa = PBXGroup;
 			children = (
+				479E318223EC9E3A000EBA39 /* superhero-api.py */,
 				479E314323EC43E5000EBA39 /* Batman, help */,
 				479E315A23EC43E6000EBA39 /* Batman, helpTests */,
 				479E316523EC43E6000EBA39 /* Batman, helpUITests */,
 				479E314223EC43E5000EBA39 /* Products */,
+				473CC53E23F2C8DC0005AA26 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,15 +195,23 @@
 		479E314323EC43E5000EBA39 /* Batman, help */ = {
 			isa = PBXGroup;
 			children = (
+				47B7455123F33BBA007328FD /* batmfa__.ttf */,
+				47B7454F23F33BB0007328FD /* batmfo__.ttf */,
+				473CC53D23F2C8D90005AA26 /* Batman, help.entitlements */,
 				479E314423EC43E5000EBA39 /* AppDelegate.swift */,
 				479E314623EC43E5000EBA39 /* SceneDelegate.swift */,
 				479E314823EC43E5000EBA39 /* ViewController.swift */,
 				479E314A23EC43E5000EBA39 /* Main.storyboard */,
 				479E314D23EC43E6000EBA39 /* Assets.xcassets */,
 				479E314F23EC43E6000EBA39 /* LaunchScreen.storyboard */,
+				470FC08023F17ABE001A59A1 /* ConsoleDebugLogger.swift */,
+				473CC54F23F2E83B0005AA26 /* Cells */,
+				473CC54D23F2E8260005AA26 /* Controllers */,
 				479E317F23EC4605000EBA39 /* Database */,
 				479E317E23EC4600000EBA39 /* Model */,
+				470FC07323EE0CC8001A59A1 /* MLModels */,
 				479E315223EC43E6000EBA39 /* Info.plist */,
+				473CC54E23F2E8300005AA26 /* Extensions */,
 			);
 			path = "Batman, help";
 			sourceTree = "<group>";
@@ -146,6 +240,8 @@
 				479E317923EC452A000EBA39 /* Character.swift */,
 				479E317A23EC452B000EBA39 /* CharacterType.swift */,
 				479E317823EC452A000EBA39 /* SceneLocation.swift */,
+				476D4E3423ECF0420057FE6E /* SceneLocationType.swift */,
+				473CC54323F2D2C30005AA26 /* CharacterPowerstats.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -153,8 +249,9 @@
 		479E317F23EC4605000EBA39 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				479E317523EC4515000EBA39 /* CharacterSingleton.swift */,
+				479E317523EC4515000EBA39 /* Singleton.swift */,
 				479E317423EC4515000EBA39 /* DatabaseAccess.swift */,
+				470FC07E23F17A2D001A59A1 /* CloudKitManager.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -264,8 +361,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				479E315123EC43E6000EBA39 /* LaunchScreen.storyboard in Resources */,
+				47B7455223F33BBB007328FD /* batmfa__.ttf in Resources */,
+				47B7455023F33BB0007328FD /* batmfo__.ttf in Resources */,
 				479E314E23EC43E6000EBA39 /* Assets.xcassets in Resources */,
 				479E314C23EC43E5000EBA39 /* Main.storyboard in Resources */,
+				479E318323EC9E3A000EBA39 /* superhero-api.py in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,14 +390,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				470FC07023EE0B22001A59A1 /* Some Filters - v1.mlmodel in Sources */,
+				473CC54423F2D2C30005AA26 /* CharacterPowerstats.swift in Sources */,
+				470FC07523EE0D38001A59A1 /* ReportViewController.swift in Sources */,
 				479E314923EC43E5000EBA39 /* ViewController.swift in Sources */,
+				476D4E3523ECF0420057FE6E /* SceneLocationType.swift in Sources */,
+				473CC54823F2E32C0005AA26 /* CLLocationCoordinate2D+.swift in Sources */,
 				479E317B23EC452B000EBA39 /* SceneLocation.swift in Sources */,
+				470FC07B23EF68C8001A59A1 /* More Filters - v3.mlmodel in Sources */,
 				479E317C23EC452B000EBA39 /* Character.swift in Sources */,
-				479E317723EC4515000EBA39 /* CharacterSingleton.swift in Sources */,
+				479E317723EC4515000EBA39 /* Singleton.swift in Sources */,
+				479E318123EC4FD3000EBA39 /* MenuViewController.swift in Sources */,
+				473CC54223F2CC180005AA26 /* CharacterListViewController.swift in Sources */,
 				479E314523EC43E5000EBA39 /* AppDelegate.swift in Sources */,
+				473CC54623F2E3190005AA26 /* CKAsset+.swift in Sources */,
 				479E317D23EC452B000EBA39 /* CharacterType.swift in Sources */,
+				473CC54A23F2E7210005AA26 /* UIImage+.swift in Sources */,
 				479E317623EC4515000EBA39 /* DatabaseAccess.swift in Sources */,
+				470FC07223EE0CBF001A59A1 /* No filters - v2.mlmodel in Sources */,
+				470FC08123F17ABE001A59A1 /* ConsoleDebugLogger.swift in Sources */,
 				479E314723EC43E5000EBA39 /* SceneDelegate.swift in Sources */,
+				473CC55123F2EA470005AA26 /* CharacterCollectionViewCell.swift in Sources */,
+				470FC07F23F17A2D001A59A1 /* CloudKitManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +584,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Batman, help/Batman, help.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D9FBK2WPJX;
 				INFOPLIST_FILE = "Batman, help/Info.plist";
@@ -488,6 +603,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Batman, help/Batman, help.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D9FBK2WPJX;
 				INFOPLIST_FILE = "Batman, help/Info.plist";

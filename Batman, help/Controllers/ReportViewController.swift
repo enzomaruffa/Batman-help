@@ -16,7 +16,10 @@ class ReportViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var crimeImageView: UIImageView!
     @IBOutlet weak var crimeLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var changeVillainButton: UIButton!
+    @IBOutlet weak var threatSelector: UISegmentedControl!
+    @IBOutlet weak var threatLevelLabel: UILabel!
     
     // MARK: - Variables
     var crimeImage: UIImage!
@@ -27,15 +30,22 @@ class ReportViewController: UIViewController {
     
     var currentCharacter: String?
     
-    // MARK: - Lifecylce
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // View customizations
         crimeImageView.image = crimeImage
-        locationLabel.text = currentLocation != nil ? "\(currentLocation!.latitude), \(currentLocation!.longitude)" : "Unknown"
+        crimeImageView.layer.cornerRadius = 4
+        
+        changeVillainButton.layer.borderColor = UIColor(displayP3Red: 7/255, green: 207/255, blue: 246/255, alpha: 1).cgColor
+        changeVillainButton.layer.borderWidth = 1
+        changeVillainButton.layer.cornerRadius = 4
+        
         updateClassifications(for: crimeImage)
     }
     
+    // MARK: - CoreML Setup
     /// - Tag: MLModelSetup
     lazy var classificationRequest: VNCoreMLRequest = {
         do {
@@ -96,9 +106,14 @@ class ReportViewController: UIViewController {
                 
                 let firstVillainClassification = topClassifications.first!
                 
-                self.crimeLabel.text = String(format: " I'm %.2f sure that %@ is here!", firstVillainClassification.confidence, firstVillainClassification.identifier)
+                let villainChance = firstVillainClassification.confidence
                 
-                self.currentCharacter = firstVillainClassification.identifier
+                self.currentCharacter =  firstVillainClassification.identifier.replacingOccurrences(of: "_", with: " ")
+                if self.currentCharacter == "Two Face" {
+                    self.currentCharacter = "Two-Face"
+                }
+                
+                self.crimeLabel.text = String(format: " I'm %.2f sure that %@ is here!", villainChance, self.currentCharacter!)
             }
         }
     }
@@ -110,13 +125,9 @@ class ReportViewController: UIViewController {
         
         var characterId: Int?
         
-        if let characterName = currentCharacter {
-            charactersDatabase.getAllCharacters { characters in
-                var comparedName = characterName.replacingOccurrences(of: "_", with: " ")
-                if comparedName == "Two Face" {
-                    comparedName = "Two-Face"
-                }
-                let character = characters.filter({ $0.name == comparedName }).first!
+            if let characterName = currentCharacter {
+                charactersDatabase.getAllCharacters { characters in
+                let character = characters.filter({ $0.name == characterName }).first!
                 characterId = character.id
             }
         }
@@ -127,5 +138,24 @@ class ReportViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-
+    @IBAction func threatLevelChanged(_ sender: Any) {
+        let currentOption = threatSelector.selectedSegmentIndex
+        
+        print(currentOption)
+        
+        if currentOption == 0 {
+            UIView.animate(withDuration: 0.4) {
+                self.threatSelector.tintColor = .systemYellow
+            }
+        } else if currentOption == 1 {
+            UIView.animate(withDuration: 0.4) {
+                self.threatSelector.tintColor = .systemOrange
+            }
+        } else if currentOption == 2 {
+            UIView.animate(withDuration: 0.4) {
+                self.threatSelector.tintColor = .systemRed
+            }
+        }
+    }
+    
 }

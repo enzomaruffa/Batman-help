@@ -11,23 +11,44 @@ import UIKit
 class CharacterListViewController: UIViewController {
     
     @IBOutlet weak var characterCollection: UICollectionView!
+    @IBOutlet weak var characterSegmented: UISegmentedControl!
     
     var charactersDatabase: DatabaseAccess = Singleton.shared
+    var charactersSource: [Character] = []
     var characters: [Character] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        characterSegmented.selectedSegmentIndex = 1
         
         characterCollection.dataSource = self
         characterCollection.delegate = self
         
         charactersDatabase.getAllCharacters({
             self.characters = $0
+            self.charactersSource = $0
             self.characterCollection.reloadData()
         })
-
+        
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func characterSegmentedChange(_ sender: Any) {
+        let filter = characterSegmented.selectedSegmentIndex
+        if filter == 0 {
+            self.characters = self.charactersSource.filter({ $0.type == .hero })
+        } else if filter == 1 {
+            self.characters = self.charactersSource
+            
+        } else if filter == 2 {
+            self.characters = self.charactersSource.filter({ $0.type == .villain })
+            
+        }
+        
+        characterCollection.reloadData()
+    }
+    
     
 }
 
