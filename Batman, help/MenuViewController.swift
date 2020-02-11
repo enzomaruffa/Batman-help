@@ -90,7 +90,6 @@ class MenuViewController: UIViewController {
         let region = MKCoordinateRegion(center: location, span: span)
             mapView.setRegion(region, animated: true)
         
-        
         database.getAllScenes { (scenes) in
             self.scenes = scenes
             for scene in scenes {
@@ -136,9 +135,12 @@ class MenuViewController: UIViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "report" {
-            let image = sender as? UIImage
             let vc = segue.destination as? ReportViewController
+            
+            let image = sender as? UIImage
             vc!.crimeImage = image
+
+            vc!.currentLocation = self.currentLocation?.coordinate
         }
     }
     

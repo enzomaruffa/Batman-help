@@ -8,6 +8,7 @@
 
 import Foundation
 import CloudKit
+import UIKit
 
 class CloudKitManager: DatabaseAccess {
     
@@ -43,8 +44,16 @@ class CloudKitManager: DatabaseAccess {
     
     fileprivate func createSceneLocationRecord(scene: SceneLocation) {
         
-        let record = CKRecord(recordType: "Coin")
-        record.setValue(coinCount, forKey: "amount")
+        let record = CKRecord(recordType: "SceneLocation")
+        
+        record.setValue(scene.character, forKey: "character")
+        record.setValue(scene.creationDate, forKey: "creationDate")
+        record.setValue(scene.location, forKey: "location")
+        record.setValue(scene.name, forKey: "name")
+        record.setValue(scene.sceneResolved, forKey: "sceneResolved")
+        record.setValue(scene.type.rawValue, forKey: "type")
+        record.setValue(scene.image, forKey: "image")
+
 
         logger.log(message: "Persisting \(record)")
         
@@ -128,14 +137,14 @@ class CloudKitManager: DatabaseAccess {
         
         retrieveCharacterRecord { charactersRecords in
             // Returns an empty list if it fails
-            guard charactersRecords != nil else { closure([]) }
+            guard charactersRecords != nil else { return closure([]) }
             
             var characters: [Character] = []
             for characterRecord in charactersRecords! {
                 let characterId = characterRecord["id"] as! Int
                 let typeString = characterRecord["type"] as! String
                 
-                guard let type = CharacterType(rawValue: typeString) else { closure([]) }
+                guard let type = CharacterType(rawValue: typeString) else { return closure([]) }
                 
                 let name = characterRecord["id"] as! String
                 let assetName = characterRecord["id"] as! String
@@ -153,7 +162,7 @@ class CloudKitManager: DatabaseAccess {
         
         retrieveSceneLocations { scenesRecords in
             // Returns an empty list if it fails
-            guard scenesRecords != nil else { closure([]) }
+            guard scenesRecords != nil else { return closure([]) }
             
             var scenes: [SceneLocation] = []
             for sceneRecord in scenesRecords! {
@@ -162,11 +171,12 @@ class CloudKitManager: DatabaseAccess {
                 let location = sceneRecord["id"] as! CLLocationCoordinate2D
                 let sceneResolved = sceneRecord["id"] as! Bool
                 let creationDate = sceneRecord["id"] as! Date
+                let image = sceneRecord["image"] as! UIImage
                 
                 let typeString = sceneRecord["type"] as! String
-                guard let type = SceneLocationType(rawValue: typeString) else { closure([]) }
+                guard let type = SceneLocationType(rawValue: typeString) else { return closure([]) }
                 
-                let sceneLocation = SceneLocation(character: sceneCharacterId, name: name, location: location, creationDate: creationDate, type: type)
+                let sceneLocation = SceneLocation(character: sceneCharacterId, name: name, location: location, creationDate: creationDate, type: type, image: image)
                 sceneLocation.sceneResolved = sceneResolved
                 
                 scenes.append(sceneLocation)
@@ -181,7 +191,7 @@ class CloudKitManager: DatabaseAccess {
         logger.log(message: "Attempting to add scene")
         
         self.logger.log(message: "Creating record...")
-        self.createSceneLocationRecord
+        self.createSceneLocationRecord(scene: scene)
     
     }
     

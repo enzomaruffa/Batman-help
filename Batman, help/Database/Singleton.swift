@@ -30,22 +30,18 @@ class Singleton: DatabaseAccess {
         
         
         var location = CLLocationCoordinate2D(latitude: -25.452767, longitude: -49.249728)
-        var place = SceneLocation(name: "Bat-Academy", location: location)
+        var place = SceneLocation(name: "Bat-Academy", location: location, image: nil)
         sceneLocations.append(place)
         
         
         location = CLLocationCoordinate2D(latitude: -25.352767, longitude: -49.249728)
-        place = SceneLocation(name: "Local 1", location: location)
+        place = SceneLocation(name: "Local 1", location: location, image: nil)
         sceneLocations.append(place)
         
         
         location = CLLocationCoordinate2D(latitude: -25.452767, longitude: -49.349728)
-        place = SceneLocation(name: "Local 2", location: location)
+        place = SceneLocation(name: "Local 2", location: location, image: nil)
         sceneLocations.append(place)
-        
-        location = CLLocationCoordinate2D(latitude: -25.252767, longitude: -49.149728)
-        var scene = SceneLocation(character: character.id, location: location)
-        sceneLocations.append(scene)
         
     }
     

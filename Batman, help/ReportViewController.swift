@@ -8,14 +8,25 @@
 
 import UIKit
 import Vision
+import MapKit
 
 class ReportViewController: UIViewController {
     
+    
+    // MARK: - Outlets
     @IBOutlet weak var crimeImageView: UIImageView!
     @IBOutlet weak var crimeLabel: UILabel!
     
+    // MARK: - Variables
     var crimeImage: UIImage!
+    var currentLocation: CLLocationCoordinate2D?
     
+    var charactersDatabase: DatabaseAccess = Singleton.shared
+    var locationsDatabase: DatabaseAccess = CloudKitManager.shared
+    
+    var currentCharacter: String?
+    
+    // MARK: - Lifecylce
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,6 +54,7 @@ class ReportViewController: UIViewController {
         }
     }()
     
+    // MARK: - CoreML
     /// - Tag: PerformRequests
     func updateClassifications(for image: UIImage) {
         
@@ -81,14 +93,33 @@ class ReportViewController: UIViewController {
                 let topClassifications = classifications.prefix(1)
                 
                 let firstVillainClassification = topClassifications.first!
-                let descriptions = topClassifications.map { classification in
-                    // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
-                    return String(format: "  (%.2f) %@", classification.confidence, classification.identifier)
-                }
                 
                 self.crimeLabel.text = String(format: " I'm %.2f sure that %@ is here!", firstVillainClassification.confidence, firstVillainClassification.identifier)
+                
+                self.currentCharacter = firstVillainClassification.description
             }
         }
     }
+    
+    // MARK: - Action Outlets
+    @IBAction func sendPressed(_ sender: Any) {
+        
+        guard let location = currentLocation else { return }
+        
+        var characterId: Int?
+        
+        if let characterName = currentCharacter {
+            charactersDatabase.getAllCharacters { characters in
+                let character = characters.filter({ $0.name == characterName }).first!
+                characterId = character.id
+            }
+        }
+        
+        let scene = SceneLocation(character: characterId, location: location, image: crimeImage)
+        locationsDatabase.addScene(scene: scene)
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 
 }
