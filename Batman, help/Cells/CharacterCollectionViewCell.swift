@@ -18,12 +18,14 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     var character: Character!
     
-    func setupCell(character: Character) {
+    func setupCell(with character: Character) {
         self.character = character
         
         self.characterImage.image = UIImage(named: character.assetName)
         self.characterName.text = character.name
         self.characterAlignment.text = character.type.rawValue
         
+        self.cellContainer.layer.cornerRadius = 4
+        self.cellContainer.backgroundColor = character.type == .hero ? .blue : .red
     }
 }

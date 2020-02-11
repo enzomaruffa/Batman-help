@@ -213,7 +213,7 @@
                                                     <rect key="frame" x="10" y="10" width="170" height="226"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="characters-batman" translatesAutoresizingMaskIntoConstraints="NO" id="0aV-cQ-no5">
-                                                            <rect key="frame" x="0.0" y="0.0" width="170" height="185.5"/>
+                                                            <rect key="frame" x="0.0" y="17" width="170" height="168.5"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Batman" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DR9-hb-ZJJ">
                                                             <rect key="frame" x="10" y="195.5" width="150" height="20.5"/>
@@ -233,11 +233,12 @@
                                                         <constraint firstAttribute="bottom" secondItem="DR9-hb-ZJJ" secondAttribute="bottom" constant="10" id="6ht-xf-g9u"/>
                                                         <constraint firstItem="iQA-iT-ih0" firstAttribute="centerX" secondItem="0aV-cQ-no5" secondAttribute="centerX" id="8BC-AA-0kb"/>
                                                         <constraint firstAttribute="trailing" secondItem="DR9-hb-ZJJ" secondAttribute="trailing" constant="10" id="B7G-VN-uwM"/>
+                                                        <constraint firstItem="iQA-iT-ih0" firstAttribute="top" secondItem="t09-6R-T1i" secondAttribute="top" id="Fe6-Gh-IpW"/>
                                                         <constraint firstItem="DR9-hb-ZJJ" firstAttribute="leading" secondItem="t09-6R-T1i" secondAttribute="leading" constant="10" id="NP0-Cp-nzs"/>
-                                                        <constraint firstItem="0aV-cQ-no5" firstAttribute="top" secondItem="t09-6R-T1i" secondAttribute="top" id="X5h-OD-bVc"/>
                                                         <constraint firstItem="0aV-cQ-no5" firstAttribute="leading" secondItem="t09-6R-T1i" secondAttribute="leading" id="bV5-ot-erL"/>
-                                                        <constraint firstItem="iQA-iT-ih0" firstAttribute="top" secondItem="0aV-cQ-no5" secondAttribute="top" id="fGQ-dH-1gj"/>
+                                                        <constraint firstItem="iQA-iT-ih0" firstAttribute="bottom" secondItem="0aV-cQ-no5" secondAttribute="top" id="fGQ-dH-1gj"/>
                                                         <constraint firstItem="iQA-iT-ih0" firstAttribute="width" secondItem="0aV-cQ-no5" secondAttribute="width" multiplier="0.8" id="i7B-nv-VPc"/>
+                                                        <constraint firstItem="0aV-cQ-no5" firstAttribute="top" secondItem="iQA-iT-ih0" secondAttribute="bottom" id="jHY-4R-dor"/>
                                                         <constraint firstAttribute="trailing" secondItem="0aV-cQ-no5" secondAttribute="trailing" id="qqr-UK-0GJ"/>
                                                         <constraint firstItem="DR9-hb-ZJJ" firstAttribute="top" secondItem="0aV-cQ-no5" secondAttribute="bottom" constant="10" id="xDG-3G-LjZ"/>
                                                     </constraints>
