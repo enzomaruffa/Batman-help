@@ -145,15 +145,15 @@ class ReportViewController: UIViewController {
         
         if currentOption == 0 {
             UIView.animate(withDuration: 0.4) {
-                self.threatSelector.tintColor = .systemYellow
+                self.threatSelector.selectedSegmentTintColor = .systemYellow
             }
         } else if currentOption == 1 {
             UIView.animate(withDuration: 0.4) {
-                self.threatSelector.tintColor = .systemOrange
+                self.threatSelector.selectedSegmentTintColor = .systemOrange
             }
         } else if currentOption == 2 {
             UIView.animate(withDuration: 0.4) {
-                self.threatSelector.tintColor = .systemRed
+                self.threatSelector.selectedSegmentTintColor = .systemRed
             }
         }
     }
