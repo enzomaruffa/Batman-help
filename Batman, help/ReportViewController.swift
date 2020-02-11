@@ -16,6 +16,7 @@ class ReportViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var crimeImageView: UIImageView!
     @IBOutlet weak var crimeLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
     
     // MARK: - Variables
     var crimeImage: UIImage!
@@ -31,6 +32,7 @@ class ReportViewController: UIViewController {
         super.viewDidLoad()
         
         crimeImageView.image = crimeImage
+        locationLabel.text = currentLocation != nil ? "\(currentLocation!.latitude), \(currentLocation!.longitude)" : "Unknown"
         updateClassifications(for: crimeImage)
     }
     
@@ -96,7 +98,7 @@ class ReportViewController: UIViewController {
                 
                 self.crimeLabel.text = String(format: " I'm %.2f sure that %@ is here!", firstVillainClassification.confidence, firstVillainClassification.identifier)
                 
-                self.currentCharacter = firstVillainClassification.description
+                self.currentCharacter = firstVillainClassification.identifier
             }
         }
     }
@@ -110,7 +112,11 @@ class ReportViewController: UIViewController {
         
         if let characterName = currentCharacter {
             charactersDatabase.getAllCharacters { characters in
-                let character = characters.filter({ $0.name == characterName }).first!
+                var comparedName = characterName.replacingOccurrences(of: "_", with: " ")
+                if comparedName == "Two Face" {
+                    comparedName = "Two-Face"
+                }
+                let character = characters.filter({ $0.name == comparedName }).first!
                 characterId = character.id
             }
         }

@@ -17,12 +17,20 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var menuContainer: UIView!
     @IBOutlet weak var mapView: MKMapView!
     
-    @IBOutlet weak var wikiButton: UIImageView!
-    @IBOutlet weak var reportButton: UIImageView!
+    @IBOutlet weak var wikiButton: UIButton!
+    @IBOutlet weak var reportButton: UIButton!
     
     //MARK: - Variables
     var locationManager: CLLocationManager?
-    var currentLocation: MKUserLocation?
+    var currentLocation: MKUserLocation? {
+        didSet {
+            if currentLocation != nil {
+                reportButton.isEnabled = true
+            } else {
+                reportButton.isEnabled = false
+            }
+        }
+    }
     
     lazy var formatter: DateFormatter = {
         let formatter = DateFormatter()

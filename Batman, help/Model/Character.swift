@@ -10,17 +10,31 @@ import Foundation
 
 class Character: Identifiable, Equatable {
     
-    var id: Int
-    var type: CharacterType
-    var name: String
-    var assetName: String
-    var occupation: String
     
-    internal init(id: Int, type: CharacterType, name: String, assetName: String, occupation: String) {
+    var id: Int
+    var name: String
+    var type: CharacterType
+    var assetName: String
+    
+    var powerstats: CharacterPowerstats
+    var fullName: String
+    var height: Int
+    var weight: Int
+    
+    var baseLocation: String
+    
+    var occupation: String?
+    
+    internal init(id: Int, name: String, type: CharacterType, assetName: String, powerstats: CharacterPowerstats, fullName: String = "Unknown", height: Int, weight: Int, baseLocation: String, occupation: String?) {
         self.id = id
-        self.type = type
         self.name = name
+        self.type = type
         self.assetName = assetName
+        self.powerstats = powerstats
+        self.fullName = fullName
+        self.height = height
+        self.weight = weight
+        self.baseLocation = baseLocation
         self.occupation = occupation
     }
     

@@ -5,7 +5,7 @@ token = 3555165407858566
 
 url = "https://superheroapi.com/api/" + str(token)
 
-ids = [70, 60, 63, 561, 491, 558, 678, 522, 514, 370, 309, 165]
+ids = [70, 60, 63, 561, 562, 563, 564, 564, 491, 558, 678, 522, 514, 370, 309, 165]
 
 for id in ids:
     urlRequest = url + "/" + str(id)

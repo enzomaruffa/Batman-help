@@ -47,8 +47,9 @@ class CloudKitManager: DatabaseAccess {
         let record = CKRecord(recordType: "SceneLocation")
         
         record.setValue(scene.character, forKey: "character")
-        record.setValue(scene.creationDate, forKey: "creationDate")
-        record.setValue(scene.location, forKey: "location")
+        record.setValue(scene.creationDate, forKey: "date")
+        record.setValue(scene.location.latitude, forKey: "latitude")
+        record.setValue(scene.location.longitude, forKey: "longitude")
         record.setValue(scene.name, forKey: "name")
         record.setValue(scene.sceneResolved, forKey: "sceneResolved")
         record.setValue(scene.type.rawValue, forKey: "type")
@@ -59,32 +60,6 @@ class CloudKitManager: DatabaseAccess {
         
         persistRecord(record)
     }
-    
-    private func retrieveCharacterRecord(_ callback: @escaping ([CKRecord]?) -> Void) {
-           let predicate = NSPredicate(value: true)
-           let query = CKQuery(recordType: "Character", predicate: predicate)
-           
-           logger.log(message: "Performing query...")
-           publicDB.perform(query,
-                             inZoneWith: CKRecordZone.default().zoneID) { [weak self] results, error in
-                               self?.logger.log(message: "Query in progress")
-                               guard let self = self else { return }
-                               
-                               if let error = error {
-                                   self.logger.log(message: "Error: \(error.localizedDescription)")
-                                   return
-                               }
-                               
-                               // Check if it exists in the remote container
-                               guard let results = results else {
-                                   self.logger.log(message: "Returning nil!")
-                                   callback(nil)
-                                   return
-                               }
-                               self.logger.log(message: "Results found :)")
-                               callback(results)
-           }
-       }
     
     private func retrieveSceneLocations(_ callback: @escaping ([CKRecord]?) -> Void) {
         let predicate = NSPredicate(value: true)
@@ -112,50 +87,9 @@ class CloudKitManager: DatabaseAccess {
         }
     }
     
-    fileprivate func createMatchHistoryRecord(characterId: Int,
-                                              name: String,
-                                              location: CLLocationCoordinate2D,
-                                              sceneResolved: Bool,
-                                              creationDate: Date,
-                                              type: SceneLocationType) {
-        let record = CKRecord(recordType: "SceneLocation")
-        
-        record.setValue(characterId, forKey: "characterId")
-        record.setValue(name, forKey: "name")
-        record.setValue(location, forKey: "location")
-        record.setValue(sceneResolved, forKey: "sceneResolved")
-        record.setValue(creationDate, forKey: "creationDate")
-        record.setValue(type, forKey: "type")
-        
-        logger.log(message: "Persisting \(record)")
-        
-        persistRecord(record)
-    }
-    
     // MARK: DatabaseAccess Methods
     func getAllCharacters(_ closure: @escaping ([Character]) -> ()) {
-        
-        retrieveCharacterRecord { charactersRecords in
-            // Returns an empty list if it fails
-            guard charactersRecords != nil else { return closure([]) }
-            
-            var characters: [Character] = []
-            for characterRecord in charactersRecords! {
-                let characterId = characterRecord["id"] as! Int
-                let typeString = characterRecord["type"] as! String
-                
-                guard let type = CharacterType(rawValue: typeString) else { return closure([]) }
-                
-                let name = characterRecord["id"] as! String
-                let assetName = characterRecord["id"] as! String
-                let occupation = characterRecord["id"] as! String
-                
-                let character = Character(id: characterId, type: type, name: name, assetName: assetName, occupation: occupation)
-                characters.append(character)
-            }
-            
-            closure(characters)
-        }
+        closure([])
     }
     
     func getAllScenes(_ closure: @escaping ([SceneLocation]) -> ()) {
@@ -168,15 +102,16 @@ class CloudKitManager: DatabaseAccess {
             for sceneRecord in scenesRecords! {
                 let sceneCharacterId = sceneRecord["id"] as! Int?
                 let name = sceneRecord["name"] as! String?
-                let location = sceneRecord["id"] as! CLLocationCoordinate2D
-                let sceneResolved = sceneRecord["id"] as! Bool
-                let creationDate = sceneRecord["id"] as! Date
+                let latitude = sceneRecord["latitude"] as! Double
+                let longitude = sceneRecord["longitude"] as! Double
+                let sceneResolved = sceneRecord["sceneResolved"] as! Bool
+                let creationDate = sceneRecord["date"] as! Date
                 let image = sceneRecord["image"] as! UIImage
                 
                 let typeString = sceneRecord["type"] as! String
                 guard let type = SceneLocationType(rawValue: typeString) else { return closure([]) }
                 
-                let sceneLocation = SceneLocation(character: sceneCharacterId, name: name, location: location, creationDate: creationDate, type: type, image: image)
+                let sceneLocation = SceneLocation(character: sceneCharacterId, name: name, location: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), creationDate: creationDate, type: type, image: image)
                 sceneLocation.sceneResolved = sceneResolved
                 
                 scenes.append(sceneLocation)
