@@ -32,13 +32,14 @@ class CloudKitManager: DatabaseAccess {
     
     
     // MARK: - CloudKit Record Manipulations
-    fileprivate func persistRecord(_ record: CKRecord) {
+    fileprivate func persistRecord(_ record: CKRecord, _ closure: @escaping () -> ()) {
         publicDB.save(record) { (savedRecord, error) in
             if error == nil {
                 self.logger.log(message: "Record saved")
             } else {
-                self.logger.log(message: "Record not  saved")
+                self.logger.log(message: "Record not saved! Error: \(error!.localizedDescription)")
             }
+            closure()
         }
     }
     
@@ -53,12 +54,32 @@ class CloudKitManager: DatabaseAccess {
         record.setValue(scene.name, forKey: "name")
         record.setValue(scene.sceneResolved, forKey: "sceneResolved")
         record.setValue(scene.type.rawValue, forKey: "type")
-        record.setValue(scene.image, forKey: "image")
-
+        
+        // Image storing
+        var imageUrl: URL?
+        if let image = scene.image?.resized(withPercentage: 0.2) {
+            let data = image.pngData()
+            let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat")
+            imageUrl = url
+            do {
+                try data!.write(to: url!, options: [])
+            } catch let e as NSError {
+                print("Error converting image! \(e)");
+                return
+            }
+            record.setValue(CKAsset(fileURL: url!), forKey: "image")
+            print(url)
+        }
 
         logger.log(message: "Persisting \(record)")
         
-        persistRecord(record)
+        persistRecord(record) {
+            // Removing temporary image
+            if let url = imageUrl {
+                do { try FileManager.default.removeItem(at: url) }
+                catch let e { print("Error deleting temp file: \(e)") }
+            }
+        }
     }
     
     private func retrieveSceneLocations(_ callback: @escaping ([CKRecord]?) -> Void) {
@@ -106,7 +127,7 @@ class CloudKitManager: DatabaseAccess {
                 let longitude = sceneRecord["longitude"] as! Double
                 let sceneResolved = sceneRecord["sceneResolved"] as! Bool
                 let creationDate = sceneRecord["date"] as! Date
-                let image = sceneRecord["image"] as! UIImage
+                let image = (sceneRecord["image"] as! CKAsset).toUIImage() ?? UIImage()
                 
                 let typeString = sceneRecord["type"] as! String
                 guard let type = SceneLocationType(rawValue: typeString) else { return closure([]) }

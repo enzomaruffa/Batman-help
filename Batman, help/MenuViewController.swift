@@ -39,7 +39,8 @@ class MenuViewController: UIViewController {
         return formatter
     }()
     
-    var database: DatabaseAccess = Singleton.shared
+    var characterDatabase: DatabaseAccess = Singleton.shared
+    var sceneDatabase: DatabaseAccess = CloudKitManager.shared
     
     var scenes: [SceneLocation] = []
     
@@ -98,7 +99,7 @@ class MenuViewController: UIViewController {
         let region = MKCoordinateRegion(center: location, span: span)
             mapView.setRegion(region, animated: true)
         
-        database.getAllScenes { (scenes) in
+        sceneDatabase.getAllScenes { (scenes) in
             self.scenes = scenes
             for scene in scenes {
                 let annotation = MKPointAnnotation()
@@ -242,12 +243,5 @@ extension MenuViewController: MKMapViewDelegate {
             
         return annotationView
 
-    }
-}
-
-// MARK: - CLLocationCoordinate2D: Equatable
-extension CLLocationCoordinate2D: Equatable {
-    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
-        lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
     }
 }

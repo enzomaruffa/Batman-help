@@ -39,7 +39,7 @@
                                     <constraint firstItem="oTv-fp-JEF" firstAttribute="height" secondItem="kl1-jd-xES" secondAttribute="height" id="yWo-R2-fal"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiX-pE-jbp">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiX-pE-jbp">
                                 <rect key="frame" x="58" y="631" width="87" height="87"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hiX-pE-jbp" secondAttribute="height" multiplier="1:1" id="50R-Ja-BXv"/>
@@ -100,7 +100,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="105.80357142857143"/>
+            <point key="canvasLocation" x="1048" y="106"/>
         </scene>
         <!--Report Crime-->
         <scene sceneID="1CP-0r-zLS">
