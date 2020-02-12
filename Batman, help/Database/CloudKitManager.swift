@@ -48,6 +48,7 @@ class CloudKitManager: DatabaseAccess {
         let record = CKRecord(recordType: "SceneLocation")
         
         record.setValue(scene.character, forKey: "character")
+        record.setValue(scene.threatLevel, forKey: "threatLevel")
         record.setValue(scene.creationDate, forKey: "date")
         record.setValue(scene.location.latitude, forKey: "latitude")
         record.setValue(scene.location.longitude, forKey: "longitude")
@@ -68,7 +69,7 @@ class CloudKitManager: DatabaseAccess {
                 return
             }
             record.setValue(CKAsset(fileURL: url!), forKey: "image")
-            print(url)
+            logger.log(message: "Image URL: \(String(describing: url?.description))")
         }
 
         logger.log(message: "Persisting \(record)")
@@ -79,6 +80,8 @@ class CloudKitManager: DatabaseAccess {
                 do { try FileManager.default.removeItem(at: url) }
                 catch let e { print("Error deleting temp file: \(e)") }
             }
+            
+            NotificationCenter.default.post(name: .mapScenesUpdate, object: nil)
         }
     }
     
@@ -104,6 +107,7 @@ class CloudKitManager: DatabaseAccess {
                                 return
                             }
                             self.logger.log(message: "Results found :)")
+                            
                             callback(results)
         }
     }
@@ -121,7 +125,8 @@ class CloudKitManager: DatabaseAccess {
             
             var scenes: [SceneLocation] = []
             for sceneRecord in scenesRecords! {
-                let sceneCharacterId = sceneRecord["id"] as! Int?
+                let characterId = sceneRecord["character"] as! Int?
+                let threatLevel = sceneRecord["threatLevel"] as! Int?
                 let name = sceneRecord["name"] as! String?
                 let latitude = sceneRecord["latitude"] as! Double
                 let longitude = sceneRecord["longitude"] as! Double
@@ -132,7 +137,7 @@ class CloudKitManager: DatabaseAccess {
                 let typeString = sceneRecord["type"] as! String
                 guard let type = SceneLocationType(rawValue: typeString) else { return closure([]) }
                 
-                let sceneLocation = SceneLocation(character: sceneCharacterId, name: name, location: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), creationDate: creationDate, type: type, image: image)
+                let sceneLocation = SceneLocation(character: characterId, threatLevel: threatLevel, name: name, location: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), creationDate: creationDate, type: type, image: image)
                 sceneLocation.sceneResolved = sceneResolved
                 
                 scenes.append(sceneLocation)
@@ -148,7 +153,6 @@ class CloudKitManager: DatabaseAccess {
         
         self.logger.log(message: "Creating record...")
         self.createSceneLocationRecord(scene: scene)
-    
     }
     
 }

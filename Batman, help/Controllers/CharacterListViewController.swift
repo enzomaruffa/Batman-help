@@ -31,6 +31,9 @@ class CharacterListViewController: UIViewController {
             self.characterCollection.reloadData()
         })
         
+
+        self.characterSegmented.selectedSegmentTintColor = .black
+        
         // Do any additional setup after loading the view.
     }
     
@@ -38,18 +41,40 @@ class CharacterListViewController: UIViewController {
         let filter = characterSegmented.selectedSegmentIndex
         if filter == 0 {
             self.characters = self.charactersSource.filter({ $0.type == .hero })
+
+            UIView.animate(withDuration: 0.4) {
+                self.characterSegmented.selectedSegmentTintColor = UIColor.neon
+            }
         } else if filter == 1 {
             self.characters = self.charactersSource
-            
+
+            UIView.animate(withDuration: 0.4) {
+                self.characterSegmented.selectedSegmentTintColor = .white
+            }
         } else if filter == 2 {
             self.characters = self.charactersSource.filter({ $0.type == .villain })
-            
+
+            UIView.animate(withDuration: 0.4) {
+                self.characterSegmented.selectedSegmentTintColor = UIColor.neonRed
+            }
         }
+
         
         characterCollection.performBatchUpdates({
             let indexSet = IndexSet(integer: 0)
             self.characterCollection.reloadSections(indexSet)
         }, completion: nil)
+    }
+    
+
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "table" {
+            if let characterIndex = sender as? Int,
+                let vc = segue.destination as? CharacterTableViewController {
+                vc.character = characters[characterIndex]
+            }
+        }
     }
     
     
@@ -81,4 +106,12 @@ extension CharacterListViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: width, height: height)
     }
     
+}
+
+
+// MARK: - UICollectionViewDelegate
+extension CharacterListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "table", sender: indexPath.item)
+    }
 }

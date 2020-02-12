@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Character: Identifiable, Equatable {
     
@@ -40,6 +41,76 @@ class Character: Identifiable, Equatable {
     
     static func == (lhs: Character, rhs: Character) -> Bool {
         lhs.id == rhs.id
+    }
+    
+    func attributedString(withFont font: UIFont) -> NSAttributedString {
+        switch name {
+        case "Bane":
+            let attributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.white]
+            return NSMutableAttributedString(string: name, attributes: attributes)
+            
+        case "Batgirl":
+            let attributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.black]
+            return NSMutableAttributedString(string: name, attributes: attributes)
+            
+        case "Batman":
+            let attributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.black]
+            return NSMutableAttributedString(string: name, attributes: attributes)
+            
+        case "Catwoman":
+            let attributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.darkGray]
+            return NSMutableAttributedString(string: name, attributes: attributes)
+            
+        case "Harley Quinn":
+            let attributesHarley = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.red]
+            let harleyPart = NSMutableAttributedString(string: "Harley ", attributes: attributesHarley)
+            
+            let attributesQuinn = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.black]
+            let quinnPart = NSMutableAttributedString(string: "Quinn", attributes: attributesQuinn)
+            
+            harleyPart.append(quinnPart)
+            return harleyPart
+            
+        case "Joker":
+            let attributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.green]
+            return NSMutableAttributedString(string: name, attributes: attributes)
+            
+        case "Nightwing":
+            let attributesnight = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.black]
+            let nightPart = NSMutableAttributedString(string: "Night", attributes: attributesnight)
+            
+            let attributeswing = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.blue]
+            let wingPart = NSMutableAttributedString(string: "wing", attributes: attributeswing)
+            
+            nightPart.append(wingPart)
+            return nightPart
+            
+        case "Poison Ivy":
+            let attributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.green]
+            return NSMutableAttributedString(string: name, attributes: attributes)
+            
+        case "Riddler":
+            let attributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.purple]
+            return NSMutableAttributedString(string: name, attributes: attributes)
+            
+        case "Robin":
+            let attributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.red]
+            return NSMutableAttributedString(string: name, attributes: attributes)
+            
+        case "Two-Face":
+            let color = UIColor(displayP3Red: 255/255, green: 206/255, blue: 180/255, alpha: 1)
+            let attributesTwo = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color]
+            let twoPart = NSMutableAttributedString(string: "Two-", attributes: attributesTwo)
+            
+            let attributesFace = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.purple]
+            let facePart = NSMutableAttributedString(string: "Face", attributes: attributesFace)
+            
+            twoPart.append(facePart)
+            return twoPart
+            
+        default:
+            return NSMutableAttributedString(string: name, attributes: [:])
+        }
     }
     
 }

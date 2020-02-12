@@ -1,19 +1,19 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'Batman, help' do
+target 'BatmanHelp' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for Batman, help
+  # Pods for BatmanHelp
   pod 'Charts'
 
-  target 'Batman, helpTests' do
+  target 'BatmanHelpTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
-  target 'Batman, helpUITests' do
+  target 'BatmanHelpUITests' do
     # Pods for testing
   end
 

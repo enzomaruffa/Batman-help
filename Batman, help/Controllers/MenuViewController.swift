@@ -50,40 +50,68 @@ class MenuViewController: UIViewController {
         super.viewDidLoad()
         
         setupMapKit()
-
+        
         menuContainer.layer.cornerRadius = menuContainer.frame.height/2
         
         wikiButton.alpha = 0
         reportButton.alpha = 0
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateScenes), name: .mapScenesUpdate, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        updateScenes()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     //MARK: - Functions
+    @objc fileprivate func updateScenes() {
+        self.sceneDatabase.getAllScenes { (scenes) in
+            DispatchQueue.main.async {
+                if self.scenes.count != scenes.count {
+                    self.scenes = scenes
+                    let originalAnnotations = self.mapView.annotations
+                    self.generateMapAnnotations(scenes)
+                    self.mapView.removeAnnotations(originalAnnotations)
+                }
+            }
+        }
+    }
+    
+    fileprivate func generateMapAnnotations(_ scenes: [SceneLocation]) {
+        for scene in scenes {
+            DispatchQueue.main.async {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = scene.location
+                annotation.title = scene.name
+                annotation.subtitle = scene.type == .place ? "Place" : "Scene"
+                self.mapView.addAnnotation(annotation)
+            }
+        }
+    }
+    
     func setupMapKit() {
         
         mapView.delegate = self
         
         if CLLocationManager.locationServicesEnabled() {
-
+            
             locationManager = CLLocationManager()
             locationManager?.delegate = self
             locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-
+            
             switch CLLocationManager.authorizationStatus() {
-
+                
             case .authorizedAlways, .authorizedWhenInUse:
                 // Location services authorised.
                 // Start tracking the user.
                 locationManager?.startUpdatingLocation()
                 mapView.showsUserLocation = true
-
+                
             default:
                 // Request access for location services.
                 // This will call didChangeAuthorizationStatus on completion.
@@ -92,23 +120,19 @@ class MenuViewController: UIViewController {
         }
         
         let location = CLLocationCoordinate2D(latitude: -25.452767,
-            longitude: -49.249728)
+                                              longitude: -49.249728)
         
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: location, span: span)
-            mapView.setRegion(region, animated: true)
+        mapView.setRegion(region, animated: true)
         
         sceneDatabase.getAllScenes { (scenes) in
-            self.scenes = scenes
-            for scene in scenes {
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = scene.location
-                annotation.title = scene.name
-                annotation.subtitle = scene.type == .place ? "Place" : "Scene"
-                self.mapView.addAnnotation(annotation)
+            DispatchQueue.main.async {
+                self.scenes = scenes
+                self.generateMapAnnotations(scenes)
             }
         }
-            
+        
     }
     
     //MARK: - Actions Outlets
@@ -147,7 +171,7 @@ class MenuViewController: UIViewController {
             
             let image = sender as? UIImage
             vc!.crimeImage = image
-
+            
             vc!.currentLocation = self.currentLocation?.coordinate
         }
     }
@@ -175,20 +199,20 @@ extension MenuViewController: UIImagePickerControllerDelegate, UINavigationContr
 extension MenuViewController: CLLocationManagerDelegate {
     
     private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-
+        
         switch status {
-
+            
         case .authorizedAlways, .authorizedWhenInUse:
             // Location services are authorised, track the user.
             locationManager?.startUpdatingLocation()
             mapView.showsUserLocation = true
-
+            
         case .denied, .restricted:
             // Location services not authorised, stop tracking the user.
             locationManager?.stopUpdatingLocation()
             mapView.showsUserLocation = false
             currentLocation = nil
-
+            
         default:
             // Location services pending authorisation.
             // Alert requesting access is visible at this point.
@@ -204,16 +228,34 @@ extension MenuViewController: MKMapViewDelegate {
         currentLocation = userLocation
     }
     
+    fileprivate func createPlaceAnnotationView(_ annotationView: MKAnnotationView?) {
+        annotationView?.image = UIImage(named: "place-symbol")?.resized(withPercentage: 0.25)
+    }
+    
+    fileprivate func createSceneResolvedAnnotationView(_ annotationView: MKAnnotationView?) {
+        annotationView?.image = UIImage(named: "batman-blue")?.resized(withPercentage: 0.25)
+    }
+    
+    fileprivate func createSceneThreatAnnotationView(_ sceneInfo: SceneLocation, _ annotationView: MKAnnotationView?) {
+        if sceneInfo.threatLevel == 0 {
+            annotationView?.image = UIImage(named: "scene-beta")?.resized(withPercentage: 1)
+        } else if sceneInfo.threatLevel == 1 {
+            annotationView?.image = UIImage(named: "scene-alpha")?.resized(withPercentage: 1)
+        } else {
+            annotationView?.image = UIImage(named: "scene-omega")?.resized(withPercentage: 1)
+        }
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-
+        
         guard !annotation.isKind(of: MKUserLocation.self) else {
             return nil
         }
-
+        
         let annotationIdentifier = "AnnotationIdentifier"
-
+        
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
-
+        
         if annotationView == nil {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
             annotationView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
@@ -221,27 +263,28 @@ extension MenuViewController: MKMapViewDelegate {
         } else {
             annotationView!.annotation = annotation
         }
-
-        let sceneInfo = scenes.filter({ $0.location == annotation.coordinate }).first!
         
-        var image: UIImage = UIImage()
-        if sceneInfo.type == .place {
-            image = UIImage(named: "batman-yellow")!
-        } else if sceneInfo.type == .scene {
-            if sceneInfo.sceneResolved {
-                image = UIImage(named: "batman-blue")!
-            } else {
-                image = UIImage(named: "batman-red")!
+        if let sceneInfo = scenes.filter({ $0.location == annotation.coordinate }).first {
+            
+            if sceneInfo.type == .place {
+                createPlaceAnnotationView(annotationView)
+            } else if sceneInfo.type == .scene {
+                if sceneInfo.sceneResolved! {
+                    createSceneResolvedAnnotationView(annotationView)
+                } else {
+                    createSceneThreatAnnotationView(sceneInfo, annotationView)
+                }
+                
             }
         }
         
-        annotationView!.image = image
         
-        let batmanImage = image.cgImage
-        annotationView!.image = UIImage(cgImage: batmanImage!, scale: 4, orientation: .up)
-            
         return annotationView
-
+        
     }
+    
+}
 
+extension Notification.Name {
+    static let mapScenesUpdate = Notification.Name("mapScenesUpdate")
 }

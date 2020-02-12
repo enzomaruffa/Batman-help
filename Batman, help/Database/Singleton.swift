@@ -59,7 +59,7 @@ class Singleton: DatabaseAccess {
         characters.append(character)
         
         powerstats = CharacterPowerstats(intelligence: 75, strengh: 25, speed: 27, durability: 28, power: 28, combat: 85)
-        character = Character(id: 562, name: "Robin", type: .villain, assetName: "characters-robin", powerstats: powerstats, fullName: "Jason Todd", height: 183, weight: 101, baseLocation: "Gotham City", occupation: nil)
+        character = Character(id: 562, name: "Robin", type: .hero, assetName: "characters-robin", powerstats: powerstats, fullName: "Jason Todd", height: 183, weight: 101, baseLocation: "Gotham City", occupation: nil)
         characters.append(character)
         
         powerstats = CharacterPowerstats(intelligence: 88, strengh: 10, speed: 12, durability: 14, power: 9, combat: 28)

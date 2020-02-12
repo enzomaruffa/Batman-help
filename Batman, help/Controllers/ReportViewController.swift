@@ -38,7 +38,7 @@ class ReportViewController: UIViewController {
         crimeImageView.image = crimeImage
         crimeImageView.layer.cornerRadius = 4
         
-        changeVillainButton.layer.borderColor = UIColor(displayP3Red: 7/255, green: 207/255, blue: 246/255, alpha: 1).cgColor
+        changeVillainButton.layer.borderColor = UIColor.neon.cgColor
         changeVillainButton.layer.borderWidth = 1
         changeVillainButton.layer.cornerRadius = 4
         
@@ -132,7 +132,8 @@ class ReportViewController: UIViewController {
             }
         }
         
-        let scene = SceneLocation(character: characterId, location: location, image: crimeImage)
+        let threatLevel = threatSelector.selectedSegmentIndex
+        let scene = SceneLocation(character: characterId, threatLevel: threatLevel, location: location, image: crimeImage)
         locationsDatabase.addScene(scene: scene)
         
         self.navigationController?.popViewController(animated: true)

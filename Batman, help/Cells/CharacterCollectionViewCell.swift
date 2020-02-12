@@ -22,16 +22,17 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         self.character = character
         
         self.characterImage.image = UIImage(named: character.assetName)
-        self.characterName.text = character.name
+//        self.characterName.text = character.name
+        self.characterName.attributedText = character.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 17)!)
         self.characterAlignment.text = character.type.rawValue
         
         self.cellContainer.layer.cornerRadius = 4
         
-        if character.type == .villain {
-            self.characterName.textColor = UIColor(displayP3Red: 245/255, green: 51/255, blue: 28/255, alpha: 1)
-        } else {
-            self.characterName.textColor = UIColor(displayP3Red: 7/255, green: 207/255, blue: 246/255, alpha: 1)
-        }
+//        if character.type == .villain {
+//            self.characterName.textColor = UIColor.neon
+//        } else {
+//            self.characterName.textColor = UIColor.neonRed
+//        }
         
     }
 }
