@@ -24,6 +24,30 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="a6k-qu-Qgo">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiX-pE-jbp">
+                                <rect key="frame" x="45.5" y="618.5" width="99.5" height="99.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hiX-pE-jbp" secondAttribute="height" multiplier="1:1" id="50R-Ja-BXv"/>
+                                </constraints>
+                                <state key="normal" image="add-alert"/>
+                                <connections>
+                                    <action selector="reportPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rHl-qA-CjB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFP-n0-K0N">
+                                <rect key="frame" x="269" y="618.5" width="99.5" height="99.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="RFP-n0-K0N" secondAttribute="height" multiplier="1:1" id="sIf-GT-mmz"/>
+                                </constraints>
+                                <state key="normal" image="wiki"/>
+                                <connections>
+                                    <segue destination="xBB-4Y-FMs" kind="show" id="YT3-ug-Ghz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5g-Le-91S" userLabel="Place Button">
+                                <rect key="frame" x="157.5" y="568.5" width="99" height="99.5"/>
+                                <state key="normal" image="add-place"/>
+                            </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kl1-jd-xES">
                                 <rect key="frame" x="145" y="738" width="124" height="124"/>
                                 <subviews>
@@ -45,30 +69,6 @@
                                     <constraint firstItem="oTv-fp-JEF" firstAttribute="height" secondItem="kl1-jd-xES" secondAttribute="height" id="yWo-R2-fal"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiX-pE-jbp">
-                                <rect key="frame" x="45.5" y="618.5" width="99.5" height="99.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="hiX-pE-jbp" secondAttribute="height" multiplier="1:1" id="50R-Ja-BXv"/>
-                                </constraints>
-                                <state key="normal" image="add-alert"/>
-                                <connections>
-                                    <action selector="reportPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rHl-qA-CjB"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFP-n0-K0N">
-                                <rect key="frame" x="269" y="618.5" width="99.5" height="99.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="RFP-n0-K0N" secondAttribute="height" multiplier="1:1" id="sIf-GT-mmz"/>
-                                </constraints>
-                                <state key="normal" image="wiki"/>
-                                <connections>
-                                    <segue destination="xBB-4Y-FMs" kind="show" id="YT3-ug-Ghz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5g-Le-91S" userLabel="Place Button">
-                                <rect key="frame" x="157.5" y="566" width="99" height="99.5"/>
-                                <state key="normal" image="add-place"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.015686274509803921" green="0.074509803921568626" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -87,7 +87,7 @@
                             <constraint firstItem="a6k-qu-Qgo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gUA-bY-NAD"/>
                             <constraint firstItem="RFP-n0-K0N" firstAttribute="leading" secondItem="oTv-fp-JEF" secondAttribute="trailing" id="kWr-Al-4He"/>
                             <constraint firstItem="oTv-fp-JEF" firstAttribute="top" secondItem="hiX-pE-jbp" secondAttribute="bottom" constant="20" id="lOT-v1-1rr"/>
-                            <constraint firstItem="oTv-fp-JEF" firstAttribute="top" secondItem="B5g-Le-91S" secondAttribute="bottom" constant="72.5" id="pVr-FF-MMx"/>
+                            <constraint firstItem="oTv-fp-JEF" firstAttribute="top" secondItem="B5g-Le-91S" secondAttribute="bottom" constant="70" id="pVr-FF-MMx"/>
                             <constraint firstItem="B5g-Le-91S" firstAttribute="width" secondItem="hiX-pE-jbp" secondAttribute="width" id="zk6-0z-2Ol"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -96,8 +96,14 @@
                     <connections>
                         <outlet property="mapView" destination="a6k-qu-Qgo" id="SAn-Xn-AhW"/>
                         <outlet property="menuContainer" destination="kl1-jd-xES" id="F6q-d6-43O"/>
+                        <outlet property="placeBottom" destination="pVr-FF-MMx" id="jnP-az-gjG"/>
+                        <outlet property="placeButton" destination="B5g-Le-91S" id="sfg-kM-xmw"/>
+                        <outlet property="reportBottom" destination="lOT-v1-1rr" id="r7B-11-IJI"/>
                         <outlet property="reportButton" destination="hiX-pE-jbp" id="4zZ-ng-741"/>
+                        <outlet property="reportTrailing" destination="Bfg-zE-BQ8" id="SIa-pg-ZbI"/>
+                        <outlet property="wikiBottom" destination="JtO-Sb-hTr" id="1DP-4Q-fR2"/>
                         <outlet property="wikiButton" destination="RFP-n0-K0N" id="dUx-cE-MdY"/>
+                        <outlet property="wikiLeading" destination="kWr-Al-4He" id="T1B-z6-f1H"/>
                         <segue destination="atq-aC-81o" kind="show" identifier="report" id="mY1-tO-11L"/>
                     </connections>
                 </viewController>

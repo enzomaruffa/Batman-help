@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 extension UIImage {
-    func resized(withPercentage percentage: CGFloat, isOpaque: Bool = true) -> UIImage? {
+    func resized(withPercentage percentage: CGFloat, isOpaque: Bool = false) -> UIImage? {
         let canvas = CGSize(width: size.width * percentage, height: size.height * percentage)
         let format = imageRendererFormat
         format.opaque = isOpaque
@@ -18,7 +18,7 @@ extension UIImage {
             _ in draw(in: CGRect(origin: .zero, size: canvas))
         }
     }
-    func resized(toWidth width: CGFloat, isOpaque: Bool = true) -> UIImage? {
+    func resized(toWidth width: CGFloat, isOpaque: Bool = false) -> UIImage? {
         let canvas = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
         let format = imageRendererFormat
         format.opaque = isOpaque

@@ -18,6 +18,7 @@ class MenuViewController: UIViewController {
     
     @IBOutlet weak var wikiButton: UIButton!
     @IBOutlet weak var reportButton: UIButton!
+    @IBOutlet weak var placeButton: UIButton!
     
     //MARK: - Variables
     var locationManager: CLLocationManager?
@@ -25,8 +26,10 @@ class MenuViewController: UIViewController {
         didSet {
             if currentLocation != nil {
                 reportButton.isEnabled = true
+                placeButton.isEnabled = true
             } else {
                 reportButton.isEnabled = false
+                placeButton.isEnabled = false
             }
         }
     }
@@ -43,7 +46,15 @@ class MenuViewController: UIViewController {
     
     var scenes: [SceneLocation] = []
     
-    var showingButtons = false
+    var showingButtons = true
+    
+    //MARK: - Constraints Outlets
+    @IBOutlet weak var reportTrailing: NSLayoutConstraint!
+    @IBOutlet weak var wikiLeading: NSLayoutConstraint!
+    
+    @IBOutlet weak var reportBottom: NSLayoutConstraint!
+    @IBOutlet weak var wikiBottom: NSLayoutConstraint!
+    @IBOutlet weak var placeBottom: NSLayoutConstraint!
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -52,9 +63,6 @@ class MenuViewController: UIViewController {
         setupMapKit()
         
         menuContainer.layer.cornerRadius = menuContainer.frame.height/2
-        
-        wikiButton.alpha = 0
-        reportButton.alpha = 0
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateScenes), name: .mapScenesUpdate, object: nil)
     }
@@ -135,21 +143,39 @@ class MenuViewController: UIViewController {
         
     }
     
+    func toggleButtons(show: Bool) {
+        let animationTime = 0.8
+        if show {
+            UIView.animate(withDuration: animationTime) {
+                self.reportBottom.constant = 20
+                self.reportTrailing.constant = 0
+                
+                self.wikiBottom.constant = 20
+                self.wikiLeading.constant = 0
+                
+                self.placeBottom.constant = 70
+                self.view.layoutIfNeeded()
+            }
+        } else {
+            UIView.animate(withDuration: animationTime) {
+                let viewSize = self.menuContainer.frame.width
+                self.reportBottom.constant = -viewSize
+                self.reportTrailing.constant = viewSize * 0.9
+                
+                self.wikiBottom.constant = -viewSize
+                self.wikiLeading.constant = -viewSize * 0.9
+                
+                self.placeBottom.constant = -viewSize
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+    
     //MARK: - Actions Outlets
     @IBAction func centralTapped(_ sender: Any) {
         print("central tapped")
-        if !showingButtons {
-            UIView.animate(withDuration: 0.6, animations: {
-                self.self.wikiButton.alpha = 1
-                self.reportButton.alpha = 1
-            })
-        } else {
-            UIView.animate(withDuration: 0.4, animations: {
-                self.wikiButton.alpha = 0
-                self.reportButton.alpha = 0
-            })
-        }
         showingButtons.toggle()
+        toggleButtons(show: showingButtons)
     }
     
     //MARK: - Functions
@@ -236,13 +262,35 @@ extension MenuViewController: MKMapViewDelegate {
         annotationView?.image = UIImage(named: "batman-blue")?.resized(withPercentage: 0.25)
     }
     
+    fileprivate func createCircleView(withSize size: CGRect, andStroke strokeWidth: CGFloat, withColor color: UIColor) -> UIView {
+        let view = UIView(frame: size)
+        
+        view.backgroundColor = .clear
+        view.layer.borderColor = color.cgColor
+        view.layer.borderWidth = strokeWidth
+        
+        view.layer.cornerRadius = size.width/2
+        
+        return view
+    }
+    
     fileprivate func createSceneThreatAnnotationView(_ sceneInfo: SceneLocation, _ annotationView: MKAnnotationView?) {
         if sceneInfo.threatLevel == 0 {
             annotationView?.image = UIImage(named: "signal-beta")?.resized(withPercentage: 0.05)
         } else if sceneInfo.threatLevel == 1 {
             annotationView?.image = UIImage(named: "signal-alpha")?.resized(withPercentage: 0.05)
         } else {
-            annotationView?.image = UIImage(named: "signal-omega")?.resized(withPercentage: 0.05)
+            let imageRect = CGRect(x: 0, y: 0, width: 45, height: 45)
+            
+            let imageView = UIImageView(frame: imageRect)
+            imageView.contentMode = .scaleAspectFit
+            imageView.clipsToBounds = false
+            imageView.image = UIImage(named: "signal-omega")
+            
+            let circleView = createCircleView(withSize: imageRect, andStroke: 1, withColor: .neonRed)
+            
+            annotationView?.addSubview(circleView)
+            annotationView?.addSubview(imageView)
         }
     }
     
@@ -277,7 +325,6 @@ extension MenuViewController: MKMapViewDelegate {
                 
             }
         }
-        
         
         return annotationView
     }
