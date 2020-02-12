@@ -229,7 +229,7 @@ extension MenuViewController: MKMapViewDelegate {
     }
     
     fileprivate func createPlaceAnnotationView(_ annotationView: MKAnnotationView?) {
-        annotationView?.image = UIImage(named: "place-symbol")?.resized(withPercentage: 0.25)
+        annotationView?.image = UIImage(named: "signal-place")?.resized(withPercentage: 0.25)
     }
     
     fileprivate func createSceneResolvedAnnotationView(_ annotationView: MKAnnotationView?) {
@@ -238,11 +238,11 @@ extension MenuViewController: MKMapViewDelegate {
     
     fileprivate func createSceneThreatAnnotationView(_ sceneInfo: SceneLocation, _ annotationView: MKAnnotationView?) {
         if sceneInfo.threatLevel == 0 {
-            annotationView?.image = UIImage(named: "scene-beta")?.resized(withPercentage: 1)
+            annotationView?.image = UIImage(named: "signal-beta")?.resized(withPercentage: 0.05)
         } else if sceneInfo.threatLevel == 1 {
-            annotationView?.image = UIImage(named: "scene-alpha")?.resized(withPercentage: 1)
+            annotationView?.image = UIImage(named: "signal-alpha")?.resized(withPercentage: 0.05)
         } else {
-            annotationView?.image = UIImage(named: "scene-omega")?.resized(withPercentage: 1)
+            annotationView?.image = UIImage(named: "signal-omega")?.resized(withPercentage: 0.05)
         }
     }
     
@@ -280,7 +280,6 @@ extension MenuViewController: MKMapViewDelegate {
         
         
         return annotationView
-        
     }
     
 }

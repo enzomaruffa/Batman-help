@@ -49,7 +49,7 @@ class CharacterListViewController: UIViewController {
             self.characters = self.charactersSource
 
             UIView.animate(withDuration: 0.4) {
-                self.characterSegmented.selectedSegmentTintColor = .white
+                self.characterSegmented.selectedSegmentTintColor = .black
             }
         } else if filter == 2 {
             self.characters = self.charactersSource.filter({ $0.type == .villain })

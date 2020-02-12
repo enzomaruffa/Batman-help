@@ -27,7 +27,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kl1-jd-xES">
                                 <rect key="frame" x="145" y="738" width="124" height="124"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-place-symbol" translatesAutoresizingMaskIntoConstraints="NO" id="oTv-fp-JEF">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu-button" translatesAutoresizingMaskIntoConstraints="NO" id="oTv-fp-JEF">
                                         <rect key="frame" x="0.0" y="0.0" width="124" height="124"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
@@ -36,7 +36,7 @@
                                         </connections>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="oTv-fp-JEF" firstAttribute="centerX" secondItem="kl1-jd-xES" secondAttribute="centerX" id="Keb-DK-BT6"/>
                                     <constraint firstItem="oTv-fp-JEF" firstAttribute="width" secondItem="kl1-jd-xES" secondAttribute="width" id="jhu-uu-B8y"/>
@@ -50,7 +50,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hiX-pE-jbp" secondAttribute="height" multiplier="1:1" id="50R-Ja-BXv"/>
                                 </constraints>
-                                <state key="normal" image="add-locale-symbol"/>
+                                <state key="normal" image="add-alert"/>
                                 <connections>
                                     <action selector="reportPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rHl-qA-CjB"/>
                                 </connections>
@@ -60,19 +60,25 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RFP-n0-K0N" secondAttribute="height" multiplier="1:1" id="sIf-GT-mmz"/>
                                 </constraints>
-                                <state key="normal" image="wiki-symbol"/>
+                                <state key="normal" image="wiki"/>
                                 <connections>
                                     <segue destination="xBB-4Y-FMs" kind="show" id="YT3-ug-Ghz"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5g-Le-91S" userLabel="Place Button">
+                                <rect key="frame" x="157.5" y="566" width="99" height="99.5"/>
+                                <state key="normal" image="add-place"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.015686274509803921" green="0.074509803921568626" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="a6k-qu-Qgo" secondAttribute="trailing" id="5h5-yg-3B8"/>
                             <constraint firstItem="hiX-pE-jbp" firstAttribute="trailing" secondItem="oTv-fp-JEF" secondAttribute="leading" id="Bfg-zE-BQ8"/>
+                            <constraint firstItem="B5g-Le-91S" firstAttribute="height" secondItem="hiX-pE-jbp" secondAttribute="height" id="DI5-cS-b25"/>
                             <constraint firstItem="oTv-fp-JEF" firstAttribute="top" secondItem="RFP-n0-K0N" secondAttribute="bottom" constant="20" id="JtO-Sb-hTr"/>
                             <constraint firstItem="RFP-n0-K0N" firstAttribute="height" secondItem="oTv-fp-JEF" secondAttribute="height" multiplier="0.8" id="Ke8-GC-hO7"/>
                             <constraint firstItem="kl1-jd-xES" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="PtP-fZ-1H4"/>
+                            <constraint firstItem="B5g-Le-91S" firstAttribute="centerX" secondItem="oTv-fp-JEF" secondAttribute="centerX" id="RIP-m5-u9d"/>
                             <constraint firstItem="kl1-jd-xES" firstAttribute="centerX" secondItem="a6k-qu-Qgo" secondAttribute="centerX" id="Rdz-VQ-Ybm"/>
                             <constraint firstItem="hiX-pE-jbp" firstAttribute="height" secondItem="oTv-fp-JEF" secondAttribute="height" multiplier="0.8" id="Whz-DX-jgp"/>
                             <constraint firstAttribute="bottom" secondItem="a6k-qu-Qgo" secondAttribute="bottom" id="aP3-BO-S5B"/>
@@ -81,6 +87,8 @@
                             <constraint firstItem="a6k-qu-Qgo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gUA-bY-NAD"/>
                             <constraint firstItem="RFP-n0-K0N" firstAttribute="leading" secondItem="oTv-fp-JEF" secondAttribute="trailing" id="kWr-Al-4He"/>
                             <constraint firstItem="oTv-fp-JEF" firstAttribute="top" secondItem="hiX-pE-jbp" secondAttribute="bottom" constant="20" id="lOT-v1-1rr"/>
+                            <constraint firstItem="oTv-fp-JEF" firstAttribute="top" secondItem="B5g-Le-91S" secondAttribute="bottom" constant="72.5" id="pVr-FF-MMx"/>
+                            <constraint firstItem="B5g-Le-91S" firstAttribute="width" secondItem="hiX-pE-jbp" secondAttribute="width" id="zk6-0z-2Ol"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -122,7 +130,7 @@
                                     <constraint firstAttribute="width" secondItem="hCf-fQ-HSN" secondAttribute="height" multiplier="1:1" id="mBR-S3-VTb"/>
                                     <constraint firstAttribute="height" constant="70" id="qbb-9J-rX7"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="batman-button"/>
+                                <state key="normal" title="Button" image="menu-button"/>
                                 <connections>
                                     <action selector="sendPressed:" destination="atq-aC-81o" eventType="touchUpInside" id="WdD-eH-Kit"/>
                                 </connections>
@@ -235,7 +243,7 @@ is here!</string>
                                 </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xay-Eu-fCE">
-                                <rect key="frame" x="0.0" y="169" width="414" height="693"/>
+                                <rect key="frame" x="10" y="169" width="394" height="693"/>
                                 <color key="backgroundColor" red="0.015686274509803921" green="0.074509803921568626" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="84Y-vv-n8b">
                                     <size key="itemSize" width="190" height="246"/>
@@ -308,10 +316,10 @@ is here!</string>
                         <constraints>
                             <constraint firstItem="szI-os-0AE" firstAttribute="top" secondItem="1Zn-aG-gyw" secondAttribute="top" constant="30" id="Cbl-hc-aGh"/>
                             <constraint firstItem="szI-os-0AE" firstAttribute="leading" secondItem="1Zn-aG-gyw" secondAttribute="leading" constant="20" id="Em3-ch-bqN"/>
-                            <constraint firstItem="xay-Eu-fCE" firstAttribute="leading" secondItem="1Zn-aG-gyw" secondAttribute="leading" id="Ijz-Cq-XAy"/>
+                            <constraint firstItem="xay-Eu-fCE" firstAttribute="leading" secondItem="1Zn-aG-gyw" secondAttribute="leading" constant="10" id="Ijz-Cq-XAy"/>
                             <constraint firstItem="1Zn-aG-gyw" firstAttribute="bottom" secondItem="xay-Eu-fCE" secondAttribute="bottom" id="JuY-nx-pEP"/>
                             <constraint firstItem="1Zn-aG-gyw" firstAttribute="trailing" secondItem="szI-os-0AE" secondAttribute="trailing" constant="20" id="QV6-e2-EbJ"/>
-                            <constraint firstItem="xay-Eu-fCE" firstAttribute="trailing" secondItem="1Zn-aG-gyw" secondAttribute="trailing" id="iba-VB-vDQ"/>
+                            <constraint firstItem="xay-Eu-fCE" firstAttribute="trailing" secondItem="1Zn-aG-gyw" secondAttribute="trailing" constant="-10" id="iba-VB-vDQ"/>
                             <constraint firstItem="xay-Eu-fCE" firstAttribute="top" secondItem="szI-os-0AE" secondAttribute="bottom" constant="20" id="z91-Na-IMf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Zn-aG-gyw"/>
@@ -331,7 +339,7 @@ is here!</string>
         <scene sceneID="ovh-Mt-iGW">
             <objects>
                 <tableViewController id="Ykq-Hc-Kra" customClass="CharacterTableViewController" customModule="BatmanHelp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" id="9tn-Co-uhU">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" id="9tn-Co-uhU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -450,11 +458,11 @@ is here!</string>
         </scene>
     </scenes>
     <resources>
-        <image name="add-locale-symbol" width="101" height="101"/>
-        <image name="add-place-symbol" width="101" height="101"/>
-        <image name="batman-button" width="600" height="600"/>
+        <image name="add-alert" width="877" height="877"/>
+        <image name="add-place" width="1025" height="1025"/>
         <image name="characters-batman" width="596" height="842"/>
         <image name="characters-harley-quinn" width="842" height="596"/>
-        <image name="wiki-symbol" width="101" height="101"/>
+        <image name="menu-button" width="900" height="900"/>
+        <image name="wiki" width="900" height="900"/>
     </resources>
 </document>
