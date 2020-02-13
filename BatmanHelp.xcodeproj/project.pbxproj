@@ -38,6 +38,9 @@
 		479E317D23EC452B000EBA39 /* CharacterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E317A23EC452B000EBA39 /* CharacterType.swift */; };
 		479E318123EC4FD3000EBA39 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 479E318023EC4FD3000EBA39 /* MenuViewController.swift */; };
 		47ADCD9A23F449D500781053 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ADCD9923F449D500781053 /* UIColor+.swift */; };
+		47ADCD9C23F575D800781053 /* SceneLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ADCD9B23F575D800781053 /* SceneLocationAnnotation.swift */; };
+		47ADCD9E23F5836D00781053 /* SceneCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47ADCD9D23F5836D00781053 /* SceneCalloutView.xib */; };
+		47ADCDA023F583C300781053 /* SceneCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ADCD9F23F583C300781053 /* SceneCalloutView.swift */; };
 		47B7455023F33BB0007328FD /* batmfo__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47B7454F23F33BB0007328FD /* batmfo__.ttf */; };
 		47B7455223F33BBB007328FD /* batmfa__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47B7455123F33BBA007328FD /* batmfa__.ttf */; };
 		A18230988D047C988AC9B37D /* Pods_BatmanHelp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED285151BCD74A0B434E3F3 /* Pods_BatmanHelp.framework */; };
@@ -102,6 +105,9 @@
 		479E317A23EC452B000EBA39 /* CharacterType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterType.swift; sourceTree = "<group>"; };
 		479E318023EC4FD3000EBA39 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		47ADCD9923F449D500781053 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		47ADCD9B23F575D800781053 /* SceneLocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLocationAnnotation.swift; sourceTree = "<group>"; };
+		47ADCD9D23F5836D00781053 /* SceneCalloutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneCalloutView.xib; sourceTree = "<group>"; };
+		47ADCD9F23F583C300781053 /* SceneCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCalloutView.swift; sourceTree = "<group>"; };
 		47B7454F23F33BB0007328FD /* batmfo__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = batmfo__.ttf; sourceTree = "<group>"; };
 		47B7455123F33BBA007328FD /* batmfa__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = batmfa__.ttf; sourceTree = "<group>"; };
 		47CB1A3B23F44330006B9686 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -249,6 +255,8 @@
 				473CC54E23F2E8300005AA26 /* Extensions */,
 				479E317E23EC4600000EBA39 /* Model */,
 				470FC07323EE0CC8001A59A1 /* MLModels */,
+				47ADCD9D23F5836D00781053 /* SceneCalloutView.xib */,
+				47ADCD9F23F583C300781053 /* SceneCalloutView.swift */,
 			);
 			path = "Batman, help";
 			sourceTree = "<group>";
@@ -279,6 +287,7 @@
 				479E317823EC452A000EBA39 /* SceneLocation.swift */,
 				476D4E3423ECF0420057FE6E /* SceneLocationType.swift */,
 				473CC54323F2D2C30005AA26 /* CharacterPowerstats.swift */,
+				47ADCD9B23F575D800781053 /* SceneLocationAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -402,6 +411,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47ADCD9E23F5836D00781053 /* SceneCalloutView.xib in Resources */,
 				479E315123EC43E6000EBA39 /* LaunchScreen.storyboard in Resources */,
 				47B7455223F33BBB007328FD /* batmfa__.ttf in Resources */,
 				47B7455023F33BB0007328FD /* batmfo__.ttf in Resources */,
@@ -550,7 +560,9 @@
 				479E314523EC43E5000EBA39 /* AppDelegate.swift in Sources */,
 				473CC54623F2E3190005AA26 /* CKAsset+.swift in Sources */,
 				479E317D23EC452B000EBA39 /* CharacterType.swift in Sources */,
+				47ADCD9C23F575D800781053 /* SceneLocationAnnotation.swift in Sources */,
 				473CC54A23F2E7210005AA26 /* UIImage+.swift in Sources */,
+				47ADCDA023F583C300781053 /* SceneCalloutView.swift in Sources */,
 				47ADCD9A23F449D500781053 /* UIColor+.swift in Sources */,
 				479E317623EC4515000EBA39 /* DatabaseAccess.swift in Sources */,
 				470FC07223EE0CBF001A59A1 /* No filters - v2.mlmodel in Sources */,

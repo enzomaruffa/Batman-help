@@ -66,6 +66,8 @@ class Singleton: DatabaseAccess {
         character = Character(id: 678, name: "Two-Face", type: .villain, assetName: "characters-two-face", powerstats: powerstats, fullName: "Harvey Dent", height: 183, weight: 82, baseLocation: "Gotham City", occupation: "District Attorney")
         characters.append(character)
         
+        print(powerstats)
+        
         // Places creation
         var location = CLLocationCoordinate2D(latitude: -25.452767, longitude: -49.249728)
         var place = SceneLocation(name: "Bat-Academy", location: location, image: nil)

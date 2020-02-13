@@ -33,6 +33,8 @@ class MenuViewController: UIViewController {
             }
         }
     }
+
+    var menuButtonWidth: CGFloat!
     
     lazy var formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -46,7 +48,9 @@ class MenuViewController: UIViewController {
     
     var scenes: [SceneLocation] = []
     
-    var showingButtons = true
+    var showingButtons = false
+    
+    let logger: ConsoleDebugLogger = ConsoleDebugLogger.shared
     
     //MARK: - Constraints Outlets
     @IBOutlet weak var reportTrailing: NSLayoutConstraint!
@@ -63,16 +67,23 @@ class MenuViewController: UIViewController {
         setupMapKit()
         
         menuContainer.layer.cornerRadius = menuContainer.frame.height/2
+        menuButtonWidth = menuContainer.frame.width
+        
+        toggleButtons(show: false)
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateScenes), name: .mapScenesUpdate, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        logger.log(message: "")
+        super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         updateScenes()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
+        logger.log(message: "")
+        super.viewDidDisappear(true)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
@@ -80,7 +91,9 @@ class MenuViewController: UIViewController {
     @objc fileprivate func updateScenes() {
         self.sceneDatabase.getAllScenes { (scenes) in
             DispatchQueue.main.async {
+                self.logger.log(message: "Updating annotations on main thread")
                 if self.scenes.count != scenes.count {
+                    self.logger.log(message: "Count different, actually really updating")
                     self.scenes = scenes
                     let originalAnnotations = self.mapView.annotations
                     self.generateMapAnnotations(scenes)
@@ -91,15 +104,14 @@ class MenuViewController: UIViewController {
     }
     
     fileprivate func generateMapAnnotations(_ scenes: [SceneLocation]) {
+        logger.log(message: "Generating \(scenes.count) markers")
         for scene in scenes {
             DispatchQueue.main.async {
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = scene.location
-                annotation.title = scene.name
-                annotation.subtitle = scene.type == .place ? "Place" : "Scene"
+                let annotation = SceneLocationAnnotation(sceneLocation: scene)
                 self.mapView.addAnnotation(annotation)
             }
         }
+        
     }
     
     func setupMapKit() {
@@ -144,7 +156,7 @@ class MenuViewController: UIViewController {
     }
     
     func toggleButtons(show: Bool) {
-        let animationTime = 0.8
+        let animationTime = 0.4
         if show {
             UIView.animate(withDuration: animationTime) {
                 self.reportBottom.constant = 20
@@ -154,31 +166,27 @@ class MenuViewController: UIViewController {
                 self.wikiLeading.constant = 0
                 
                 self.placeBottom.constant = 70
+                
+                self.menuContainer.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
                 self.view.layoutIfNeeded()
             }
         } else {
             UIView.animate(withDuration: animationTime) {
-                let viewSize = self.menuContainer.frame.width
-                self.reportBottom.constant = -viewSize
-                self.reportTrailing.constant = viewSize * 0.9
+                self.menuContainer.transform = CGAffineTransform.identity
                 
-                self.wikiBottom.constant = -viewSize
-                self.wikiLeading.constant = -viewSize * 0.9
+                self.reportBottom.constant = -self.menuButtonWidth
+                self.reportTrailing.constant = self.menuButtonWidth * 0.9
                 
-                self.placeBottom.constant = -viewSize
+                self.wikiBottom.constant = -self.menuButtonWidth
+                self.wikiLeading.constant = -self.menuButtonWidth * 0.9
+                
+                self.placeBottom.constant = -self.menuButtonWidth
+                
                 self.view.layoutIfNeeded()
             }
         }
     }
     
-    //MARK: - Actions Outlets
-    @IBAction func centralTapped(_ sender: Any) {
-        print("central tapped")
-        showingButtons.toggle()
-        toggleButtons(show: showingButtons)
-    }
-    
-    //MARK: - Functions
     @IBAction func reportPressed(_ sender: Any) {
         self.presentPhotoPicker(sourceType: .camera)
     }
@@ -188,6 +196,14 @@ class MenuViewController: UIViewController {
         picker.delegate = self
         picker.sourceType = sourceType
         present(picker, animated: true)
+    }
+    
+    
+    //MARK: - Actions Outlets
+    @IBAction func centralTapped(_ sender: Any) {
+        print("central tapped")
+        showingButtons.toggle()
+        toggleButtons(show: showingButtons)
     }
     
     // MARK: - Navigation
@@ -276,31 +292,37 @@ extension MenuViewController: MKMapViewDelegate {
     
     fileprivate func createSceneThreatAnnotationView(_ sceneInfo: SceneLocation, _ annotationView: MKAnnotationView?) {
         if sceneInfo.threatLevel == 0 {
-            annotationView?.image = UIImage(named: "signal-beta")?.resized(withPercentage: 0.05)
+            annotationView?.image = UIImage(named: "signal-beta")?.resized(withPercentage: 0.075)
         } else if sceneInfo.threatLevel == 1 {
-            annotationView?.image = UIImage(named: "signal-alpha")?.resized(withPercentage: 0.05)
+            annotationView?.image = UIImage(named: "signal-alpha")?.resized(withPercentage: 0.075)
         } else {
-            let imageRect = CGRect(x: 0, y: 0, width: 45, height: 45)
-            
-            let imageView = UIImageView(frame: imageRect)
-            imageView.contentMode = .scaleAspectFit
-            imageView.clipsToBounds = false
-            imageView.image = UIImage(named: "signal-omega")
-            
-            let circleView = createCircleView(withSize: imageRect, andStroke: 1, withColor: .neonRed)
-            
-            annotationView?.addSubview(circleView)
-            annotationView?.addSubview(imageView)
+            annotationView?.image = UIImage(named: "signal-omega")?.resized(withPercentage: 0.075)
+//
+//            let circleView = createCircleView(withSize: annotationView!.frame, andStroke: 1, withColor: .neonRed)
+//            circleView.isUserInteractionEnabled = false
+//            annotationView?.addSubview(circleView)
         }
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        guard !annotation.isKind(of: MKUserLocation.self) else {
+        guard !annotation.isKind(of: MKUserLocation.self),
+            let annotation = annotation as? SceneLocationAnnotation else {
             return nil
         }
         
-        let annotationIdentifier = "AnnotationIdentifier"
+        let sceneLocation = annotation.sceneLocation
+        
+        var annotationIdentifier = "annotationPlace"
+        if sceneLocation.type == .scene {
+            if sceneLocation.threatLevel == 0 {
+                annotationIdentifier = "annotationBeta"
+            } else if sceneLocation.threatLevel == 1 {
+                annotationIdentifier = "annotationAlpha"
+            } else {
+                annotationIdentifier = "annotationOmega"
+            }
+        }
         
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
         
@@ -308,25 +330,60 @@ extension MenuViewController: MKMapViewDelegate {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
             annotationView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             annotationView!.canShowCallout = true
+            
+            if sceneLocation.type == .place {
+                createPlaceAnnotationView(annotationView)
+            } else if sceneLocation.type == .scene {
+                if sceneLocation.sceneResolved! {
+                    createSceneResolvedAnnotationView(annotationView)
+                } else {
+                    createSceneThreatAnnotationView(sceneLocation, annotationView)
+                }
+            }
+            
         } else {
             annotationView!.annotation = annotation
         }
         
-        if let sceneInfo = scenes.filter({ $0.location == annotation.coordinate }).first {
-            
-            if sceneInfo.type == .place {
-                createPlaceAnnotationView(annotationView)
-            } else if sceneInfo.type == .scene {
-                if sceneInfo.sceneResolved! {
-                    createSceneResolvedAnnotationView(annotationView)
-                } else {
-                    createSceneThreatAnnotationView(sceneInfo, annotationView)
-                }
-                
-            }
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if let sceneInfo = scenes.filter({ $0.location == view.annotation!.coordinate }).first {
+
+            let name = sceneInfo.name
+            let creationDate = sceneInfo.creationDate.description
+
+            let ac = UIAlertController(title: name, message: creationDate, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if view.annotation!.isKind(of: MKUserLocation.self){
+            return
         }
         
-        return annotationView
+        let annotation = view.annotation as! SceneLocationAnnotation
+
+        //Custom xib
+        let customView = UINib(nibName: "SceneCalloutView", bundle: .main).instantiate(withOwner: nil, options: nil).first as! SceneCalloutView
+
+        let calloutViewFrame = customView.frame
+
+        customView.frame = CGRect(x: -calloutViewFrame.size.width/2.23, y: -calloutViewFrame.size.height-7, width: 300, height: 250)
+        
+        customView.setup(sceneLocation: annotation.sceneLocation)
+
+        view.addSubview(customView)
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView)
+    {
+        for childView:AnyObject in view.subviews{
+            childView.removeFromSuperview();
+        }
     }
     
 }

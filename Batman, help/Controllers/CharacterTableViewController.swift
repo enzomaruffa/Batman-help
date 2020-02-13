@@ -20,6 +20,9 @@ class CharacterTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        characterImage.image = UIImage(named: character.assetName)
+        characterName.attributedText = character.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 15)!)
+        
         // Dataset creation
         let powerstats = character.powerstats
         
@@ -66,6 +69,8 @@ class CharacterTableViewController: UITableViewController {
         xAxis.labelTextColor = .white
         xAxis.drawLabelsEnabled = true
         xAxis.gridColor = .lightBackground
+        
+        chartsView.contentScaleFactor = 0.8
         
         chartsView.data = data
         

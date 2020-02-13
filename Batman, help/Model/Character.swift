@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Character: Identifiable, Equatable {
+class Character: Equatable {
     
     
     var id: Int

@@ -106,7 +106,7 @@ class CloudKitManager: DatabaseAccess {
                                 callback(nil)
                                 return
                             }
-                            self.logger.log(message: "Results found :)")
+                            self.logger.log(message: "\(results.count) results found :)")
                             
                             callback(results)
         }
