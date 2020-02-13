@@ -41,6 +41,9 @@
 		47ADCD9C23F575D800781053 /* SceneLocationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ADCD9B23F575D800781053 /* SceneLocationAnnotation.swift */; };
 		47ADCD9E23F5836D00781053 /* SceneCalloutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47ADCD9D23F5836D00781053 /* SceneCalloutView.xib */; };
 		47ADCDA023F583C300781053 /* SceneCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ADCD9F23F583C300781053 /* SceneCalloutView.swift */; };
+		47ADCDA623F5E73800781053 /* MKCustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ADCDA523F5E73800781053 /* MKCustomAnnotationView.swift */; };
+		47ADCDA823F5E8C200781053 /* Few filters - v3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 47ADCDA723F5E8C200781053 /* Few filters - v3.mlmodel */; };
+		47ADCDAA23F5E8D200781053 /* Lots of Iterations - v3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 47ADCDA923F5E8D200781053 /* Lots of Iterations - v3.mlmodel */; };
 		47B7455023F33BB0007328FD /* batmfo__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47B7454F23F33BB0007328FD /* batmfo__.ttf */; };
 		47B7455223F33BBB007328FD /* batmfa__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47B7455123F33BBA007328FD /* batmfa__.ttf */; };
 		A18230988D047C988AC9B37D /* Pods_BatmanHelp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED285151BCD74A0B434E3F3 /* Pods_BatmanHelp.framework */; };
@@ -108,6 +111,9 @@
 		47ADCD9B23F575D800781053 /* SceneLocationAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneLocationAnnotation.swift; sourceTree = "<group>"; };
 		47ADCD9D23F5836D00781053 /* SceneCalloutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SceneCalloutView.xib; sourceTree = "<group>"; };
 		47ADCD9F23F583C300781053 /* SceneCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCalloutView.swift; sourceTree = "<group>"; };
+		47ADCDA523F5E73800781053 /* MKCustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKCustomAnnotationView.swift; sourceTree = "<group>"; };
+		47ADCDA723F5E8C200781053 /* Few filters - v3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "Few filters - v3.mlmodel"; path = "../../../Modelo/BatmanClassfiier.mlproj/Models/Few filters - v3.mlmodel"; sourceTree = "<group>"; };
+		47ADCDA923F5E8D200781053 /* Lots of Iterations - v3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "Lots of Iterations - v3.mlmodel"; path = "../../../Modelo/BatmanClassfiier.mlproj/Models/Lots of Iterations - v3.mlmodel"; sourceTree = "<group>"; };
 		47B7454F23F33BB0007328FD /* batmfo__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = batmfo__.ttf; sourceTree = "<group>"; };
 		47B7455123F33BBA007328FD /* batmfa__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = batmfa__.ttf; sourceTree = "<group>"; };
 		47CB1A3B23F44330006B9686 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -164,8 +170,10 @@
 		470FC07323EE0CC8001A59A1 /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
+				47ADCDA723F5E8C200781053 /* Few filters - v3.mlmodel */,
 				470FC07A23EF68C8001A59A1 /* More Filters - v3.mlmodel */,
 				470FC06F23EE0B21001A59A1 /* Some Filters - v1.mlmodel */,
+				47ADCDA923F5E8D200781053 /* Lots of Iterations - v3.mlmodel */,
 				470FC07123EE0CBF001A59A1 /* No filters - v2.mlmodel */,
 			);
 			path = MLModels;
@@ -257,6 +265,7 @@
 				470FC07323EE0CC8001A59A1 /* MLModels */,
 				47ADCD9D23F5836D00781053 /* SceneCalloutView.xib */,
 				47ADCD9F23F583C300781053 /* SceneCalloutView.swift */,
+				47ADCDA523F5E73800781053 /* MKCustomAnnotationView.swift */,
 			);
 			path = "Batman, help";
 			sourceTree = "<group>";
@@ -547,6 +556,7 @@
 				470FC07023EE0B22001A59A1 /* Some Filters - v1.mlmodel in Sources */,
 				473CC54423F2D2C30005AA26 /* CharacterPowerstats.swift in Sources */,
 				470FC07523EE0D38001A59A1 /* ReportViewController.swift in Sources */,
+				47ADCDA623F5E73800781053 /* MKCustomAnnotationView.swift in Sources */,
 				479E314923EC43E5000EBA39 /* ViewController.swift in Sources */,
 				476D4E3523ECF0420057FE6E /* SceneLocationType.swift in Sources */,
 				473CC54823F2E32C0005AA26 /* CLLocationCoordinate2D+.swift in Sources */,
@@ -556,11 +566,13 @@
 				479E317C23EC452B000EBA39 /* Character.swift in Sources */,
 				479E317723EC4515000EBA39 /* Singleton.swift in Sources */,
 				479E318123EC4FD3000EBA39 /* MenuViewController.swift in Sources */,
+				47ADCDA823F5E8C200781053 /* Few filters - v3.mlmodel in Sources */,
 				473CC54223F2CC180005AA26 /* CharacterListViewController.swift in Sources */,
 				479E314523EC43E5000EBA39 /* AppDelegate.swift in Sources */,
 				473CC54623F2E3190005AA26 /* CKAsset+.swift in Sources */,
 				479E317D23EC452B000EBA39 /* CharacterType.swift in Sources */,
 				47ADCD9C23F575D800781053 /* SceneLocationAnnotation.swift in Sources */,
+				47ADCDAA23F5E8D200781053 /* Lots of Iterations - v3.mlmodel in Sources */,
 				473CC54A23F2E7210005AA26 /* UIImage+.swift in Sources */,
 				47ADCDA023F583C300781053 /* SceneCalloutView.swift in Sources */,
 				47ADCD9A23F449D500781053 /* UIColor+.swift in Sources */,

@@ -327,7 +327,7 @@ extension MenuViewController: MKMapViewDelegate {
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
         
         if annotationView == nil {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            annotationView = MKCustomAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
             annotationView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             annotationView!.canShowCallout = true
             
@@ -347,18 +347,7 @@ extension MenuViewController: MKMapViewDelegate {
         
         return annotationView
     }
-    
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if let sceneInfo = scenes.filter({ $0.location == view.annotation!.coordinate }).first {
 
-            let name = sceneInfo.name
-            let creationDate = sceneInfo.creationDate.description
-
-            let ac = UIAlertController(title: name, message: creationDate, preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            present(ac, animated: true)
-        }
-    }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if view.annotation!.isKind(of: MKUserLocation.self){
@@ -369,20 +358,21 @@ extension MenuViewController: MKMapViewDelegate {
 
         //Custom xib
         let customView = UINib(nibName: "SceneCalloutView", bundle: .main).instantiate(withOwner: nil, options: nil).first as! SceneCalloutView
-
+        
         let calloutViewFrame = customView.frame
 
         customView.frame = CGRect(x: -calloutViewFrame.size.width/2.23, y: -calloutViewFrame.size.height-7, width: 300, height: 250)
         
         customView.setup(sceneLocation: annotation.sceneLocation)
+        customView.controller = self
 
         view.addSubview(customView)
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView)
     {
-        for childView:AnyObject in view.subviews{
-            childView.removeFromSuperview();
+        for childView in view.subviews{
+            childView.removeFromSuperview()
         }
     }
     

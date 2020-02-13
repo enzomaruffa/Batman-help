@@ -97,6 +97,14 @@ class Singleton: DatabaseAccess {
         sceneLocations.append(scene)
     }
     
+    func updateScene(_ scene: SceneLocation) {
+        let previousCount = sceneLocations.count
+        sceneLocations.removeAll(where: { $0.location == scene.location })
+        if sceneLocations.count != previousCount {
+            sceneLocations.append(scene)
+        }
+    }
+    
 }
 
 

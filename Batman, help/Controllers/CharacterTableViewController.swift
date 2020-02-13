@@ -21,7 +21,7 @@ class CharacterTableViewController: UITableViewController {
         super.viewDidLoad()
         
         characterImage.image = UIImage(named: character.assetName)
-        characterName.attributedText = character.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 15)!)
+        characterName.attributedText = character.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 25)!)
         
         // Dataset creation
         let powerstats = character.powerstats
@@ -38,7 +38,15 @@ class CharacterTableViewController: UITableViewController {
         dataset.valueColors = [UIColor.neon]
         
         // Dataset styling
-        let gradientColors = [UIColor.cyan.cgColor, UIColor.red.cgColor] as CFArray // Colors of the gradient
+        
+        var gradientColors: CFArray
+        if character.type == .hero {
+            gradientColors = [UIColor.systemBlue.cgColor, UIColor.neon.cgColor] as CFArray // Colors of the gradient
+        } else {
+            gradientColors = [UIColor.red.cgColor, UIColor.neonRed.cgColor] as CFArray // Colors of the gradient
+        }
+        
+       
         let colorLocations:[CGFloat] = [1.0, 0.0] // Positioning of the gradient
         let gradient = CGGradient.init(colorsSpace: CGColorSpaceCreateDeviceRGB(), colors: gradientColors, locations: colorLocations) // Gradient Object
         dataset.fill = Fill.fillWithRadialGradient(gradient!, startOffsetPercent: .zero, startRadiusPercent: 0, endOffsetPercent: .zero, endRadiusPercent: 0.5)
@@ -58,7 +66,7 @@ class CharacterTableViewController: UITableViewController {
         yAxis.labelFont = UIFont(name: "BatmanForeverAlternate", size: 9)!
         yAxis.labelCount = 3
         yAxis.axisMinimum = 0
-        yAxis.axisMaximum = 100
+        yAxis.axisMaximum = 70
         yAxis.drawLabelsEnabled = false
         yAxis.gridColor = .lightBackground
         

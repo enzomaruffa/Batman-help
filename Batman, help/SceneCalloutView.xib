@@ -25,13 +25,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="characters-bane" translatesAutoresizingMaskIntoConstraints="NO" id="grm-Ix-otb">
-                    <rect key="frame" x="16" y="48" width="113" height="145"/>
+                    <rect key="frame" x="16" y="48" width="102.5" height="132"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="grm-Ix-otb" secondAttribute="height" multiplier="7:9" id="Z9v-Ri-fIn"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fGS-4p-MeV">
-                    <rect key="frame" x="149" y="51" width="153" height="103"/>
+                    <rect key="frame" x="138.5" y="51" width="163.5" height="90"/>
                     <string key="text">BANE 
 WAS HERE!</string>
                     <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="20"/>
@@ -39,24 +39,28 @@ WAS HERE!</string>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfA-bE-LkR">
-                    <rect key="frame" x="16" y="203" width="286" height="27"/>
+                    <rect key="frame" x="16" y="190" width="286" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="YfY-q6-AaZ"/>
+                        <constraint firstAttribute="height" constant="40" id="YfY-q6-AaZ"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="15"/>
                     <state key="normal" title="MARK RESOLVED">
                         <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="markResolvedPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="KLN-I6-K6t"/>
+                        <action selector="resolvedTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="VDU-7x-GkK"/>
+                    </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yuf-wt-0lw">
-                    <rect key="frame" x="149" y="173" width="21" height="18.5"/>
+                    <rect key="frame" x="138.5" y="160" width="21" height="18.5"/>
                     <color key="tintColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="yuf-wt-0lw" secondAttribute="height" multiplier="1:1" id="D5L-tu-2mb"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="22/07/1999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VBh-Zp-FD2">
-                    <rect key="frame" x="178" y="174" width="126" height="17"/>
+                    <rect key="frame" x="167.5" y="161" width="136.5" height="17"/>
                     <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>

@@ -359,18 +359,18 @@ is here!</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="characters-harley-quinn" translatesAutoresizingMaskIntoConstraints="NO" id="ClW-jM-LvV">
-                                                    <rect key="frame" x="100" y="20" width="214" height="184"/>
+                                                    <rect key="frame" x="100" y="20" width="842" height="724"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="ClW-jM-LvV" secondAttribute="height" multiplier="207:178" id="LEy-Pg-lh2"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BATMAN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m22-gj-KiT">
-                                                    <rect key="frame" x="20" y="204" width="374" height="200"/>
+                                                    <rect key="frame" x="20" y="744" width="374" height="32"/>
                                                     <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="32"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" id="fTs-a2-teK" customClass="RadarChartView" customModule="Charts">
+                                                <view contentMode="scaleToFill" ambiguous="YES" id="fTs-a2-teK" customClass="RadarChartView" customModule="Charts">
                                                     <rect key="frame" x="28" y="424" width="366" height="245"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -378,19 +378,97 @@ is here!</string>
                                                         <constraint firstAttribute="width" secondItem="fTs-a2-teK" secondAttribute="height" multiplier="1:1" id="6XS-wb-y2i"/>
                                                     </constraints>
                                                 </view>
+                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="O0R-p8-UBK">
+                                                    <rect key="frame" x="20" y="865" width="374" height="110"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="sSj-MU-d5l">
+                                                            <rect key="frame" x="0.0" y="0.0" width="187" height="110"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FULL NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXc-Ad-4j2">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="156" height="22"/>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HEIGHT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kn-4C-u2u">
+                                                                    <rect key="frame" x="0.0" y="22" width="97" height="22"/>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WEIGHT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMU-5x-lXf">
+                                                                    <rect key="frame" x="0.0" y="44" width="104.5" height="22"/>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OCCUPATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x45-i4-En9">
+                                                                    <rect key="frame" x="0.0" y="66" width="168.5" height="22"/>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BASE LOCATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqf-w5-Dtt">
+                                                                    <rect key="frame" x="0.0" y="88" width="187" height="22"/>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="REh-5d-CH4">
+                                                            <rect key="frame" x="187" y="0.0" width="187" height="110"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PEDRO JORGE THIAGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIH-Wy-H2i">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="187" height="22"/>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="175cm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wc9-gI-etQ">
+                                                                    <rect key="frame" x="0.0" y="22" width="82.5" height="22"/>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="58kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58x-FJ-TuI">
+                                                                    <rect key="frame" x="0.0" y="44" width="72.5" height="22"/>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CRAZY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Va-Ij-8vr">
+                                                                    <rect key="frame" x="0.0" y="66" width="90" height="22"/>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ARKHAM ASYLUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYX-lK-vWO" userLabel="ARKHAM ASYLUM">
+                                                                    <rect key="frame" x="0.0" y="88" width="187" height="22"/>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.015686274510000001" green="0.074509803920000006" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
+                                                <constraint firstItem="fTs-a2-teK" firstAttribute="bottom" secondItem="O0R-p8-UBK" secondAttribute="top" constant="20" id="1kd-Bo-QuR"/>
                                                 <constraint firstItem="ClW-jM-LvV" firstAttribute="leading" secondItem="vGj-85-1ba" secondAttribute="leading" constant="100" id="2RM-Vn-XPZ"/>
                                                 <constraint firstAttribute="trailing" secondItem="ClW-jM-LvV" secondAttribute="trailing" constant="100" id="5ce-yf-m5z"/>
+                                                <constraint firstAttribute="bottom" secondItem="O0R-p8-UBK" secondAttribute="bottom" constant="20" id="5x8-95-WC8"/>
+                                                <constraint firstAttribute="trailing" secondItem="O0R-p8-UBK" secondAttribute="trailing" constant="20" id="6AZ-QT-Bvp"/>
                                                 <constraint firstItem="m22-gj-KiT" firstAttribute="leading" secondItem="vGj-85-1ba" secondAttribute="leading" constant="20" id="9aU-hY-MfV"/>
                                                 <constraint firstItem="m22-gj-KiT" firstAttribute="top" secondItem="ClW-jM-LvV" secondAttribute="bottom" id="HUM-7Q-N7I"/>
                                                 <constraint firstItem="m22-gj-KiT" firstAttribute="bottom" secondItem="fTs-a2-teK" secondAttribute="top" constant="-20" id="UfM-XH-gYG"/>
                                                 <constraint firstItem="ClW-jM-LvV" firstAttribute="top" secondItem="vGj-85-1ba" secondAttribute="top" constant="20" id="a9H-st-Ej5"/>
                                                 <constraint firstItem="ClW-jM-LvV" firstAttribute="centerX" secondItem="vGj-85-1ba" secondAttribute="centerX" id="cNn-4O-Fbo"/>
                                                 <constraint firstAttribute="trailing" secondItem="fTs-a2-teK" secondAttribute="trailing" constant="20" id="eIl-gC-Uyc"/>
+                                                <constraint firstItem="O0R-p8-UBK" firstAttribute="leading" secondItem="vGj-85-1ba" secondAttribute="leading" constant="20" id="isS-eL-PgN"/>
                                                 <constraint firstAttribute="trailing" secondItem="m22-gj-KiT" secondAttribute="trailing" constant="20" id="qhc-eT-isq"/>
-                                                <constraint firstAttribute="bottom" secondItem="fTs-a2-teK" secondAttribute="bottom" constant="20" id="vlZ-fR-MjR"/>
                                                 <constraint firstItem="fTs-a2-teK" firstAttribute="leading" secondItem="vGj-85-1ba" secondAttribute="leading" constant="20" id="y21-iN-2HM"/>
                                             </constraints>
                                         </tableViewCellContentView>

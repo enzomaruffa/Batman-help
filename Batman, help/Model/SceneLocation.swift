@@ -7,8 +7,11 @@
 //
 
 import MapKit
+import CloudKit
 
 class SceneLocation {
+    
+    var recordId: CKRecord.ID? = nil
     
     let character: Int?
     let threatLevel: Int?
@@ -42,7 +45,7 @@ class SceneLocation {
         self.image = image
     }
     
-    internal init(character: Int?, threatLevel: Int?, name: String?, location: CLLocationCoordinate2D, creationDate: Date, type: SceneLocationType, image: UIImage?) {
+    internal init(character: Int?, threatLevel: Int?, name: String?, location: CLLocationCoordinate2D, creationDate: Date, type: SceneLocationType, image: UIImage?, recordId: CKRecord.ID?) {
         self.character = character
         self.threatLevel = threatLevel
         self.name = name
@@ -50,6 +53,8 @@ class SceneLocation {
         self.creationDate = creationDate
         self.type = type
         self.image = image
+        
+        self.recordId = recordId
     }
     
 }

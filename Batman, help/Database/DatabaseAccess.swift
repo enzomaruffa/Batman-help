@@ -12,4 +12,5 @@ protocol DatabaseAccess {
     func getAllCharacters(_ closure: @escaping ([Character]) -> ())
     func getAllScenes(_ closure: @escaping ([SceneLocation]) -> ())
     func addScene(scene: SceneLocation)
+    func updateScene(_ scene: SceneLocation)
 }

@@ -11,7 +11,6 @@ import CloudKit
 import UIKit
 
 class CloudKitManager: DatabaseAccess {
-    
     // MARK: Singleton
     static let shared = CloudKitManager()
     
@@ -137,7 +136,7 @@ class CloudKitManager: DatabaseAccess {
                 let typeString = sceneRecord["type"] as! String
                 guard let type = SceneLocationType(rawValue: typeString) else { return closure([]) }
                 
-                let sceneLocation = SceneLocation(character: characterId, threatLevel: threatLevel, name: name, location: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), creationDate: creationDate, type: type, image: image)
+                let sceneLocation = SceneLocation(character: characterId, threatLevel: threatLevel, name: name, location: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), creationDate: creationDate, type: type, image: image, recordId: sceneRecord.recordID)
                 sceneLocation.sceneResolved = sceneResolved
                 
                 scenes.append(sceneLocation)
@@ -155,4 +154,29 @@ class CloudKitManager: DatabaseAccess {
         self.createSceneLocationRecord(scene: scene)
     }
     
+    func updateScene(_ scene: SceneLocation) {
+        if let recordID = scene.recordId {
+            publicDB.fetch(withRecordID: recordID) { record, error in
+
+                if let record = record, error == nil {
+
+                    //update your record here
+                    record.setValue(scene.character, forKey: "character")
+                    record.setValue(scene.threatLevel, forKey: "threatLevel")
+                    record.setValue(scene.creationDate, forKey: "date")
+                    record.setValue(scene.location.latitude, forKey: "latitude")
+                    record.setValue(scene.location.longitude, forKey: "longitude")
+                    record.setValue(scene.name, forKey: "name")
+                    record.setValue(scene.sceneResolved, forKey: "sceneResolved")
+                    record.setValue(scene.type.rawValue, forKey: "type")
+
+                    self.publicDB.save(record) { _, error in
+                        
+                    }
+                }
+            }
+        }
+    }
+    
 }
+
