@@ -113,7 +113,24 @@ class ReportViewController: UIViewController {
                     self.currentCharacter = "Two-Face"
                 }
                 
-                self.crimeLabel.text = String(format: " I'm %.2f sure that %@ is here!", villainChance, self.currentCharacter!)
+                
+                
+                self.charactersDatabase.getAllCharacters { (characters) in
+                    guard let firstOccurence = characters.filter({ $0.name == self.currentCharacter }).first else { return }
+                    
+                    let characterName = firstOccurence.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 20)!)
+
+                    let font = UIFont(name: "BatmanForeverAlternate", size: 15)!
+                    let attributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.black]
+                    
+                    let firstPartAttributed = NSMutableAttributedString(string: "I'm \(villainChance) sure that ", attributes: attributes)
+                    let lastPartAttributed = NSMutableAttributedString(string: " is here!", attributes: attributes)
+                    
+                    firstPartAttributed.append(characterName)
+                    firstPartAttributed.append(lastPartAttributed)
+                    
+                    self.crimeLabel.attributedText = firstPartAttributed
+                }
             }
         }
     }

@@ -272,6 +272,7 @@ extension MenuViewController: MKMapViewDelegate {
     
     fileprivate func createPlaceAnnotationView(_ annotationView: MKAnnotationView?) {
         annotationView?.image = UIImage(named: "signal-place")?.resized(withPercentage: 0.25)
+        annotationView?.clusteringIdentifier = "place"
     }
     
     fileprivate func createSceneResolvedAnnotationView(_ annotationView: MKAnnotationView?) {
@@ -292,10 +293,13 @@ extension MenuViewController: MKMapViewDelegate {
     
     fileprivate func createSceneThreatAnnotationView(_ sceneInfo: SceneLocation, _ annotationView: MKAnnotationView?) {
         if sceneInfo.threatLevel == 0 {
+            annotationView?.clusteringIdentifier = "signal-beta"
             annotationView?.image = UIImage(named: "signal-beta")?.resized(withPercentage: 0.075)
         } else if sceneInfo.threatLevel == 1 {
+            annotationView?.clusteringIdentifier = "signal-alpha"
             annotationView?.image = UIImage(named: "signal-alpha")?.resized(withPercentage: 0.075)
         } else {
+            annotationView?.clusteringIdentifier = "signal-omega"
             annotationView?.image = UIImage(named: "signal-omega")?.resized(withPercentage: 0.075)
 //
 //            let circleView = createCircleView(withSize: annotationView!.frame, andStroke: 1, withColor: .neonRed)
@@ -350,11 +354,10 @@ extension MenuViewController: MKMapViewDelegate {
 
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        if view.annotation!.isKind(of: MKUserLocation.self){
+        guard !view.annotation!.isKind(of: MKUserLocation.self),
+            let annotation = view.annotation as? SceneLocationAnnotation else {
             return
         }
-        
-        let annotation = view.annotation as! SceneLocationAnnotation
 
         //Custom xib
         let customView = UINib(nibName: "SceneCalloutView", bundle: .main).instantiate(withOwner: nil, options: nil).first as! SceneCalloutView
