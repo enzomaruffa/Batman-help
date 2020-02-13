@@ -44,6 +44,7 @@
 		47ADCDA623F5E73800781053 /* MKCustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ADCDA523F5E73800781053 /* MKCustomAnnotationView.swift */; };
 		47ADCDA823F5E8C200781053 /* Few filters - v3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 47ADCDA723F5E8C200781053 /* Few filters - v3.mlmodel */; };
 		47ADCDAA23F5E8D200781053 /* Lots of Iterations - v3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 47ADCDA923F5E8D200781053 /* Lots of Iterations - v3.mlmodel */; };
+		47ADCDAC23F5F8B500781053 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ADCDAB23F5F8B500781053 /* CharacterViewController.swift */; };
 		47B7455023F33BB0007328FD /* batmfo__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47B7454F23F33BB0007328FD /* batmfo__.ttf */; };
 		47B7455223F33BBB007328FD /* batmfa__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47B7455123F33BBA007328FD /* batmfa__.ttf */; };
 		A18230988D047C988AC9B37D /* Pods_BatmanHelp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED285151BCD74A0B434E3F3 /* Pods_BatmanHelp.framework */; };
@@ -114,6 +115,7 @@
 		47ADCDA523F5E73800781053 /* MKCustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKCustomAnnotationView.swift; sourceTree = "<group>"; };
 		47ADCDA723F5E8C200781053 /* Few filters - v3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "Few filters - v3.mlmodel"; path = "../../../Modelo/BatmanClassfiier.mlproj/Models/Few filters - v3.mlmodel"; sourceTree = "<group>"; };
 		47ADCDA923F5E8D200781053 /* Lots of Iterations - v3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "Lots of Iterations - v3.mlmodel"; path = "../../../Modelo/BatmanClassfiier.mlproj/Models/Lots of Iterations - v3.mlmodel"; sourceTree = "<group>"; };
+		47ADCDAB23F5F8B500781053 /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
 		47B7454F23F33BB0007328FD /* batmfo__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = batmfo__.ttf; sourceTree = "<group>"; };
 		47B7455123F33BBA007328FD /* batmfa__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = batmfa__.ttf; sourceTree = "<group>"; };
 		47CB1A3B23F44330006B9686 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				470FC07423EE0D38001A59A1 /* ReportViewController.swift */,
 				473CC54123F2CC180005AA26 /* CharacterListViewController.swift */,
 				4705EB4523F435EA001365B1 /* CharacterTableViewController.swift */,
+				47ADCDAB23F5F8B500781053 /* CharacterViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				47ADCDA623F5E73800781053 /* MKCustomAnnotationView.swift in Sources */,
 				479E314923EC43E5000EBA39 /* ViewController.swift in Sources */,
 				476D4E3523ECF0420057FE6E /* SceneLocationType.swift in Sources */,
+				47ADCDAC23F5F8B500781053 /* CharacterViewController.swift in Sources */,
 				473CC54823F2E32C0005AA26 /* CLLocationCoordinate2D+.swift in Sources */,
 				479E317B23EC452B000EBA39 /* SceneLocation.swift in Sources */,
 				470FC07B23EF68C8001A59A1 /* More Filters - v3.mlmodel in Sources */,

@@ -69,9 +69,9 @@ class CharacterListViewController: UIViewController {
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "table" {
+        if segue.identifier == "character" {
             if let characterIndex = sender as? Int,
-                let vc = segue.destination as? CharacterTableViewController {
+                let vc = segue.destination as? CharacterViewController {
                 vc.character = characters[characterIndex]
             }
         }
@@ -112,6 +112,6 @@ extension CharacterListViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDelegate
 extension CharacterListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "table", sender: indexPath.item)
+        performSegue(withIdentifier: "character", sender: indexPath.item)
     }
 }

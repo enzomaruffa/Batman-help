@@ -334,7 +334,7 @@ is here!</string>
                     <connections>
                         <outlet property="characterCollection" destination="xay-Eu-fCE" id="Rr2-LD-KpQ"/>
                         <outlet property="characterSegmented" destination="szI-os-0AE" id="ra4-Nl-dm0"/>
-                        <segue destination="Ykq-Hc-Kra" kind="show" identifier="table" id="FHp-5o-K56"/>
+                        <segue destination="0ul-bV-QiC" kind="show" identifier="character" id="6cH-H7-qRh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGM-AS-QoN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -358,19 +358,24 @@ is here!</string>
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="693"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="characters-harley-quinn" translatesAutoresizingMaskIntoConstraints="NO" id="ClW-jM-LvV">
-                                                    <rect key="frame" x="100" y="20" width="842" height="724"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="ClW-jM-LvV" secondAttribute="height" multiplier="207:178" id="LEy-Pg-lh2"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BATMAN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m22-gj-KiT">
-                                                    <rect key="frame" x="20" y="744" width="374" height="32"/>
-                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="32"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <view contentMode="scaleToFill" ambiguous="YES" id="fTs-a2-teK" customClass="RadarChartView" customModule="Charts">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="VGT-xo-hYl" userLabel="Image and Name">
+                                                    <rect key="frame" x="40" y="20" width="334" height="424"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="characters-harley-quinn" translatesAutoresizingMaskIntoConstraints="NO" id="ClW-jM-LvV">
+                                                            <rect key="frame" x="0.0" y="0.0" width="334" height="287"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="ClW-jM-LvV" secondAttribute="height" multiplier="207:178" id="LEy-Pg-lh2"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BATMAN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m22-gj-KiT">
+                                                            <rect key="frame" x="0.0" y="292" width="334" height="132"/>
+                                                            <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="32"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <view contentMode="scaleToFill" id="fTs-a2-teK" customClass="RadarChartView" customModule="Charts">
                                                     <rect key="frame" x="28" y="424" width="366" height="245"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -378,74 +383,104 @@ is here!</string>
                                                         <constraint firstAttribute="width" secondItem="fTs-a2-teK" secondAttribute="height" multiplier="1:1" id="6XS-wb-y2i"/>
                                                     </constraints>
                                                 </view>
-                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" ambiguous="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="O0R-p8-UBK">
-                                                    <rect key="frame" x="20" y="865" width="374" height="110"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="753" verticalCompressionResistancePriority="753" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="O0R-p8-UBK" userLabel="Characteristics">
+                                                    <rect key="frame" x="20" y="778" width="374" height="190"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="sSj-MU-d5l">
-                                                            <rect key="frame" x="0.0" y="0.0" width="187" height="110"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="sSj-MU-d5l">
+                                                            <rect key="frame" x="0.0" y="0.0" width="187" height="190"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FULL NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXc-Ad-4j2">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="156" height="22"/>
-                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="106.5" height="22"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="22" id="F2F-Zv-ACq"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HEIGHT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kn-4C-u2u">
-                                                                    <rect key="frame" x="0.0" y="22" width="97" height="22"/>
-                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <rect key="frame" x="0.0" y="42" width="66" height="22"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="22" id="xdi-aG-WH4"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WEIGHT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMU-5x-lXf">
-                                                                    <rect key="frame" x="0.0" y="44" width="104.5" height="22"/>
-                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <rect key="frame" x="0.0" y="84" width="71.5" height="22"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="22" id="ACP-8f-SLa"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OCCUPATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x45-i4-En9">
-                                                                    <rect key="frame" x="0.0" y="66" width="168.5" height="22"/>
-                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <rect key="frame" x="0.0" y="126" width="115" height="22"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="22" id="UI4-5j-GQd"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BASE LOCATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqf-w5-Dtt">
-                                                                    <rect key="frame" x="0.0" y="88" width="187" height="22"/>
-                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <rect key="frame" x="0.0" y="168" width="147.5" height="22"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="22" id="Z0N-jF-OaI"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="REh-5d-CH4">
-                                                            <rect key="frame" x="187" y="0.0" width="187" height="110"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="REh-5d-CH4">
+                                                            <rect key="frame" x="187" y="0.0" width="187" height="190"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PEDRO JORGE THIAGO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIH-Wy-H2i">
                                                                     <rect key="frame" x="0.0" y="0.0" width="187" height="22"/>
-                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="22" id="dmH-f3-5o2"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="175cm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wc9-gI-etQ">
-                                                                    <rect key="frame" x="0.0" y="22" width="82.5" height="22"/>
-                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <rect key="frame" x="0.0" y="42" width="56" height="22"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="22" id="CkX-06-0wE"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="58kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58x-FJ-TuI">
-                                                                    <rect key="frame" x="0.0" y="44" width="72.5" height="22"/>
-                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <rect key="frame" x="0.0" y="84" width="49.5" height="22"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="22" id="ok6-X1-AwK"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CRAZY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Va-Ij-8vr">
-                                                                    <rect key="frame" x="0.0" y="66" width="90" height="22"/>
-                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <rect key="frame" x="0.0" y="126" width="61.5" height="22"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="22" id="khZ-ZU-L5O"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ARKHAM ASYLUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYX-lK-vWO" userLabel="ARKHAM ASYLUM">
-                                                                    <rect key="frame" x="0.0" y="88" width="187" height="22"/>
-                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="22"/>
+                                                                    <rect key="frame" x="0.0" y="168" width="164" height="22"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="22" id="i1x-bb-az4"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="15"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -456,19 +491,15 @@ is here!</string>
                                             </subviews>
                                             <color key="backgroundColor" red="0.015686274510000001" green="0.074509803920000006" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
+                                                <constraint firstItem="VGT-xo-hYl" firstAttribute="top" secondItem="vGj-85-1ba" secondAttribute="top" constant="20" id="08d-eh-NIx"/>
                                                 <constraint firstItem="fTs-a2-teK" firstAttribute="bottom" secondItem="O0R-p8-UBK" secondAttribute="top" constant="20" id="1kd-Bo-QuR"/>
-                                                <constraint firstItem="ClW-jM-LvV" firstAttribute="leading" secondItem="vGj-85-1ba" secondAttribute="leading" constant="100" id="2RM-Vn-XPZ"/>
-                                                <constraint firstAttribute="trailing" secondItem="ClW-jM-LvV" secondAttribute="trailing" constant="100" id="5ce-yf-m5z"/>
+                                                <constraint firstItem="VGT-xo-hYl" firstAttribute="leading" secondItem="vGj-85-1ba" secondAttribute="leading" constant="40" id="3WC-mN-4b1"/>
                                                 <constraint firstAttribute="bottom" secondItem="O0R-p8-UBK" secondAttribute="bottom" constant="20" id="5x8-95-WC8"/>
                                                 <constraint firstAttribute="trailing" secondItem="O0R-p8-UBK" secondAttribute="trailing" constant="20" id="6AZ-QT-Bvp"/>
-                                                <constraint firstItem="m22-gj-KiT" firstAttribute="leading" secondItem="vGj-85-1ba" secondAttribute="leading" constant="20" id="9aU-hY-MfV"/>
-                                                <constraint firstItem="m22-gj-KiT" firstAttribute="top" secondItem="ClW-jM-LvV" secondAttribute="bottom" id="HUM-7Q-N7I"/>
-                                                <constraint firstItem="m22-gj-KiT" firstAttribute="bottom" secondItem="fTs-a2-teK" secondAttribute="top" constant="-20" id="UfM-XH-gYG"/>
-                                                <constraint firstItem="ClW-jM-LvV" firstAttribute="top" secondItem="vGj-85-1ba" secondAttribute="top" constant="20" id="a9H-st-Ej5"/>
-                                                <constraint firstItem="ClW-jM-LvV" firstAttribute="centerX" secondItem="vGj-85-1ba" secondAttribute="centerX" id="cNn-4O-Fbo"/>
+                                                <constraint firstItem="VGT-xo-hYl" firstAttribute="bottom" secondItem="fTs-a2-teK" secondAttribute="top" constant="20" id="XvZ-jd-tp0"/>
                                                 <constraint firstAttribute="trailing" secondItem="fTs-a2-teK" secondAttribute="trailing" constant="20" id="eIl-gC-Uyc"/>
                                                 <constraint firstItem="O0R-p8-UBK" firstAttribute="leading" secondItem="vGj-85-1ba" secondAttribute="leading" constant="20" id="isS-eL-PgN"/>
-                                                <constraint firstAttribute="trailing" secondItem="m22-gj-KiT" secondAttribute="trailing" constant="20" id="qhc-eT-isq"/>
+                                                <constraint firstAttribute="trailing" secondItem="VGT-xo-hYl" secondAttribute="trailing" constant="40" id="tUd-3m-Vwn"/>
                                                 <constraint firstItem="fTs-a2-teK" firstAttribute="leading" secondItem="vGj-85-1ba" secondAttribute="leading" constant="20" id="y21-iN-2HM"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -491,7 +522,150 @@ is here!</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HBV-hr-svt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2857.971014492754" y="105.80357142857143"/>
+            <point key="canvasLocation" x="2848" y="-603"/>
+        </scene>
+        <!--Character View Controller-->
+        <scene sceneID="caV-RK-8Gc">
+            <objects>
+                <viewController id="0ul-bV-QiC" customClass="CharacterViewController" customModule="BatmanHelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Qc-nZ-Xmm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="characters-harley-quinn" translatesAutoresizingMaskIntoConstraints="NO" id="M6t-YN-6N4">
+                                <rect key="frame" x="20" y="108" width="165.5" height="142.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="M6t-YN-6N4" secondAttribute="height" multiplier="207:178" id="hSu-BM-uya"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BATMAN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WrR-Gk-09l">
+                                <rect key="frame" x="205.5" y="118" width="188.5" height="32"/>
+                                <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="32"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FULL NAME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wws-Oj-yCo">
+                                <rect key="frame" x="205.5" y="170" width="188.5" height="15"/>
+                                <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PEDRO JORGE THIAGO" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Z1-cz-Wt4">
+                                <rect key="frame" x="193" y="185" width="213.5" height="36"/>
+                                <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="18"/>
+                                <color key="textColor" red="0.027450980390000001" green="0.81176470590000005" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BASE LOCATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T0m-6G-eIZ">
+                                <rect key="frame" x="20" y="270.5" width="128" height="13"/>
+                                <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="13"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="ARKHAM ASYLUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9UB-5m-pza" userLabel="ARKHAM ASYLUM">
+                                <rect key="frame" x="153" y="269.5" width="251" height="15"/>
+                                <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="15"/>
+                                <color key="textColor" red="0.027450980390000001" green="0.81176470590000005" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WEIGHT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Szo-My-SML">
+                                <rect key="frame" x="20" y="303.5" width="62" height="13"/>
+                                <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="13"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="58kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SzC-yj-X4i">
+                                <rect key="frame" x="87" y="302.5" width="317" height="15"/>
+                                <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="15"/>
+                                <color key="textColor" red="0.027450980390000001" green="0.81176470590000005" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HEIGHT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7KR-Cv-n6M">
+                                <rect key="frame" x="20" y="336.5" width="57.5" height="13"/>
+                                <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="13"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="175cm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKj-h3-GuN">
+                                <rect key="frame" x="82.5" y="335.5" width="321.5" height="15"/>
+                                <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="15"/>
+                                <color key="textColor" red="0.027450980390000001" green="0.81176470590000005" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OCCUPATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drZ-23-iRl">
+                                <rect key="frame" x="20" y="369.5" width="99.5" height="13"/>
+                                <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="13"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="CRAZY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfZ-9n-CS8">
+                                <rect key="frame" x="124.5" y="368.5" width="279.5" height="15"/>
+                                <fontDescription key="fontDescription" name="BatmanForeverAlternate" family="BatmanForeverAlternate" pointSize="15"/>
+                                <color key="textColor" red="0.027450980390000001" green="0.81176470590000005" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IgO-z4-haw" customClass="RadarChartView" customModule="Charts">
+                                <rect key="frame" x="20.5" y="469.5" width="373" height="372.5"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.015686274510000001" green="0.074509803920000006" blue="0.1176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WrR-Gk-09l" firstAttribute="top" secondItem="zI2-qp-QC3" secondAttribute="top" constant="30" id="4Oc-t9-cz9"/>
+                            <constraint firstItem="M6t-YN-6N4" firstAttribute="top" secondItem="zI2-qp-QC3" secondAttribute="top" constant="20" id="4Xt-C5-yf8"/>
+                            <constraint firstItem="gfZ-9n-CS8" firstAttribute="trailing" secondItem="9UB-5m-pza" secondAttribute="trailing" id="547-R7-pMP"/>
+                            <constraint firstItem="Wws-Oj-yCo" firstAttribute="width" secondItem="WrR-Gk-09l" secondAttribute="width" id="6fD-AR-EaV"/>
+                            <constraint firstItem="UKj-h3-GuN" firstAttribute="centerY" secondItem="7KR-Cv-n6M" secondAttribute="centerY" id="6xF-N7-nWF"/>
+                            <constraint firstItem="IgO-z4-haw" firstAttribute="centerX" secondItem="zI2-qp-QC3" secondAttribute="centerX" id="7Ug-PY-OeE"/>
+                            <constraint firstItem="UKj-h3-GuN" firstAttribute="trailing" secondItem="9UB-5m-pza" secondAttribute="trailing" id="8RW-Na-uTK"/>
+                            <constraint firstItem="gfZ-9n-CS8" firstAttribute="leading" secondItem="drZ-23-iRl" secondAttribute="trailing" constant="5" id="ByB-3L-a0F"/>
+                            <constraint firstItem="7KR-Cv-n6M" firstAttribute="leading" secondItem="Szo-My-SML" secondAttribute="leading" id="Cbe-q5-e0P"/>
+                            <constraint firstItem="drZ-23-iRl" firstAttribute="top" secondItem="7KR-Cv-n6M" secondAttribute="bottom" constant="20" id="D7w-xb-QM2"/>
+                            <constraint firstItem="0Z1-cz-Wt4" firstAttribute="width" secondItem="WrR-Gk-09l" secondAttribute="width" multiplier="1.13333" id="Dh6-HZ-H3n"/>
+                            <constraint firstItem="Wws-Oj-yCo" firstAttribute="centerX" secondItem="WrR-Gk-09l" secondAttribute="centerX" id="F0a-JC-kka"/>
+                            <constraint firstItem="T0m-6G-eIZ" firstAttribute="leading" secondItem="M6t-YN-6N4" secondAttribute="leading" id="FTN-zC-iMN"/>
+                            <constraint firstItem="M6t-YN-6N4" firstAttribute="trailing" secondItem="WrR-Gk-09l" secondAttribute="leading" constant="-20" id="Huj-D0-8Qg"/>
+                            <constraint firstItem="0Z1-cz-Wt4" firstAttribute="centerX" secondItem="Wws-Oj-yCo" secondAttribute="centerX" id="LNp-S0-5Ao"/>
+                            <constraint firstItem="IgO-z4-haw" firstAttribute="width" secondItem="8Qc-nZ-Xmm" secondAttribute="width" multiplier="0.9" id="NoT-hJ-dQr"/>
+                            <constraint firstItem="SzC-yj-X4i" firstAttribute="leading" secondItem="Szo-My-SML" secondAttribute="trailing" constant="5" id="OGg-S5-Y4L"/>
+                            <constraint firstItem="Szo-My-SML" firstAttribute="top" secondItem="T0m-6G-eIZ" secondAttribute="bottom" constant="20" id="Pux-G8-vT5"/>
+                            <constraint firstItem="9UB-5m-pza" firstAttribute="centerY" secondItem="T0m-6G-eIZ" secondAttribute="centerY" id="QAl-HZ-OUy"/>
+                            <constraint firstItem="M6t-YN-6N4" firstAttribute="height" relation="lessThanOrEqual" secondItem="8Qc-nZ-Xmm" secondAttribute="height" multiplier="0.2" id="RoY-uG-U9Y"/>
+                            <constraint firstItem="Wws-Oj-yCo" firstAttribute="top" secondItem="WrR-Gk-09l" secondAttribute="bottom" constant="20" id="U1z-7u-3Gv"/>
+                            <constraint firstItem="0Z1-cz-Wt4" firstAttribute="top" secondItem="Wws-Oj-yCo" secondAttribute="bottom" id="UZw-N2-kXG"/>
+                            <constraint firstItem="SzC-yj-X4i" firstAttribute="trailing" secondItem="9UB-5m-pza" secondAttribute="trailing" id="V9J-mn-OrA"/>
+                            <constraint firstItem="zI2-qp-QC3" firstAttribute="bottom" secondItem="IgO-z4-haw" secondAttribute="bottom" constant="20" id="WXm-ZG-GEk"/>
+                            <constraint firstItem="gfZ-9n-CS8" firstAttribute="centerY" secondItem="drZ-23-iRl" secondAttribute="centerY" id="aKa-WJ-nEz"/>
+                            <constraint firstItem="zI2-qp-QC3" firstAttribute="trailing" secondItem="WrR-Gk-09l" secondAttribute="trailing" constant="20" id="aTa-ym-Ek4"/>
+                            <constraint firstItem="M6t-YN-6N4" firstAttribute="width" secondItem="zI2-qp-QC3" secondAttribute="width" multiplier="0.4" id="ch0-Wr-rnc"/>
+                            <constraint firstItem="SzC-yj-X4i" firstAttribute="centerY" secondItem="Szo-My-SML" secondAttribute="centerY" id="cqo-y4-vh7"/>
+                            <constraint firstItem="9UB-5m-pza" firstAttribute="leading" secondItem="T0m-6G-eIZ" secondAttribute="trailing" constant="5" id="cqp-Gh-MYV"/>
+                            <constraint firstItem="7KR-Cv-n6M" firstAttribute="trailing" secondItem="UKj-h3-GuN" secondAttribute="leading" constant="-5" id="ghJ-FA-60D"/>
+                            <constraint firstItem="Szo-My-SML" firstAttribute="leading" secondItem="T0m-6G-eIZ" secondAttribute="leading" id="gla-Bn-UeW"/>
+                            <constraint firstItem="zI2-qp-QC3" firstAttribute="trailing" secondItem="9UB-5m-pza" secondAttribute="trailing" constant="10" id="kpw-Jv-R9V"/>
+                            <constraint firstItem="IgO-z4-haw" firstAttribute="width" secondItem="IgO-z4-haw" secondAttribute="height" multiplier="1:1" id="rfl-DZ-ThN"/>
+                            <constraint firstItem="M6t-YN-6N4" firstAttribute="leading" secondItem="zI2-qp-QC3" secondAttribute="leading" constant="20" id="tBQ-xt-DJ6"/>
+                            <constraint firstItem="T0m-6G-eIZ" firstAttribute="top" secondItem="M6t-YN-6N4" secondAttribute="bottom" constant="20" id="tO7-M3-Hu0"/>
+                            <constraint firstItem="drZ-23-iRl" firstAttribute="leading" secondItem="7KR-Cv-n6M" secondAttribute="leading" id="xcz-DC-vyw"/>
+                            <constraint firstItem="7KR-Cv-n6M" firstAttribute="top" secondItem="Szo-My-SML" secondAttribute="bottom" constant="20" id="zJW-Fl-92T"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zI2-qp-QC3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7g5-xW-VBP"/>
+                    <connections>
+                        <outlet property="baseNameLabel" destination="9UB-5m-pza" id="cCs-Kq-Jgo"/>
+                        <outlet property="characterFullNameLabel" destination="0Z1-cz-Wt4" id="vM9-lg-WMa"/>
+                        <outlet property="characterImageView" destination="M6t-YN-6N4" id="yWl-iP-Pgq"/>
+                        <outlet property="characterNameLabel" destination="WrR-Gk-09l" id="c9W-Af-gRz"/>
+                        <outlet property="chartsView" destination="IgO-z4-haw" id="cuK-bG-Wt9"/>
+                        <outlet property="heightLabel" destination="UKj-h3-GuN" id="c0x-ll-OAo"/>
+                        <outlet property="occupationLabel" destination="gfZ-9n-CS8" id="us4-eJ-Uii"/>
+                        <outlet property="weightLabel" destination="SzC-yj-X4i" id="07F-Ci-dIS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Afu-eQ-Hyb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2848" y="106"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mFW-xs-ngv">
