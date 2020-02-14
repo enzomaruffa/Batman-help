@@ -38,7 +38,7 @@ class SceneCalloutView: UIView {
         
         characterDatabase.getAllCharacters({ characters in
             
-            let character = characters.filter({ $0.id == sceneLocation.character }).first!
+            let character = characters.filter({ $0.id == sceneLocation.character }).first
             
             var color = UIColor.white
             
@@ -67,15 +67,20 @@ class SceneCalloutView: UIView {
                     
                     self.threatAlertLabel.textColor = color
                     
-                    let string = character.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 15)!)
-                    
-                    self.villainNameLabel.attributedText = string
-                    
-                    self.villainImageView.image = UIImage(named: character.assetName)
+                    if let character = character {
+                        let string = character.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 15)!)
+
+                        self.villainNameLabel.attributedText = string
+                        
+                        self.villainImageView.image = UIImage(named: character.assetName)
+                    } else {
+                        self.villainNameLabel.text = "Character not found"
+                        self.villainImageView.image = UIImage(named: "signal-beta")
+                    }
                     
                     self.calendarImage.tintColor = color
                     
-                    self.resolvedButton.titleLabel?.textColor = color
+                    self.resolvedButton.setTitleColor(color, for: .normal)
                     self.resolvedButton.layer.borderColor = color.cgColor
                     self.resolvedButton.layer.borderWidth = 1
                     self.resolvedButton.layer.cornerRadius = 4
@@ -110,5 +115,26 @@ class SceneCalloutView: UIView {
         ac.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: nil))
         
         controller?.present(ac, animated: true)
+    }
+    
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let hitView = super.hitTest(point, with: event)
+        if hitView != nil {
+            self.superview?.bringSubviewToFront(self)
+        }
+        return hitView
+    }
+    
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        let isInside = self.frame.contains(point)
+        if !isInside {
+            for view in self.subviews {
+                let isInside = view.frame.contains(point)
+                if isInside {
+                    break
+                }
+            }
+        }
+        return isInside
     }
 }

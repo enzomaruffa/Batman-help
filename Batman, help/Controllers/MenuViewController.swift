@@ -34,7 +34,7 @@ class MenuViewController: UIViewController {
             }
         }
     }
-
+    
     var menuButtonWidth: CGFloat!
     
     lazy var formatter: DateFormatter = {
@@ -52,14 +52,6 @@ class MenuViewController: UIViewController {
     var showingButtons = false
     
     let logger: ConsoleDebugLogger = ConsoleDebugLogger.shared
-    
-    //MARK: - Constraints Outlets
-    @IBOutlet weak var reportTrailing: NSLayoutConstraint!
-    @IBOutlet weak var wikiLeading: NSLayoutConstraint!
-    
-    @IBOutlet weak var reportBottom: NSLayoutConstraint!
-    @IBOutlet weak var wikiBottom: NSLayoutConstraint!
-    @IBOutlet weak var placeBottom: NSLayoutConstraint!
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -90,15 +82,17 @@ class MenuViewController: UIViewController {
     
     //MARK: - Functions
     @objc fileprivate func updateScenes() {
-        self.sceneDatabase.getAllScenes { (scenes) in
-            DispatchQueue.main.async {
-                self.logger.log(message: "Updating annotations on main thread")
-                if self.scenes.count != scenes.count {
-                    self.logger.log(message: "Count different, actually really updating")
-                    self.scenes = scenes
-                    let originalAnnotations = self.mapView.annotations
-                    self.mapView.removeAnnotations(originalAnnotations)
-                    self.generateMapAnnotations(scenes)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.sceneDatabase.getAllScenes { (scenes) in
+                DispatchQueue.main.async {
+                    self.logger.log(message: "Updating annotations on main thread")
+                    if self.scenes.count != scenes.count {
+                        self.logger.log(message: "Count different, actually really updating")
+                        self.scenes = scenes
+                        let originalAnnotations = self.mapView.annotations
+                        self.mapView.removeAnnotations(originalAnnotations)
+                        self.generateMapAnnotations(scenes)
+                    }
                 }
             }
         }
@@ -159,33 +153,46 @@ class MenuViewController: UIViewController {
     }
     
     func toggleButtons(show: Bool) {
-        let animationTime = 0.4
+        let animationTime = 0.3
         if show {
             UIView.animate(withDuration: animationTime) {
-                self.reportBottom.constant = 20
-                self.reportTrailing.constant = 0
                 
-                self.wikiBottom.constant = 20
-                self.wikiLeading.constant = 0
+                let xTranslate = self.menuContainer.frame.width * 0.8
+                let yTranslate = self.menuContainer.frame.height * 0.8
                 
-                self.placeBottom.constant = 70
+                var reportButtonTransform = CGAffineTransform(translationX: -xTranslate, y: -yTranslate)
+                reportButtonTransform = CGAffineTransform(scaleX: 0.85, y: 0.85).concatenating(reportButtonTransform)
+                self.reportButton.transform = reportButtonTransform
+                
+                var wikiButtonTransform = CGAffineTransform(translationX: 0, y: -yTranslate * 1.5)
+                wikiButtonTransform = CGAffineTransform(scaleX: 0.85, y: 0.85).concatenating(wikiButtonTransform)
+                self.wikiButton.transform = wikiButtonTransform
+                
+                var placeButtonTransform = CGAffineTransform(translationX: xTranslate, y: -yTranslate)
+                placeButtonTransform = CGAffineTransform(scaleX: 0.85, y: 0.85).concatenating(placeButtonTransform)
+                self.placeButton.transform = placeButtonTransform
                 
                 self.menuContainer.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
-                self.view.layoutIfNeeded()
             }
         } else {
             UIView.animate(withDuration: animationTime) {
                 self.menuContainer.transform = CGAffineTransform.identity
                 
-                self.reportBottom.constant = -self.menuButtonWidth
-                self.reportTrailing.constant = self.menuButtonWidth * 0.9
-                
-                self.wikiBottom.constant = -self.menuButtonWidth
-                self.wikiLeading.constant = -self.menuButtonWidth * 0.9
-                
-                self.placeBottom.constant = -self.menuButtonWidth
-                
-                self.view.layoutIfNeeded()
+                [self.reportButton, self.wikiButton, self.placeButton].forEach({
+                    var transform = CGAffineTransform.identity
+                    transform = CGAffineTransform(scaleX: 0.1, y: 0.1).concatenating(transform)
+                    $0?.transform = transform
+                })
+                //
+                //                self.reportButton.transform = reportButtonTransform
+                //
+                //                let wikiButtonTransform = CGAffineTransform.identity
+                //                wikiButtonTransform.scaledBy(x: 0.3, y: 0.3)
+                //                self.wikiButton.transform = wikiButtonTransform
+                //
+                //                let placeButtonTransform = CGAffineTransform.identity
+                //                placeButtonTransform.scaledBy(x: 0.3, y: 0.3)
+                //                self.placeButton.transform = placeButtonTransform
             }
         }
     }
@@ -212,13 +219,13 @@ class MenuViewController: UIViewController {
     @IBAction func addPlacePressed(_ sender: Any) {
         //1. Create the alert controller.
         let alert = UIAlertController(title: "Add place", message: "Add a place in the current coordinate", preferredStyle: .alert)
-
+        
         //2. Add the text field. You can configure it however you need.
         alert.addTextField { (textField) in
             textField.text = ""
             textField.placeholder = "Place name"
         }
-
+        
         // 3. Grab the value from the text field, and print it when the user clicks OK.
         alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
@@ -233,7 +240,7 @@ class MenuViewController: UIViewController {
         
         // 3. Grab the value from the text field, and print it when the user clicks OK.
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
+        
         // 4. Present the alert.
         self.present(alert, animated: true, completion: nil)
     }
@@ -308,7 +315,7 @@ extension MenuViewController: MKMapViewDelegate {
     
     fileprivate func createPlaceAnnotationView(_ annotationView: MKAnnotationView?) {
         annotationView?.image = UIImage(named: "signal-place")?.resized(withPercentage: 0.05)
-//        annotationView?.clusteringIdentifier = "place"
+        //        annotationView?.clusteringIdentifier = "place"
     }
     
     fileprivate func createSceneResolvedAnnotationView(_ annotationView: MKAnnotationView?) {
@@ -329,26 +336,40 @@ extension MenuViewController: MKMapViewDelegate {
     
     fileprivate func createSceneThreatAnnotationView(_ sceneInfo: SceneLocation, _ annotationView: MKAnnotationView?) {
         if sceneInfo.threatLevel == 0 {
-//            annotationView?.clusteringIdentifier = "signal-beta"
+            //            annotationView?.clusteringIdentifier = "signal-beta"
             annotationView?.image = UIImage(named: "signal-beta")?.resized(withPercentage: 0.06)
         } else if sceneInfo.threatLevel == 1 {
-//            annotationView?.clusteringIdentifier = "signal-alpha"
+            //            annotationView?.clusteringIdentifier = "signal-alpha"
             annotationView?.image = UIImage(named: "signal-alpha")?.resized(withPercentage: 0.06)
         } else {
-//            annotationView?.clusteringIdentifier = "signal-omega"
+            //            annotationView?.clusteringIdentifier = "signal-omega"
             annotationView?.image = UIImage(named: "signal-omega")?.resized(withPercentage: 0.06)
-//
-//            let circleView = createCircleView(withSize: annotationView!.frame, andStroke: 1, withColor: .neonRed)
-//            circleView.isUserInteractionEnabled = false
-//            annotationView?.addSubview(circleView)
+            //
+            //            let circleView = createCircleView(withSize: annotationView!.frame, andStroke: 1, withColor: .neonRed)
+            //            circleView.isUserInteractionEnabled = false
+            //            annotationView?.addSubview(circleView)
         }
+    }
+    
+    fileprivate func createCalloutView(_ annotation: SceneLocationAnnotation) -> UIView {
+        let customView = UINib(nibName: "SceneCalloutView", bundle: .main).instantiate(withOwner: nil, options: nil).first as! SceneCalloutView
+        
+        let calloutViewFrame = customView.frame
+        
+        customView.frame = CGRect(x: -calloutViewFrame.size.width/2.23, y: -calloutViewFrame.size.height-7, width: 300, height: 250)
+        
+        customView.setup(sceneLocation: annotation.sceneLocation)
+        customView.controller = self
+        
+        customView.isUserInteractionEnabled = true
+        return customView
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         guard !annotation.isKind(of: MKUserLocation.self),
             let annotation = annotation as? SceneLocationAnnotation else {
-            return nil
+                return nil
         }
         
         let sceneLocation = annotation.sceneLocation
@@ -368,8 +389,12 @@ extension MenuViewController: MKMapViewDelegate {
         
         if annotationView == nil {
             annotationView = MKCustomAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
-            annotationView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            
+            let customView = createCalloutView(annotation)
+            
+            annotationView!.detailCalloutAccessoryView = customView
             annotationView!.canShowCallout = true
+            
             
             if sceneLocation.type == .place {
                 createPlaceAnnotationView(annotationView)
@@ -387,61 +412,95 @@ extension MenuViewController: MKMapViewDelegate {
         
         return annotationView
     }
-
+    
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        guard !view.annotation!.isKind(of: MKUserLocation.self),
-            let annotation = view.annotation as? SceneLocationAnnotation else {
-            return
+        //        guard !view.annotation!.isKind(of: MKUserLocation.self),
+        //            let annotation = view.annotation as? SceneLocationAnnotation else {
+        //            return
+        //        }
+        //
+        //        //Custom xib
+        //        let customView = UINib(nibName: "SceneCalloutView", bundle: .main).instantiate(withOwner: nil, options: nil).first as! SceneCalloutView
+        //
+        //        let calloutViewFrame = customView.frame
+        //
+        //        customView.frame = CGRect(x: -calloutViewFrame.size.width/2.23, y: -calloutViewFrame.size.height-7, width: 300, height: 250)
+        //
+        //        customView.setup(sceneLocation: annotation.sceneLocation)
+        //        customView.controller = self
+        //
+        //        customView.isUserInteractionEnabled = true
+        //
+        //        view.addSubview(customView)
+        //
+        //        func changeSubviewsColors(_ view: UIView) {
+        //            if let imageView = view as? UIImageView {
+        //                imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
+        //                imageView.tintColor = .red
+        //            }
+        //            for subview in view.subviews {
+        //                changeSubviewsColors(subview)
+        //            }
+        //        }
+        //
+        //        changeSubviewsColors(view)
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//            if let parentCalloutView = view.subviews.first,
+//                let backgroundCalloutView = parentCalloutView.subviews.first {
+//                backgroundCalloutView.layer.sublayers?.first?.removeFromSuperlayer()
+//                //            backgroundCalloutView.layer.borderColor = UIColor.neon.cgColor
+//                //            backgroundCalloutView.layer.borderWidth = 3
+//                backgroundCalloutView.backgroundColor = .lightBackground
+//            }
+//        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            if let parentCalloutView = view.subviews.first,
+                let backgroundCalloutView = parentCalloutView.subviews.first {
+                backgroundCalloutView.layer.sublayers?.first?.removeFromSuperlayer()
+                //            backgroundCalloutView.layer.borderColor = UIColor.neon.cgColor
+                //            backgroundCalloutView.layer.borderWidth = 3
+                backgroundCalloutView.backgroundColor = .lightBackground
+            }
         }
-
-        //Custom xib
-        let customView = UINib(nibName: "SceneCalloutView", bundle: .main).instantiate(withOwner: nil, options: nil).first as! SceneCalloutView
-        
-        let calloutViewFrame = customView.frame
-
-        customView.frame = CGRect(x: -calloutViewFrame.size.width/2.23, y: -calloutViewFrame.size.height-7, width: 300, height: 250)
-        
-        customView.setup(sceneLocation: annotation.sceneLocation)
-        customView.controller = self
-
-        view.addSubview(customView)
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView)
     {
-        for childView in view.subviews{
-            childView.removeFromSuperview()
-        }
+        //        for childView in view.subviews{
+        //            childView.removeFromSuperview()
+        //        }
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-            // This is the final step. This code can be copied and pasted into your project
-            // without thinking on it so much. It simply instantiates a MKTileOverlayRenderer
-            // for displaying the tile overlay.
-            if let tileOverlay = overlay as? MKTileOverlay {
-                return MKTileOverlayRenderer(tileOverlay: tileOverlay)
-            } else {
-                return MKOverlayRenderer(overlay: overlay)
-            }
+        // This is the final step. This code can be copied and pasted into your project
+        // without thinking on it so much. It simply instantiates a MKTileOverlayRenderer
+        // for displaying the tile overlay.
+        if let tileOverlay = overlay as? MKTileOverlay {
+            return MKTileOverlayRenderer(tileOverlay: tileOverlay)
+        } else {
+            return MKOverlayRenderer(overlay: overlay)
+        }
     }
     
     // MARK: - MapKitGoogleStyler
-
+    
     private func configureTileOverlay() {
-            // We first need to have the path of the overlay configuration JSON
-            guard let overlayFileURLString = Bundle.main.path(forResource: "MapDarkStyle", ofType: "json") else {
-                    return
-            }
-            let overlayFileURL = URL(fileURLWithPath: overlayFileURLString)
-            
-            // After that, you can create the tile overlay using MapKitGoogleStyler
-            guard let tileOverlay = try? MapKitGoogleStyler.buildOverlay(with: overlayFileURL) else {
-                return
-            }
-            
-            // And finally add it to your MKMapView
-            mapView.addOverlay(tileOverlay)
+        // We first need to have the path of the overlay configuration JSON
+        guard let overlayFileURLString = Bundle.main.path(forResource: "MapDarkStyle", ofType: "json") else {
+            return
+        }
+        let overlayFileURL = URL(fileURLWithPath: overlayFileURLString)
+        
+        // After that, you can create the tile overlay using MapKitGoogleStyler
+        guard let tileOverlay = try? MapKitGoogleStyler.buildOverlay(with: overlayFileURL) else {
+            return
+        }
+        
+        // And finally add it to your MKMapView
+        mapView.addOverlay(tileOverlay)
     }
     
 }

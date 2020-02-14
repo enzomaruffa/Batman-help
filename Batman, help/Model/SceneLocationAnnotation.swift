@@ -35,13 +35,7 @@ class SceneLocationAnnotation: NSObject, MKAnnotation {
     }
     
     var title: String? {
-        if let name = sceneLocation.name {
-            return name
-        } else if sceneLocation.threatLevel != nil {
-            return "ALERT"
-        } else {
-            return "Unknown location"
-        }
+        nil
     }
     
     internal init(sceneLocation: SceneLocation) {

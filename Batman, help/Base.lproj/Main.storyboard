@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiX-pE-jbp">
-                                <rect key="frame" x="45.5" y="618.5" width="99.5" height="99.5"/>
+                                <rect key="frame" x="157.5" y="750" width="99" height="99.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hiX-pE-jbp" secondAttribute="height" multiplier="1:1" id="50R-Ja-BXv"/>
                                 </constraints>
@@ -35,7 +35,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFP-n0-K0N">
-                                <rect key="frame" x="269" y="618.5" width="99.5" height="99.5"/>
+                                <rect key="frame" x="157.5" y="750" width="99" height="99.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RFP-n0-K0N" secondAttribute="height" multiplier="1:1" id="sIf-GT-mmz"/>
                                 </constraints>
@@ -45,7 +45,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5g-Le-91S" userLabel="Place Button">
-                                <rect key="frame" x="157.5" y="568.5" width="99" height="99.5"/>
+                                <rect key="frame" x="157.5" y="750" width="99" height="99.5"/>
                                 <state key="normal" image="add-place"/>
                                 <connections>
                                     <action selector="addPlacePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dve-2v-OnA"/>
@@ -76,21 +76,22 @@
                         <color key="backgroundColor" red="0.015686274509803921" green="0.074509803921568626" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="a6k-qu-Qgo" secondAttribute="trailing" id="5h5-yg-3B8"/>
-                            <constraint firstItem="hiX-pE-jbp" firstAttribute="trailing" secondItem="oTv-fp-JEF" secondAttribute="leading" id="Bfg-zE-BQ8"/>
+                            <constraint firstItem="hiX-pE-jbp" firstAttribute="centerX" secondItem="kl1-jd-xES" secondAttribute="centerX" id="6Zk-Mx-hLl"/>
                             <constraint firstItem="B5g-Le-91S" firstAttribute="height" secondItem="hiX-pE-jbp" secondAttribute="height" id="DI5-cS-b25"/>
-                            <constraint firstItem="oTv-fp-JEF" firstAttribute="top" secondItem="RFP-n0-K0N" secondAttribute="bottom" constant="20" id="JtO-Sb-hTr"/>
+                            <constraint firstItem="B5g-Le-91S" firstAttribute="centerX" secondItem="kl1-jd-xES" secondAttribute="centerX" id="EV9-Rm-qhO"/>
                             <constraint firstItem="RFP-n0-K0N" firstAttribute="height" secondItem="oTv-fp-JEF" secondAttribute="height" multiplier="0.8" id="Ke8-GC-hO7"/>
+                            <constraint firstItem="hiX-pE-jbp" firstAttribute="centerY" secondItem="kl1-jd-xES" secondAttribute="centerY" id="Mpb-Ck-7nG"/>
                             <constraint firstItem="kl1-jd-xES" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="PtP-fZ-1H4"/>
                             <constraint firstItem="B5g-Le-91S" firstAttribute="centerX" secondItem="oTv-fp-JEF" secondAttribute="centerX" id="RIP-m5-u9d"/>
+                            <constraint firstItem="B5g-Le-91S" firstAttribute="centerY" secondItem="kl1-jd-xES" secondAttribute="centerY" id="RJh-zt-fM4"/>
                             <constraint firstItem="kl1-jd-xES" firstAttribute="centerX" secondItem="a6k-qu-Qgo" secondAttribute="centerX" id="Rdz-VQ-Ybm"/>
                             <constraint firstItem="hiX-pE-jbp" firstAttribute="height" secondItem="oTv-fp-JEF" secondAttribute="height" multiplier="0.8" id="Whz-DX-jgp"/>
                             <constraint firstAttribute="bottom" secondItem="a6k-qu-Qgo" secondAttribute="bottom" id="aP3-BO-S5B"/>
                             <constraint firstItem="kl1-jd-xES" firstAttribute="width" secondItem="a6k-qu-Qgo" secondAttribute="width" multiplier="0.3" id="asB-FZ-UVd"/>
                             <constraint firstItem="a6k-qu-Qgo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gC5-Wh-blw"/>
                             <constraint firstItem="a6k-qu-Qgo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gUA-bY-NAD"/>
-                            <constraint firstItem="RFP-n0-K0N" firstAttribute="leading" secondItem="oTv-fp-JEF" secondAttribute="trailing" id="kWr-Al-4He"/>
-                            <constraint firstItem="oTv-fp-JEF" firstAttribute="top" secondItem="hiX-pE-jbp" secondAttribute="bottom" constant="20" id="lOT-v1-1rr"/>
-                            <constraint firstItem="oTv-fp-JEF" firstAttribute="top" secondItem="B5g-Le-91S" secondAttribute="bottom" constant="70" id="pVr-FF-MMx"/>
+                            <constraint firstItem="RFP-n0-K0N" firstAttribute="centerX" secondItem="kl1-jd-xES" secondAttribute="centerX" id="jid-nB-Nr6"/>
+                            <constraint firstItem="RFP-n0-K0N" firstAttribute="centerY" secondItem="kl1-jd-xES" secondAttribute="centerY" id="wbE-4X-Rc3"/>
                             <constraint firstItem="B5g-Le-91S" firstAttribute="width" secondItem="hiX-pE-jbp" secondAttribute="width" id="zk6-0z-2Ol"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -99,14 +100,9 @@
                     <connections>
                         <outlet property="mapView" destination="a6k-qu-Qgo" id="SAn-Xn-AhW"/>
                         <outlet property="menuContainer" destination="kl1-jd-xES" id="F6q-d6-43O"/>
-                        <outlet property="placeBottom" destination="pVr-FF-MMx" id="jnP-az-gjG"/>
                         <outlet property="placeButton" destination="B5g-Le-91S" id="sfg-kM-xmw"/>
-                        <outlet property="reportBottom" destination="lOT-v1-1rr" id="r7B-11-IJI"/>
                         <outlet property="reportButton" destination="hiX-pE-jbp" id="4zZ-ng-741"/>
-                        <outlet property="reportTrailing" destination="Bfg-zE-BQ8" id="SIa-pg-ZbI"/>
-                        <outlet property="wikiBottom" destination="JtO-Sb-hTr" id="1DP-4Q-fR2"/>
                         <outlet property="wikiButton" destination="RFP-n0-K0N" id="dUx-cE-MdY"/>
-                        <outlet property="wikiLeading" destination="kWr-Al-4He" id="T1B-z6-f1H"/>
                         <segue destination="atq-aC-81o" kind="show" identifier="report" id="mY1-tO-11L"/>
                     </connections>
                 </viewController>
