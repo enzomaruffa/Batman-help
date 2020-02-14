@@ -7,6 +7,7 @@ target 'BatmanHelp' do
 
   # Pods for BatmanHelp
   pod 'Charts'
+  pod 'MapKitGoogleStyler'
 
   target 'BatmanHelpTests' do
     inherit! :search_paths

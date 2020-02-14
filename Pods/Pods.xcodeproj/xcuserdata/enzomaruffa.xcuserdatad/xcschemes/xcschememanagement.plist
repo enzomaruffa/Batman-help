@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MapKitGoogleStyler.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-BatmanHelp-BatmanHelpUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>

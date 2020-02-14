@@ -2,17 +2,21 @@ PODS:
   - Charts (3.4.0):
     - Charts/Core (= 3.4.0)
   - Charts/Core (3.4.0)
+  - MapKitGoogleStyler (0.1.1)
 
 DEPENDENCIES:
   - Charts
+  - MapKitGoogleStyler
 
 SPEC REPOS:
   trunk:
     - Charts
+    - MapKitGoogleStyler
 
 SPEC CHECKSUMS:
   Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
+  MapKitGoogleStyler: 8efdceb664fc1748a62a9e3b50a34b67a34247bc
 
-PODFILE CHECKSUM: e7da9c4fb40d261f9560cc3f065cad9bb5a0fa68
+PODFILE CHECKSUM: d9119664b315bb270a3bcbd80b782fc209b374bc
 
 COCOAPODS: 1.8.4

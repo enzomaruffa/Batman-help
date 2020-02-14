@@ -45,6 +45,10 @@
 		47ADCDA823F5E8C200781053 /* Few filters - v3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 47ADCDA723F5E8C200781053 /* Few filters - v3.mlmodel */; };
 		47ADCDAA23F5E8D200781053 /* Lots of Iterations - v3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 47ADCDA923F5E8D200781053 /* Lots of Iterations - v3.mlmodel */; };
 		47ADCDAC23F5F8B500781053 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ADCDAB23F5F8B500781053 /* CharacterViewController.swift */; };
+		47ADCDAE23F6C6C300781053 /* MapDarkStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 47ADCDAD23F6C6C300781053 /* MapDarkStyle.json */; };
+		47ADCDB023F6C7DE00781053 /* MapSilverStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 47ADCDAF23F6C7DE00781053 /* MapSilverStyle.json */; };
+		47ADCDB223F6C83D00781053 /* MapBlueStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 47ADCDB123F6C83D00781053 /* MapBlueStyle.json */; };
+		47ADCDB423F6C9D800781053 /* MapRetroStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 47ADCDB323F6C9D800781053 /* MapRetroStyle.json */; };
 		47B7455023F33BB0007328FD /* batmfo__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47B7454F23F33BB0007328FD /* batmfo__.ttf */; };
 		47B7455223F33BBB007328FD /* batmfa__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47B7455123F33BBA007328FD /* batmfa__.ttf */; };
 		A18230988D047C988AC9B37D /* Pods_BatmanHelp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED285151BCD74A0B434E3F3 /* Pods_BatmanHelp.framework */; };
@@ -116,6 +120,10 @@
 		47ADCDA723F5E8C200781053 /* Few filters - v3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "Few filters - v3.mlmodel"; path = "../../../Modelo/BatmanClassfiier.mlproj/Models/Few filters - v3.mlmodel"; sourceTree = "<group>"; };
 		47ADCDA923F5E8D200781053 /* Lots of Iterations - v3.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "Lots of Iterations - v3.mlmodel"; path = "../../../Modelo/BatmanClassfiier.mlproj/Models/Lots of Iterations - v3.mlmodel"; sourceTree = "<group>"; };
 		47ADCDAB23F5F8B500781053 /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
+		47ADCDAD23F6C6C300781053 /* MapDarkStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapDarkStyle.json; sourceTree = "<group>"; };
+		47ADCDAF23F6C7DE00781053 /* MapSilverStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapSilverStyle.json; sourceTree = "<group>"; };
+		47ADCDB123F6C83D00781053 /* MapBlueStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapBlueStyle.json; sourceTree = "<group>"; };
+		47ADCDB323F6C9D800781053 /* MapRetroStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapRetroStyle.json; sourceTree = "<group>"; };
 		47B7454F23F33BB0007328FD /* batmfo__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = batmfo__.ttf; sourceTree = "<group>"; };
 		47B7455123F33BBA007328FD /* batmfa__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = batmfa__.ttf; sourceTree = "<group>"; };
 		47CB1A3B23F44330006B9686 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -269,6 +277,7 @@
 				47ADCD9D23F5836D00781053 /* SceneCalloutView.xib */,
 				47ADCD9F23F583C300781053 /* SceneCalloutView.swift */,
 				47ADCDA523F5E73800781053 /* MKCustomAnnotationView.swift */,
+				47ADCDB523F6C9E000781053 /* Map Styling */,
 			);
 			path = "Batman, help";
 			sourceTree = "<group>";
@@ -312,6 +321,17 @@
 				470FC07E23F17A2D001A59A1 /* CloudKitManager.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		47ADCDB523F6C9E000781053 /* Map Styling */ = {
+			isa = PBXGroup;
+			children = (
+				47ADCDAD23F6C6C300781053 /* MapDarkStyle.json */,
+				47ADCDAF23F6C7DE00781053 /* MapSilverStyle.json */,
+				47ADCDB123F6C83D00781053 /* MapBlueStyle.json */,
+				47ADCDB323F6C9D800781053 /* MapRetroStyle.json */,
+			);
+			path = "Map Styling";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,9 +445,13 @@
 			files = (
 				47ADCD9E23F5836D00781053 /* SceneCalloutView.xib in Resources */,
 				479E315123EC43E6000EBA39 /* LaunchScreen.storyboard in Resources */,
+				47ADCDB023F6C7DE00781053 /* MapSilverStyle.json in Resources */,
 				47B7455223F33BBB007328FD /* batmfa__.ttf in Resources */,
+				47ADCDAE23F6C6C300781053 /* MapDarkStyle.json in Resources */,
+				47ADCDB223F6C83D00781053 /* MapBlueStyle.json in Resources */,
 				47B7455023F33BB0007328FD /* batmfo__.ttf in Resources */,
 				479E314E23EC43E6000EBA39 /* Assets.xcassets in Resources */,
+				47ADCDB423F6C9D800781053 /* MapRetroStyle.json in Resources */,
 				479E314C23EC43E5000EBA39 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

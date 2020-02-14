@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import MapKitGoogleStyler
 import CoreLocation
 
 class MenuViewController: UIViewController {
@@ -152,6 +153,8 @@ class MenuViewController: UIViewController {
                 self.generateMapAnnotations(scenes)
             }
         }
+        
+        configureTileOverlay()
         
     }
     
@@ -410,6 +413,35 @@ extension MenuViewController: MKMapViewDelegate {
         for childView in view.subviews{
             childView.removeFromSuperview()
         }
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            // This is the final step. This code can be copied and pasted into your project
+            // without thinking on it so much. It simply instantiates a MKTileOverlayRenderer
+            // for displaying the tile overlay.
+            if let tileOverlay = overlay as? MKTileOverlay {
+                return MKTileOverlayRenderer(tileOverlay: tileOverlay)
+            } else {
+                return MKOverlayRenderer(overlay: overlay)
+            }
+    }
+    
+    // MARK: - MapKitGoogleStyler
+
+    private func configureTileOverlay() {
+            // We first need to have the path of the overlay configuration JSON
+            guard let overlayFileURLString = Bundle.main.path(forResource: "MapDarkStyle", ofType: "json") else {
+                    return
+            }
+            let overlayFileURL = URL(fileURLWithPath: overlayFileURLString)
+            
+            // After that, you can create the tile overlay using MapKitGoogleStyler
+            guard let tileOverlay = try? MapKitGoogleStyler.buildOverlay(with: overlayFileURL) else {
+                return
+            }
+            
+            // And finally add it to your MKMapView
+            mapView.addOverlay(tileOverlay)
     }
     
 }
