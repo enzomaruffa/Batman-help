@@ -131,7 +131,7 @@ class CloudKitManager: DatabaseAccess {
                 let longitude = sceneRecord["longitude"] as! Double
                 let sceneResolved = sceneRecord["sceneResolved"] as! Bool
                 let creationDate = sceneRecord["date"] as! Date
-                let image = (sceneRecord["image"] as! CKAsset).toUIImage() ?? UIImage()
+                let image = (sceneRecord["image"] as? CKAsset)?.toUIImage() ?? UIImage()
                 
                 let typeString = sceneRecord["type"] as! String
                 guard let type = SceneLocationType(rawValue: typeString) else { return closure([]) }

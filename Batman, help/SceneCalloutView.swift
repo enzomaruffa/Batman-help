@@ -33,6 +33,7 @@ class SceneCalloutView: UIView {
     
     public func setup(sceneLocation: SceneLocation, animated: Bool = false) {
         
+        self.layer.cornerRadius = 8
         self.sceneLocation = sceneLocation
         
         characterDatabase.getAllCharacters({ characters in

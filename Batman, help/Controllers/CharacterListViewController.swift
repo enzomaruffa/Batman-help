@@ -31,7 +31,8 @@ class CharacterListViewController: UIViewController {
             self.characterCollection.reloadData()
         })
         
-
+        let font = UIFont(name: "BatmanForeverAlternate", size: 16)
+        characterSegmented.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         self.characterSegmented.selectedSegmentTintColor = .black
         
         // Do any additional setup after loading the view.
@@ -59,7 +60,6 @@ class CharacterListViewController: UIViewController {
             }
         }
 
-        
         characterCollection.performBatchUpdates({
             let indexSet = IndexSet(integer: 0)
             self.characterCollection.reloadSections(indexSet)

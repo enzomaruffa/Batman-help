@@ -18,7 +18,7 @@ class ReportViewController: UIViewController {
     @IBOutlet weak var crimeLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var changeVillainButton: UIButton!
-    @IBOutlet weak var threatSelector: UISegmentedControl!
+    @IBOutlet weak var threatSegmented: UISegmentedControl!
     @IBOutlet weak var threatLevelLabel: UILabel!
     
     // MARK: - Variables
@@ -41,6 +41,9 @@ class ReportViewController: UIViewController {
         changeVillainButton.layer.borderColor = UIColor.neon.cgColor
         changeVillainButton.layer.borderWidth = 1
         changeVillainButton.layer.cornerRadius = 4
+        
+        let font = UIFont(name: "BatmanForeverAlternate", size: 16)
+        threatSegmented.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         
         updateClassifications(for: crimeImage)
     }
@@ -119,12 +122,14 @@ class ReportViewController: UIViewController {
                     
                     self.currentCharacter = character
                     
-                    let characterName = character.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 17)!)
+                    let characterName = character.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 18)!)
 
-                    let font = UIFont(name: "BatmanForeverAlternate", size: 12)!
+                    let font = UIFont(name: "BatmanForeverAlternate", size: 14)!
                     let attributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.white]
                     
-                    let firstPartAttributed = NSMutableAttributedString(string: "I'm \(villainChance) sure that\n", attributes: attributes)
+                    let chance = villainChance * 100
+                    
+                    let firstPartAttributed = NSMutableAttributedString(string: "\(chance.rounded())%\n", attributes: attributes)
                     let lastPartAttributed = NSMutableAttributedString(string: "\nis here!", attributes: attributes)
                     
                     firstPartAttributed.append(characterName)
@@ -143,7 +148,7 @@ class ReportViewController: UIViewController {
         guard let location = currentLocation,
             let id = currentCharacter?.id else { return }
         
-        let threatLevel = threatSelector.selectedSegmentIndex
+        let threatLevel = threatSegmented.selectedSegmentIndex
         let scene = SceneLocation(character: id, threatLevel: threatLevel, location: location, image: crimeImage)
         locationsDatabase.addScene(scene: scene)
         
@@ -151,21 +156,21 @@ class ReportViewController: UIViewController {
     }
     
     @IBAction func threatLevelChanged(_ sender: Any) {
-        let currentOption = threatSelector.selectedSegmentIndex
+        let currentOption = threatSegmented.selectedSegmentIndex
         
         print(currentOption)
         
         if currentOption == 0 {
             UIView.animate(withDuration: 0.4) {
-                self.threatSelector.selectedSegmentTintColor = .systemYellow
+                self.threatSegmented.selectedSegmentTintColor = .systemYellow
             }
         } else if currentOption == 1 {
             UIView.animate(withDuration: 0.4) {
-                self.threatSelector.selectedSegmentTintColor = .systemOrange
+                self.threatSegmented.selectedSegmentTintColor = .systemOrange
             }
         } else if currentOption == 2 {
             UIView.animate(withDuration: 0.4) {
-                self.threatSelector.selectedSegmentTintColor = .systemRed
+                self.threatSegmented.selectedSegmentTintColor = .systemRed
             }
         }
     }

@@ -206,6 +206,36 @@ class MenuViewController: UIViewController {
         toggleButtons(show: showingButtons)
     }
     
+    @IBAction func addPlacePressed(_ sender: Any) {
+        //1. Create the alert controller.
+        let alert = UIAlertController(title: "Add place", message: "Add a place in the current coordinate", preferredStyle: .alert)
+
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextField { (textField) in
+            textField.text = ""
+            textField.placeholder = "Place name"
+        }
+
+        // 3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+            
+            if let placeName = textField?.text,
+                placeName != "" {
+                let newPlace = SceneLocation(name: placeName, location: self.currentLocation!.coordinate, image: nil)
+                self.sceneDatabase.addScene(scene: newPlace)
+            }
+            
+        }))
+        
+        // 3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        // 4. Present the alert.
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "report" {
@@ -271,12 +301,12 @@ extension MenuViewController: MKMapViewDelegate {
     }
     
     fileprivate func createPlaceAnnotationView(_ annotationView: MKAnnotationView?) {
-        annotationView?.image = UIImage(named: "signal-place")?.resized(withPercentage: 0.25)
-        annotationView?.clusteringIdentifier = "place"
+        annotationView?.image = UIImage(named: "signal-place")?.resized(withPercentage: 0.05)
+//        annotationView?.clusteringIdentifier = "place"
     }
     
     fileprivate func createSceneResolvedAnnotationView(_ annotationView: MKAnnotationView?) {
-        annotationView?.image = UIImage(named: "batman-blue")?.resized(withPercentage: 0.25)
+        annotationView?.image = UIImage(named: "signal-blue")?.resized(withPercentage: 0.06)
     }
     
     fileprivate func createCircleView(withSize size: CGRect, andStroke strokeWidth: CGFloat, withColor color: UIColor) -> UIView {
@@ -293,14 +323,14 @@ extension MenuViewController: MKMapViewDelegate {
     
     fileprivate func createSceneThreatAnnotationView(_ sceneInfo: SceneLocation, _ annotationView: MKAnnotationView?) {
         if sceneInfo.threatLevel == 0 {
-            annotationView?.clusteringIdentifier = "signal-beta"
-            annotationView?.image = UIImage(named: "signal-beta")?.resized(withPercentage: 0.075)
+//            annotationView?.clusteringIdentifier = "signal-beta"
+            annotationView?.image = UIImage(named: "signal-beta")?.resized(withPercentage: 0.06)
         } else if sceneInfo.threatLevel == 1 {
-            annotationView?.clusteringIdentifier = "signal-alpha"
-            annotationView?.image = UIImage(named: "signal-alpha")?.resized(withPercentage: 0.075)
+//            annotationView?.clusteringIdentifier = "signal-alpha"
+            annotationView?.image = UIImage(named: "signal-alpha")?.resized(withPercentage: 0.06)
         } else {
-            annotationView?.clusteringIdentifier = "signal-omega"
-            annotationView?.image = UIImage(named: "signal-omega")?.resized(withPercentage: 0.075)
+//            annotationView?.clusteringIdentifier = "signal-omega"
+            annotationView?.image = UIImage(named: "signal-omega")?.resized(withPercentage: 0.06)
 //
 //            let circleView = createCircleView(withSize: annotationView!.frame, andStroke: 1, withColor: .neonRed)
 //            circleView.isUserInteractionEnabled = false

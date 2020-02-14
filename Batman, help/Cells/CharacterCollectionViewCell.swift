@@ -23,7 +23,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         
         self.characterImage.image = UIImage(named: character.assetName)
 //        self.characterName.text = character.name
-        self.characterName.attributedText = character.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 17)!)
+        self.characterName.attributedText = character.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 20)!)
         self.characterAlignment.text = character.type.rawValue
         
         self.cellContainer.layer.cornerRadius = 4
