@@ -68,7 +68,7 @@ class SceneCalloutView: UIView {
                     self.threatAlertLabel.textColor = color
                     
                     if let character = character {
-                        let string = character.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 15)!)
+                        let string = character.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 18)!)
 
                         self.villainNameLabel.attributedText = string
                         
@@ -101,10 +101,9 @@ class SceneCalloutView: UIView {
     }
     
     @IBAction func resolvedTapped(_ sender: Any) {
-        let title = "MARK AS SOLVED"
-        let message = "MARK AS SOLVED"
+        let title = "MARK AS SOLVED?"
 
-        let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ac = UIAlertController(title: title, message: "", preferredStyle: .alert)
         
         ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { (_) in
             self.sceneLocation.sceneResolved = true

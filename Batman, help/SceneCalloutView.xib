@@ -26,6 +26,7 @@
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="characters-bane" translatesAutoresizingMaskIntoConstraints="NO" id="grm-Ix-otb">
                     <rect key="frame" x="16" y="48" width="102.5" height="132"/>
+                    <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="grm-Ix-otb" secondAttribute="height" multiplier="7:9" id="Z9v-Ri-fIn"/>
                     </constraints>
@@ -48,8 +49,7 @@ WAS HERE!</string>
                         <color key="titleColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="markResolvedPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="KLN-I6-K6t"/>
-                        <action selector="resolvedTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="VDU-7x-GkK"/>
+                        <action selector="resolvedTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="LRk-sX-6cQ"/>
                     </connections>
                 </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="yuf-wt-0lw">
