@@ -28,7 +28,7 @@ class ReportViewController: UIViewController {
     var charactersDatabase: DatabaseAccess = Singleton.shared
     var locationsDatabase: DatabaseAccess = CloudKitManager.shared
     
-    var currentCharacter: String?
+    var currentCharacter: Character?
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -108,28 +108,30 @@ class ReportViewController: UIViewController {
                 
                 let villainChance = firstVillainClassification.confidence
                 
-                self.currentCharacter =  firstVillainClassification.identifier.replacingOccurrences(of: "_", with: " ")
-                if self.currentCharacter == "Two Face" {
-                    self.currentCharacter = "Two-Face"
+                var currentCharacterName =  firstVillainClassification.identifier.replacingOccurrences(of: "_", with: " ")
+                if currentCharacterName == "Two Face" {
+                    currentCharacterName = "Two-Face"
                 }
                 
                 
-                
                 self.charactersDatabase.getAllCharacters { (characters) in
-                    guard let firstOccurence = characters.filter({ $0.name == self.currentCharacter }).first else { return }
+                    guard let character = characters.filter({ $0.name == currentCharacterName }).first else { return }
                     
-                    let characterName = firstOccurence.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 20)!)
+                    self.currentCharacter = character
+                    
+                    let characterName = character.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 17)!)
 
-                    let font = UIFont(name: "BatmanForeverAlternate", size: 15)!
-                    let attributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.black]
+                    let font = UIFont(name: "BatmanForeverAlternate", size: 12)!
+                    let attributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.white]
                     
-                    let firstPartAttributed = NSMutableAttributedString(string: "I'm \(villainChance) sure that ", attributes: attributes)
-                    let lastPartAttributed = NSMutableAttributedString(string: " is here!", attributes: attributes)
+                    let firstPartAttributed = NSMutableAttributedString(string: "I'm \(villainChance) sure that\n", attributes: attributes)
+                    let lastPartAttributed = NSMutableAttributedString(string: "\nis here!", attributes: attributes)
                     
                     firstPartAttributed.append(characterName)
                     firstPartAttributed.append(lastPartAttributed)
                     
                     self.crimeLabel.attributedText = firstPartAttributed
+                    
                 }
             }
         }
@@ -138,19 +140,11 @@ class ReportViewController: UIViewController {
     // MARK: - Action Outlets
     @IBAction func sendPressed(_ sender: Any) {
         
-        guard let location = currentLocation else { return }
-        
-        var characterId: Int?
-        
-            if let characterName = currentCharacter {
-                charactersDatabase.getAllCharacters { characters in
-                let character = characters.filter({ $0.name == characterName }).first!
-                characterId = character.id
-            }
-        }
+        guard let location = currentLocation,
+            let id = currentCharacter?.id else { return }
         
         let threatLevel = threatSelector.selectedSegmentIndex
-        let scene = SceneLocation(character: characterId, threatLevel: threatLevel, location: location, image: crimeImage)
+        let scene = SceneLocation(character: id, threatLevel: threatLevel, location: location, image: crimeImage)
         locationsDatabase.addScene(scene: scene)
         
         self.navigationController?.popViewController(animated: true)
