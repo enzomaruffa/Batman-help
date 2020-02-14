@@ -96,8 +96,8 @@ class MenuViewController: UIViewController {
                     self.logger.log(message: "Count different, actually really updating")
                     self.scenes = scenes
                     let originalAnnotations = self.mapView.annotations
-                    self.generateMapAnnotations(scenes)
                     self.mapView.removeAnnotations(originalAnnotations)
+                    self.generateMapAnnotations(scenes)
                 }
             }
         }
@@ -276,11 +276,13 @@ extension MenuViewController: CLLocationManagerDelegate {
             
         case .authorizedAlways, .authorizedWhenInUse:
             // Location services are authorised, track the user.
+            logger.log(message: "Success: has permission")
             locationManager?.startUpdatingLocation()
             mapView.showsUserLocation = true
             
         case .denied, .restricted:
             // Location services not authorised, stop tracking the user.
+            logger.log(message: "Can't track, boohoo")
             locationManager?.stopUpdatingLocation()
             mapView.showsUserLocation = false
             currentLocation = nil
@@ -288,6 +290,7 @@ extension MenuViewController: CLLocationManagerDelegate {
         default:
             // Location services pending authorisation.
             // Alert requesting access is visible at this point.
+            logger.log(message: "Ok just requesting")
             currentLocation = nil
         }
     }

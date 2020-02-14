@@ -7,12 +7,24 @@
 //
 
 import UIKit
+import UserNotifications
+import CloudKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
-
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    
+    fileprivate func checkForNotificationPermission(_ application: UIApplication) {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { granted, error in
+            DispatchQueue.main.async {
+                if let error = error {
+                    print("D'oh: \(error.localizedDescription)")
+                } else {
+                    application.registerForRemoteNotifications()
+                }
+            }
+        }
+    }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -20,9 +32,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIBarButtonItem.appearance().setTitleTextAttributes([
             NSAttributedString.Key.font: UIFont(name: "BatmanForeverAlternate", size: 15)!
         ], for: .normal)
-
+    
+        self.checkForNotificationPermission(application)
+        UNUserNotificationCenter.current().delegate = self
+        
+        // Check if cloudkit subscriptions exists
+        checkSubscription { (exists) in
+            if !exists {
+                self.createSubscription()
+            }
+        }
         
         return true
+    }
+
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound, .badge])
+    }
+    
+    
+    fileprivate func createSubscription() {
+        let predicate = NSPredicate(format:"threatLevel = 2")
+        let subscription = CKQuerySubscription(recordType: "SceneLocation", predicate: predicate, options: .firesOnRecordCreation)
+        
+        let notification = CKSubscription.NotificationInfo()
+        notification.alertBody = "WATCH OUT! A new threat alert has been issued!"
+        notification.soundName = "default"
+        
+        subscription.notificationInfo = notification
+        
+        let database = CKContainer.default().publicCloudDatabase
+        database.save(subscription) { result, error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func checkSubscription(_ closure: @escaping (Bool) -> ()) {
+        let database = CKContainer.default().publicCloudDatabase
+        database.fetchAllSubscriptions { [unowned self] subscriptions, error in
+            if error == nil {
+                if let subscriptions = subscriptions,
+                    subscriptions.count > 0 {
+                    closure(true)
+                    // more code to come!
+                } else {
+                    closure(false)
+                }
+            } else {
+                print(error!.localizedDescription)
+                closure(false)
+            }
+        }
+        
     }
 
     // MARK: UISceneSession Lifecycle
