@@ -79,15 +79,21 @@ class CharacterViewController: UIViewController {
         let data = RadarChartData(dataSets: [dataset])
         
         // Chart styling
+        chartsView.data = data
+        
+        let labels = ["INT", "STG", "CBT", "DRB", "SPD", "PWR", "???"]
+        chartsView.xAxis.valueFormatter = DefaultAxisValueFormatter(block: {(index, _) in
+            return labels[Int(index)]
+        })
         
         chartsView.legend.enabled = false
         chartsView.backgroundColor = .background
         
         let yAxis = chartsView.yAxis
         yAxis.labelFont = UIFont(name: "BatmanForeverAlternate", size: 9)!
-        yAxis.labelCount = 3
+        yAxis.labelCount = 4
         yAxis.axisMinimum = 0
-        yAxis.axisMaximum = 70
+        yAxis.axisMaximum = 92
         yAxis.drawLabelsEnabled = false
         yAxis.gridColor = .lightBackground
         
@@ -101,12 +107,8 @@ class CharacterViewController: UIViewController {
         
         chartsView.contentScaleFactor = 0.8
         
-        chartsView.data = data
-        
-        let labels = ["INT", "STG", "CBT", "DRB", "SPD", "PWR", "???"]
-        chartsView.xAxis.valueFormatter = DefaultAxisValueFormatter(block: {(index, _) in
-            return labels[Int(index)]
-        })
+        chartsView.notifyDataSetChanged()
+        chartsView.sizeToFit()
         
         // Do any additional setup after loading the view.
     }
