@@ -85,18 +85,38 @@ class MenuViewController: UIViewController {
     }
     
     //MARK: - Functions
-    @objc fileprivate func updateScenes() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+    @objc fileprivate func updateScenes(_ notification: NSNotification? = nil) {
+        
+        let sceneDict = notification?.userInfo as? [String: SceneLocation]
+        let scene = sceneDict?["scene"]
+        
+        self.logger.log(message: "Notification received on main with scene \(scene)")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.sceneDatabase.getAllScenes { (scenes) in
                 DispatchQueue.main.async {
-                    self.logger.log(message: "Updating annotations on main thread")
-                    if self.scenes.count != scenes.count {
-                        self.logger.log(message: "Count different, actually really updating")
-                        self.scenes = scenes
-                        let originalAnnotations = self.mapView.annotations
-                        self.mapView.removeAnnotations(originalAnnotations)
-                        self.generateMapAnnotations(scenes)
+                    
+                    // Check if scene exists and is on the list or the count is different
+                    
+                    var newScenes = scenes
+                    
+                    if let scene = scene {
+                        self.logger.log(message: "Removing equal scenes. Current count \(newScenes.count)")
+                        
+                        newScenes.removeAll(where: { $0.location == scene.location })
+                        
+                        self.logger.log(message: "After removal now we have \(scenes.count)")
+                            
+                            self.logger.log(message: "Adding scene to scenes")
+                        newScenes.append(scene)
                     }
+                    
+                    self.logger.log(message: "Updating annotations on main thread")
+                    self.logger.log(message: "Curent scene count: \(newScenes.count)")
+                    self.scenes = newScenes
+                    self.mapView.removeAnnotations(self.mapView.annotations)
+                    self.generateMapAnnotations(newScenes)
+                    
                 }
             }
         }
@@ -106,6 +126,7 @@ class MenuViewController: UIViewController {
         logger.log(message: "Generating \(scenes.count) markers")
         for scene in scenes {
             DispatchQueue.main.async {
+                self.logger.log(message: "Adding annotation on \(scene.location)")
                 let annotation = SceneLocationAnnotation(sceneLocation: scene)
                 self.mapView.addAnnotation(annotation)
             }
@@ -328,8 +349,9 @@ extension MenuViewController: MKMapViewDelegate {
         //        annotationView?.clusteringIdentifier = "place"
     }
     
-    fileprivate func createSceneResolvedAnnotationView(_ annotationView: MKAnnotationView?) {
+    func createSceneResolvedAnnotationView(_ annotationView: MKAnnotationView?) {
         annotationView?.image = UIImage(named: "signal-blue")?.resized(withPercentage: 0.06)
+        annotationView?.subviews.filter({ $0.tag == -333 }).forEach({ $0.removeFromSuperview() })
     }
     
     fileprivate func createCircleView(withSize size: CGRect, backgroundColor: UIColor, andStroke strokeWidth: CGFloat, withColor color: UIColor) -> UIView {
@@ -344,6 +366,8 @@ extension MenuViewController: MKMapViewDelegate {
         
         view.layer.cornerRadius = frameWidth/2
         
+        view.tag = -333
+        
         return view
     }
     
@@ -352,7 +376,7 @@ extension MenuViewController: MKMapViewDelegate {
         
         circleView.isUserInteractionEnabled = false
         annotationView?.addSubview(circleView)
-
+        
         circleView.alpha = 0.7
         circleView.transform = CGAffineTransform(scaleX: 0, y: 0)
         
@@ -390,7 +414,7 @@ extension MenuViewController: MKMapViewDelegate {
         }
     }
     
-    fileprivate func createCalloutView(_ annotation: SceneLocationAnnotation) -> UIView {
+    fileprivate func createCalloutView(_ annotation: SceneLocationAnnotation) -> SceneCalloutView {
         let customView = UINib(nibName: "SceneCalloutView", bundle: .main).instantiate(withOwner: nil, options: nil).first as! SceneCalloutView
         
         let calloutViewFrame = customView.frame
@@ -430,6 +454,7 @@ extension MenuViewController: MKMapViewDelegate {
             annotationView = MKCustomAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
             
             let customView = createCalloutView(annotation)
+            customView.annotationView = annotationView
             
             annotationView!.detailCalloutAccessoryView = customView
             annotationView!.canShowCallout = true
@@ -454,7 +479,7 @@ extension MenuViewController: MKMapViewDelegate {
     
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             if let parentCalloutView = view.subviews.first,
                 let backgroundCalloutView = parentCalloutView.subviews.first,

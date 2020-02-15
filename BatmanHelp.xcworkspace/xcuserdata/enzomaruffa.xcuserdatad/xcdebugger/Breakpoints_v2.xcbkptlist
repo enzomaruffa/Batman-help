@@ -110,8 +110,8 @@
             filePath = "Batman, help/SceneCalloutView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "hitTest(_:with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,9 +126,105 @@
             filePath = "Batman, help/SceneCalloutView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
             landmarkName = "point(inside:with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "24A4BC38-90FE-42D2-B151-3F31F64DE6C8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Batman, help/Database/CloudKitManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "sendNotificationWithNewScene(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A862A284-1A59-410B-B140-CEBBC4E09AC5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Batman, help/Controllers/MenuViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
+            landmarkName = "updateScenes(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A862A284-1A59-410B-B140-CEBBC4E09AC5 - 51baec977a517c9e"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Array&lt;BatmanHelp.SceneLocation&gt;) -&gt; () in closure #1 () -&gt; () in BatmanHelp.MenuViewController.(updateScenes in _9CF54EEE02BAFCC0C5E99088655BAE10)(Swift.Optional&lt;__C.NSNotification&gt;) -&gt; ()"
+                  moduleName = "BatmanHelp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/enzomaruffa/Downloads/nanos/Batman,%20help/Batman,%20help/Controllers/MenuViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "908">
+               </Location>
+               <Location
+                  uuid = "A862A284-1A59-410B-B140-CEBBC4E09AC5 - 86923076ce09ee1a"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (BatmanHelp.SceneLocation) -&gt; Swift.Bool in closure #1 () -&gt; () in closure #1 (Swift.Array&lt;BatmanHelp.SceneLocation&gt;) -&gt; () in closure #1 () -&gt; () in BatmanHelp.MenuViewController.(updateScenes in _9CF54EEE02BAFCC0C5E99088655BAE10)(Swift.Optional&lt;__C.NSNotification&gt;) -&gt; ()"
+                  moduleName = "BatmanHelp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/enzomaruffa/Downloads/nanos/Batman,%20help/Batman,%20help/Controllers/MenuViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7AE6F3AC-4868-435A-B825-38551B47D241"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Batman, help/Controllers/MenuViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "updateScenes(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AB43FA85-CAC8-4546-B347-707BC137A7E6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Batman, help/Controllers/MenuViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "466"
+            endingLineNumber = "466"
+            landmarkName = "mapView(_:viewFor:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

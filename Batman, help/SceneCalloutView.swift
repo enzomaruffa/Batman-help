@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class SceneCalloutView: UIView {
     
@@ -23,7 +24,8 @@ class SceneCalloutView: UIView {
     var sceneDatabase: DatabaseAccess = CloudKitManager.shared
     var sceneLocation: SceneLocation!
 
-    weak var controller: UIViewController?
+    weak var controller: MenuViewController?
+    weak var annotationView: MKAnnotationView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -118,6 +120,10 @@ class SceneCalloutView: UIView {
             self.sceneLocation.sceneResolved = true
             self.sceneDatabase.updateScene(self.sceneLocation)
             
+            if let annotationView = self.annotationView {
+                self.controller?.createSceneResolvedAnnotationView(annotationView)
+            }
+    
             self.setup(sceneLocation: self.sceneLocation)
         }))
         ac.addAction(UIAlertAction(title: "CANCEL", style: .cancel, handler: nil))

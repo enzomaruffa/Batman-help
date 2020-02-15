@@ -42,10 +42,14 @@ class CloudKitManager: DatabaseAccess {
         }
     }
     
-    fileprivate func createSceneLocationRecord(scene: SceneLocation) {
-        
-        let record = CKRecord(recordType: "SceneLocation")
-        
+    
+    fileprivate func sendNotificationWithNewScene(_ scene: SceneLocation) {
+        let dict: [String: SceneLocation] = ["scene": scene]
+        NotificationCenter.default.post(name: .mapScenesUpdate, object: nil, userInfo: dict)
+    }
+    
+    fileprivate func setRecordValues(_ record: CKRecord, scene: SceneLocation) {
+        //update your record here
         record.setValue(scene.character, forKey: "character")
         record.setValue(scene.threatLevel, forKey: "threatLevel")
         record.setValue(scene.creationDate, forKey: "date")
@@ -54,6 +58,13 @@ class CloudKitManager: DatabaseAccess {
         record.setValue(scene.name, forKey: "name")
         record.setValue(scene.sceneResolved, forKey: "sceneResolved")
         record.setValue(scene.type.rawValue, forKey: "type")
+    }
+    
+    fileprivate func createSceneLocationRecord(scene: SceneLocation) {
+        
+        let record = CKRecord(recordType: "SceneLocation")
+        
+        setRecordValues(record, scene: scene)
         
         // Image storing
         var imageUrl: URL?
@@ -70,7 +81,7 @@ class CloudKitManager: DatabaseAccess {
             record.setValue(CKAsset(fileURL: url!), forKey: "image")
             logger.log(message: "Image URL: \(String(describing: url?.description))")
         }
-
+        
         logger.log(message: "Persisting \(record)")
         
         persistRecord(record) {
@@ -80,7 +91,7 @@ class CloudKitManager: DatabaseAccess {
                 catch let e { print("Error deleting temp file: \(e)") }
             }
             
-            NotificationCenter.default.post(name: .mapScenesUpdate, object: nil)
+            self.sendNotificationWithNewScene(scene)
         }
     }
     
@@ -90,7 +101,7 @@ class CloudKitManager: DatabaseAccess {
         
         logger.log(message: "Performing query...")
         publicDB.perform(query,
-                          inZoneWith: CKRecordZone.default().zoneID) { [weak self] results, error in
+                         inZoneWith: CKRecordZone.default().zoneID) { [weak self] results, error in
                             self?.logger.log(message: "Query in progress")
                             guard let self = self else { return }
                             
@@ -157,21 +168,32 @@ class CloudKitManager: DatabaseAccess {
     func updateScene(_ scene: SceneLocation) {
         if let recordID = scene.recordId {
             publicDB.fetch(withRecordID: recordID) { record, error in
-
+                
                 if let record = record, error == nil {
-
-                    //update your record here
-                    record.setValue(scene.character, forKey: "character")
-                    record.setValue(scene.threatLevel, forKey: "threatLevel")
-                    record.setValue(scene.creationDate, forKey: "date")
-                    record.setValue(scene.location.latitude, forKey: "latitude")
-                    record.setValue(scene.location.longitude, forKey: "longitude")
-                    record.setValue(scene.name, forKey: "name")
-                    record.setValue(scene.sceneResolved, forKey: "sceneResolved")
-                    record.setValue(scene.type.rawValue, forKey: "type")
-
+                    self.setRecordValues(record, scene: scene)
+                    
+                    // Image storing
+                    var imageUrl: URL?
+                    if let image = scene.image?.resized(withPercentage: 0.2) {
+                        let data = image.pngData()
+                        let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat")
+                        imageUrl = url
+                        do {
+                            try data!.write(to: url!, options: [])
+                        } catch let e as NSError {
+                            print("Error converting image! \(e)");
+                            return
+                        }
+                        record.setValue(CKAsset(fileURL: url!), forKey: "image")
+                        self.logger.log(message: "Image URL: \(String(describing: url?.description))")
+                    }
+                    
                     self.publicDB.save(record) { _, error in
-                        
+                        // Removing temporary image
+                        if let url = imageUrl {
+                            do { try FileManager.default.removeItem(at: url) }
+                            catch let e { print("Error deleting temp file: \(e)") }
+                        }
                     }
                 }
             }
