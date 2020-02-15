@@ -53,6 +53,10 @@ class MenuViewController: UIViewController {
     
     let logger: ConsoleDebugLogger = ConsoleDebugLogger.shared
     
+    let hapticMCustomanager: HapticManager = HapticManager.shared
+    let hapticNotificationManager = UINotificationFeedbackGenerator()
+    let hapticFeedbackManager = UIImpactFeedbackGenerator()
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -153,7 +157,10 @@ class MenuViewController: UIViewController {
     }
     
     func toggleButtons(show: Bool) {
-        let animationTime = 0.3
+        let animationTime = 0.25
+        
+        hapticMCustomanager.playMenuToggle(withDuration: animationTime, opening: show)
+        
         if show {
             UIView.animate(withDuration: animationTime) {
                 
@@ -183,16 +190,6 @@ class MenuViewController: UIViewController {
                     transform = CGAffineTransform(scaleX: 0.1, y: 0.1).concatenating(transform)
                     $0?.transform = transform
                 })
-                //
-                //                self.reportButton.transform = reportButtonTransform
-                //
-                //                let wikiButtonTransform = CGAffineTransform.identity
-                //                wikiButtonTransform.scaledBy(x: 0.3, y: 0.3)
-                //                self.wikiButton.transform = wikiButtonTransform
-                //
-                //                let placeButtonTransform = CGAffineTransform.identity
-                //                placeButtonTransform.scaledBy(x: 0.3, y: 0.3)
-                //                self.placeButton.transform = placeButtonTransform
             }
         }
     }
@@ -217,6 +214,8 @@ class MenuViewController: UIViewController {
     }
     
     @IBAction func addPlacePressed(_ sender: Any) {
+        hapticFeedbackManager.impactOccurred(intensity: 0.5)
+        
         //1. Create the alert controller.
         let alert = UIAlertController(title: "Add place", message: "Add a place in the current coordinate", preferredStyle: .alert)
         
@@ -236,13 +235,24 @@ class MenuViewController: UIViewController {
                 self.sceneDatabase.addScene(scene: newPlace)
             }
             
+            self.hapticNotificationManager.notificationOccurred(.success)
         }))
         
         // 3. Grab the value from the text field, and print it when the user clicks OK.
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            self.hapticNotificationManager.notificationOccurred(.error)
+        }))
         
         // 4. Present the alert.
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func wikiTapped(_ sender: Any) {
+        hapticFeedbackManager.impactOccurred(intensity: 0.5)
+    }
+    
+    @IBAction func reportTapped(_ sender: Any) {
+        hapticFeedbackManager.impactOccurred(intensity: 0.5)
     }
     
     
@@ -415,46 +425,6 @@ extension MenuViewController: MKMapViewDelegate {
     
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        //        guard !view.annotation!.isKind(of: MKUserLocation.self),
-        //            let annotation = view.annotation as? SceneLocationAnnotation else {
-        //            return
-        //        }
-        //
-        //        //Custom xib
-        //        let customView = UINib(nibName: "SceneCalloutView", bundle: .main).instantiate(withOwner: nil, options: nil).first as! SceneCalloutView
-        //
-        //        let calloutViewFrame = customView.frame
-        //
-        //        customView.frame = CGRect(x: -calloutViewFrame.size.width/2.23, y: -calloutViewFrame.size.height-7, width: 300, height: 250)
-        //
-        //        customView.setup(sceneLocation: annotation.sceneLocation)
-        //        customView.controller = self
-        //
-        //        customView.isUserInteractionEnabled = true
-        //
-        //        view.addSubview(customView)
-        //
-        //        func changeSubviewsColors(_ view: UIView) {
-        //            if let imageView = view as? UIImageView {
-        //                imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
-        //                imageView.tintColor = .red
-        //            }
-        //            for subview in view.subviews {
-        //                changeSubviewsColors(subview)
-        //            }
-        //        }
-        //
-        //        changeSubviewsColors(view)
-        
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//            if let parentCalloutView = view.subviews.first,
-//                let backgroundCalloutView = parentCalloutView.subviews.first {
-//                backgroundCalloutView.layer.sublayers?.first?.removeFromSuperlayer()
-//                //            backgroundCalloutView.layer.borderColor = UIColor.neon.cgColor
-//                //            backgroundCalloutView.layer.borderWidth = 3
-//                backgroundCalloutView.backgroundColor = .lightBackground
-//            }
-//        }
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             if let parentCalloutView = view.subviews.first,

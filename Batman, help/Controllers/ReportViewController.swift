@@ -30,6 +30,9 @@ class ReportViewController: UIViewController {
     
     var currentCharacter: Character?
     
+    let hapticManager = HapticManager.shared
+    let notificationGenerator = UINotificationFeedbackGenerator()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,6 +155,8 @@ class ReportViewController: UIViewController {
         let scene = SceneLocation(character: id, threatLevel: threatLevel, location: location, image: crimeImage)
         locationsDatabase.addScene(scene: scene)
         
+        notificationGenerator.notificationOccurred(.success)
+        
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -164,14 +169,17 @@ class ReportViewController: UIViewController {
             UIView.animate(withDuration: 0.4) {
                 self.threatSegmented.selectedSegmentTintColor = .systemYellow
             }
+            hapticManager.playAlert(count: 1)
         } else if currentOption == 1 {
             UIView.animate(withDuration: 0.4) {
                 self.threatSegmented.selectedSegmentTintColor = .systemOrange
             }
+            hapticManager.playAlert(count: 2)
         } else if currentOption == 2 {
             UIView.animate(withDuration: 0.4) {
                 self.threatSegmented.selectedSegmentTintColor = .systemRed
             }
+            hapticManager.playAlert(count: 3)
         }
     }
     

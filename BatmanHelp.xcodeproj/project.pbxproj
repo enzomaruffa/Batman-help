@@ -49,6 +49,7 @@
 		47ADCDB023F6C7DE00781053 /* MapSilverStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 47ADCDAF23F6C7DE00781053 /* MapSilverStyle.json */; };
 		47ADCDB223F6C83D00781053 /* MapBlueStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 47ADCDB123F6C83D00781053 /* MapBlueStyle.json */; };
 		47ADCDB423F6C9D800781053 /* MapRetroStyle.json in Resources */ = {isa = PBXBuildFile; fileRef = 47ADCDB323F6C9D800781053 /* MapRetroStyle.json */; };
+		47ADCDB723F8587A00781053 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47ADCDB623F8587A00781053 /* HapticManager.swift */; };
 		47B7455023F33BB0007328FD /* batmfo__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47B7454F23F33BB0007328FD /* batmfo__.ttf */; };
 		47B7455223F33BBB007328FD /* batmfa__.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47B7455123F33BBA007328FD /* batmfa__.ttf */; };
 		A18230988D047C988AC9B37D /* Pods_BatmanHelp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AED285151BCD74A0B434E3F3 /* Pods_BatmanHelp.framework */; };
@@ -124,6 +125,7 @@
 		47ADCDAF23F6C7DE00781053 /* MapSilverStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapSilverStyle.json; sourceTree = "<group>"; };
 		47ADCDB123F6C83D00781053 /* MapBlueStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapBlueStyle.json; sourceTree = "<group>"; };
 		47ADCDB323F6C9D800781053 /* MapRetroStyle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MapRetroStyle.json; sourceTree = "<group>"; };
+		47ADCDB623F8587A00781053 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		47B7454F23F33BB0007328FD /* batmfo__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = batmfo__.ttf; sourceTree = "<group>"; };
 		47B7455123F33BBA007328FD /* batmfa__.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = batmfa__.ttf; sourceTree = "<group>"; };
 		47CB1A3B23F44330006B9686 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -278,6 +280,7 @@
 				47ADCD9F23F583C300781053 /* SceneCalloutView.swift */,
 				47ADCDA523F5E73800781053 /* MKCustomAnnotationView.swift */,
 				47ADCDB523F6C9E000781053 /* Map Styling */,
+				47ADCDB623F8587A00781053 /* HapticManager.swift */,
 			);
 			path = "Batman, help";
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 				470FC08123F17ABE001A59A1 /* ConsoleDebugLogger.swift in Sources */,
 				479E314723EC43E5000EBA39 /* SceneDelegate.swift in Sources */,
 				473CC55123F2EA470005AA26 /* CharacterCollectionViewCell.swift in Sources */,
+				47ADCDB723F8587A00781053 /* HapticManager.swift in Sources */,
 				470FC07F23F17A2D001A59A1 /* CloudKitManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

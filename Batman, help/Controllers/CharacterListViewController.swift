@@ -17,6 +17,8 @@ class CharacterListViewController: UIViewController {
     var charactersSource: [Character] = []
     var characters: [Character] = []
     
+    let feedbackGenerator = UISelectionFeedbackGenerator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,6 +41,9 @@ class CharacterListViewController: UIViewController {
     }
     
     @IBAction func characterSegmentedChange(_ sender: Any) {
+        
+        feedbackGenerator.selectionChanged()
+        
         let filter = characterSegmented.selectedSegmentIndex
         if filter == 0 {
             self.characters = self.charactersSource.filter({ $0.type == .hero })
