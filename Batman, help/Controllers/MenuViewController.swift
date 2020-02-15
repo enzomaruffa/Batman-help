@@ -509,7 +509,6 @@ extension MenuViewController: MKMapViewDelegate {
     }
     
     // MARK: - MapKitGoogleStyler
-    
     private func configureTileOverlay() {
         // We first need to have the path of the overlay configuration JSON
         guard let overlayFileURLString = Bundle.main.path(forResource: "MapDarkStyle", ofType: "json") else {

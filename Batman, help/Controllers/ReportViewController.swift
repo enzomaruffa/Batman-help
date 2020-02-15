@@ -9,6 +9,7 @@
 import UIKit
 import Vision
 import MapKit
+import MapKitGoogleStyler
 
 class ReportViewController: UIViewController {
     
@@ -49,6 +50,8 @@ class ReportViewController: UIViewController {
         threatSegmented.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         
         updateClassifications(for: crimeImage)
+        
+        setupMapKit()
     }
     
     // MARK: - CoreML Setup
@@ -60,7 +63,7 @@ class ReportViewController: UIViewController {
              To use a different Core ML classifier model, add it to the project
              and replace `MobileNet` with that model's generated Swift class.
              */
-            let model = try VNCoreMLModel(for: Lots_of_Iterations___v3().model)
+            let model = try VNCoreMLModel(for: Few_filters___v3().model)
             
             let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
                 self?.processClassifications(for: request, error: error)
@@ -126,7 +129,7 @@ class ReportViewController: UIViewController {
                     self.currentCharacter = character
                     
                     let characterName = character.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 18)!)
-
+                    
                     let font = UIFont(name: "BatmanForeverAlternate", size: 14)!
                     let attributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.white]
                     
@@ -181,6 +184,38 @@ class ReportViewController: UIViewController {
             }
             hapticManager.playAlert(count: 3)
         }
+    }
+    
+    // MARK: - MapKit
+    
+    func setupMapKit() {
+        
+        let location = currentLocation ?? CLLocationCoordinate2D(latitude: -25.452767,
+                                                                 longitude: -49.249728)
+        
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let region = MKCoordinateRegion(center: location, span: span)
+        mapView.setRegion(region, animated: true)
+        
+        
+        configureTileOverlay()
+    }
+    
+    // MARK: - MapKitGoogleStyler
+    private func configureTileOverlay() {
+        // We first need to have the path of the overlay configuration JSON
+        guard let overlayFileURLString = Bundle.main.path(forResource: "MapDarkStyle", ofType: "json") else {
+            return
+        }
+        let overlayFileURL = URL(fileURLWithPath: overlayFileURLString)
+        
+        // After that, you can create the tile overlay using MapKitGoogleStyler
+        guard let tileOverlay = try? MapKitGoogleStyler.buildOverlay(with: overlayFileURL) else {
+            return
+        }
+        
+        // And finally add it to your MKMapView
+        mapView.addOverlay(tileOverlay)
     }
     
 }
