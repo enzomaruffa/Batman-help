@@ -458,10 +458,9 @@ extension MenuViewController: MKMapViewDelegate {
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             if let parentCalloutView = view.subviews.first,
-                let backgroundCalloutView = parentCalloutView.subviews.first {
-                backgroundCalloutView.layer.sublayers?.first?.removeFromSuperlayer()
-                //            backgroundCalloutView.layer.borderColor = UIColor.neon.cgColor
-                //            backgroundCalloutView.layer.borderWidth = 3
+                let backgroundCalloutView = parentCalloutView.subviews.first,
+                let firstLayer = backgroundCalloutView.layer.sublayers?.first {
+                firstLayer.opacity = 0
                 backgroundCalloutView.backgroundColor = .lightBackground
             }
         }
