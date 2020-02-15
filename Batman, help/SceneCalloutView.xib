@@ -94,6 +94,7 @@ WAS HERE!</string>
                 <outlet property="calendarImage" destination="yuf-wt-0lw" id="jMf-Gs-sz8"/>
                 <outlet property="dateLabel" destination="VBh-Zp-FD2" id="la4-rH-0gw"/>
                 <outlet property="resolvedButton" destination="zfA-bE-LkR" id="Daz-Ua-XHM"/>
+                <outlet property="resolvedButtonHeight" destination="YfY-q6-AaZ" id="8c0-5R-oKZ"/>
                 <outlet property="threatAlertLabel" destination="Yy0-yX-0EF" id="8Bt-7h-6u8"/>
                 <outlet property="villainImageView" destination="grm-Ix-otb" id="sQ8-ia-u7V"/>
                 <outlet property="villainNameLabel" destination="fGS-4p-MeV" id="afQ-el-mUs"/>

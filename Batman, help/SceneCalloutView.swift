@@ -17,10 +17,12 @@ class SceneCalloutView: UIView {
     @IBOutlet weak var calendarImage: UIImageView!
     @IBOutlet weak var resolvedButton: UIButton!
     
+    @IBOutlet weak var resolvedButtonHeight: NSLayoutConstraint!
+    
     var characterDatabase: DatabaseAccess = Singleton.shared
     var sceneDatabase: DatabaseAccess = CloudKitManager.shared
     var sceneLocation: SceneLocation!
-    
+
     weak var controller: UIViewController?
     
     override init(frame: CGRect) {
@@ -40,7 +42,7 @@ class SceneCalloutView: UIView {
             
             let character = characters.filter({ $0.id == sceneLocation.character }).first
             
-            var color = UIColor.white
+            var color = UIColor.primary
             
             if sceneLocation.sceneResolved != nil {
                 if sceneLocation.sceneResolved == true {
@@ -55,7 +57,6 @@ class SceneCalloutView: UIView {
             }
             
             self.resolvedButton.isUserInteractionEnabled = true
-            
             
             DispatchQueue.main.async {
                 var animationDuration: Double = 0.0
@@ -74,10 +75,18 @@ class SceneCalloutView: UIView {
                         
                         self.villainImageView.image = UIImage(named: character.assetName)
                     } else {
-                        self.villainNameLabel.text = "Character not found"
-                        self.villainImageView.image = UIImage(named: "signal-beta")
+                        self.villainNameLabel.text = sceneLocation.name
+                        self.villainImageView.image = UIImage(named: "signal-place")
+                        self.resolvedButton.isHidden = true
+                        self.threatAlertLabel.text = "BAT-PLACE"
+                        self.resolvedButtonHeight.constant = 0
                     }
                     
+
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "dd/MM/yyyy"
+                    
+                    self.dateLabel.text = formatter.string(from: sceneLocation.creationDate)
                     self.calendarImage.tintColor = color
                     
                     self.resolvedButton.setTitleColor(color, for: .normal)
@@ -88,7 +97,7 @@ class SceneCalloutView: UIView {
                     if sceneLocation.sceneResolved ?? false {
                         self.resolvedButton.isHidden = true
                         self.threatAlertLabel.text = "PAST THREAT"
-
+                        self.resolvedButtonHeight.constant = 0
                     }
                 })
             }

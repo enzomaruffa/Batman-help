@@ -332,32 +332,61 @@ extension MenuViewController: MKMapViewDelegate {
         annotationView?.image = UIImage(named: "signal-blue")?.resized(withPercentage: 0.06)
     }
     
-    fileprivate func createCircleView(withSize size: CGRect, andStroke strokeWidth: CGFloat, withColor color: UIColor) -> UIView {
-        let view = UIView(frame: size)
+    fileprivate func createCircleView(withSize size: CGRect, backgroundColor: UIColor, andStroke strokeWidth: CGFloat, withColor color: UIColor) -> UIView {
         
-        view.backgroundColor = .clear
+        let frameWidth = max(size.width, size.height)
+        
+        let view = UIView(frame: CGRect(x: -size.width/1.75, y: size.height/2.5, width: frameWidth, height: frameWidth))
+        
+        view.backgroundColor = backgroundColor
         view.layer.borderColor = color.cgColor
         view.layer.borderWidth = strokeWidth
         
-        view.layer.cornerRadius = size.width/2
+        view.layer.cornerRadius = frameWidth/2
         
         return view
+    }
+    
+    fileprivate func createPulse(in annotationView: MKAnnotationView?, withColor color: UIColor, andMaxScale scale: CGFloat, repeatingEach duration: Double ) {
+        let circleView = createCircleView(withSize: annotationView!.frame, backgroundColor: color, andStroke: 1, withColor: .clear)
+        
+        circleView.isUserInteractionEnabled = false
+        annotationView?.addSubview(circleView)
+
+        circleView.alpha = 0.7
+        circleView.transform = CGAffineTransform(scaleX: 0, y: 0)
+        
+        UIView.animate(withDuration: duration, delay: 1, options: [.repeat], animations: {
+            circleView.alpha = 0
+            circleView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        }, completion: { (_) in
+            circleView.alpha = 0.7
+            circleView.transform = CGAffineTransform(scaleX: 0, y: 0)
+        })
     }
     
     fileprivate func createSceneThreatAnnotationView(_ sceneInfo: SceneLocation, _ annotationView: MKAnnotationView?) {
         if sceneInfo.threatLevel == 0 {
             //            annotationView?.clusteringIdentifier = "signal-beta"
             annotationView?.image = UIImage(named: "signal-beta")?.resized(withPercentage: 0.06)
+            
+            createPulse(in: annotationView, withColor: .systemYellow, andMaxScale: 1, repeatingEach: 1.5)
+            
         } else if sceneInfo.threatLevel == 1 {
             //            annotationView?.clusteringIdentifier = "signal-alpha"
             annotationView?.image = UIImage(named: "signal-alpha")?.resized(withPercentage: 0.06)
+            
+            
+            createPulse(in: annotationView, withColor: .systemOrange, andMaxScale: 1, repeatingEach: 1.5)
+            createPulse(in: annotationView, withColor: .systemOrange, andMaxScale: 1.5, repeatingEach: 1.5)
         } else {
             //            annotationView?.clusteringIdentifier = "signal-omega"
             annotationView?.image = UIImage(named: "signal-omega")?.resized(withPercentage: 0.06)
-            //
-            //            let circleView = createCircleView(withSize: annotationView!.frame, andStroke: 1, withColor: .neonRed)
-            //            circleView.isUserInteractionEnabled = false
-            //            annotationView?.addSubview(circleView)
+            
+            
+            createPulse(in: annotationView, withColor: .systemRed, andMaxScale: 1, repeatingEach: 1.5)
+            createPulse(in: annotationView, withColor: .systemRed, andMaxScale: 1.5, repeatingEach: 1.5)
+            createPulse(in: annotationView, withColor: .systemRed, andMaxScale: 2, repeatingEach: 1.5)
         }
     }
     
