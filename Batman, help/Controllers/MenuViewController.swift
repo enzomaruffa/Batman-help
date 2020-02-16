@@ -57,6 +57,8 @@ class MenuViewController: UIViewController {
     let hapticNotificationManager = UINotificationFeedbackGenerator()
     let hapticFeedbackManager = UIImpactFeedbackGenerator()
     
+    private let resizeSize: CGFloat = 0.2
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -345,12 +347,12 @@ extension MenuViewController: MKMapViewDelegate {
     }
     
     fileprivate func createPlaceAnnotationView(_ annotationView: MKAnnotationView?) {
-        annotationView?.image = UIImage(named: "signal-place")?.resized(withPercentage: 0.05)
+        annotationView?.image = UIImage(named: "signal-place-pdf")?.resized(withPercentage: resizeSize)
         //        annotationView?.clusteringIdentifier = "place"
     }
     
     func createSceneResolvedAnnotationView(_ annotationView: MKAnnotationView?) {
-        annotationView?.image = UIImage(named: "signal-blue")?.resized(withPercentage: 0.06)
+        annotationView?.image = UIImage(named: "signal-blue-pdf")?.resized(withPercentage: resizeSize)
         annotationView?.subviews.filter({ $0.tag == -333 }).forEach({ $0.removeFromSuperview() })
     }
     
@@ -391,21 +393,21 @@ extension MenuViewController: MKMapViewDelegate {
     
     fileprivate func createSceneThreatAnnotationView(_ sceneInfo: SceneLocation, _ annotationView: MKAnnotationView?) {
         if sceneInfo.threatLevel == 0 {
-            //            annotationView?.clusteringIdentifier = "signal-beta"
-            annotationView?.image = UIImage(named: "signal-beta")?.resized(withPercentage: 0.06)
+            //            annotationView?.clusteringIdentifier = "signal-beta-pdf"
+            annotationView?.image = UIImage(named: "signal-beta-pdf")?.resized(withPercentage: resizeSize)
             
             createPulse(in: annotationView, withColor: .systemYellow, andMaxScale: 1, repeatingEach: 1.5)
             
         } else if sceneInfo.threatLevel == 1 {
-            //            annotationView?.clusteringIdentifier = "signal-alpha"
-            annotationView?.image = UIImage(named: "signal-alpha")?.resized(withPercentage: 0.06)
+            //            annotationView?.clusteringIdentifier = "signal-alpha-pdf"
+            annotationView?.image = UIImage(named: "signal-alpha-pdf")?.resized(withPercentage: resizeSize)
             
             
             createPulse(in: annotationView, withColor: .systemOrange, andMaxScale: 1, repeatingEach: 1.5)
             createPulse(in: annotationView, withColor: .systemOrange, andMaxScale: 1.5, repeatingEach: 1.5)
         } else {
-            //            annotationView?.clusteringIdentifier = "signal-omega"
-            annotationView?.image = UIImage(named: "signal-omega")?.resized(withPercentage: 0.06)
+            //            annotationView?.clusteringIdentifier = "signal-omega-pdf"
+            annotationView?.image = UIImage(named: "signal-omega-pdf")?.resized(withPercentage: resizeSize)
             
             
             createPulse(in: annotationView, withColor: .systemRed, andMaxScale: 1, repeatingEach: 1.5)

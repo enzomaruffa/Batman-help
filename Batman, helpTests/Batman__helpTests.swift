@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Batman__help
+@testable import BatmanHelp
 
 class Batman__helpTests: XCTestCase {
 

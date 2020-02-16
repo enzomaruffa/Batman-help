@@ -29,7 +29,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hiX-pE-jbp" secondAttribute="height" multiplier="1:1" id="50R-Ja-BXv"/>
                                 </constraints>
-                                <state key="normal" image="add-alert"/>
+                                <state key="normal" image="report-button-pdf"/>
                                 <connections>
                                     <action selector="reportPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rHl-qA-CjB"/>
                                     <action selector="reportTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="07s-L5-Ge5"/>
@@ -40,7 +40,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RFP-n0-K0N" secondAttribute="height" multiplier="1:1" id="sIf-GT-mmz"/>
                                 </constraints>
-                                <state key="normal" image="wiki"/>
+                                <state key="normal" image="wiki-button-pdf"/>
                                 <connections>
                                     <action selector="wikiTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rte-bC-q5T"/>
                                     <segue destination="xBB-4Y-FMs" kind="show" id="YT3-ug-Ghz"/>
@@ -48,7 +48,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B5g-Le-91S" userLabel="Place Button">
                                 <rect key="frame" x="157.5" y="750" width="99" height="99.5"/>
-                                <state key="normal" image="add-place"/>
+                                <state key="normal" image="add-place-pdf"/>
                                 <connections>
                                     <action selector="addPlacePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dve-2v-OnA"/>
                                 </connections>
@@ -56,7 +56,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kl1-jd-xES">
                                 <rect key="frame" x="145" y="738" width="124" height="124"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu-button" translatesAutoresizingMaskIntoConstraints="NO" id="oTv-fp-JEF">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu-button-pdf" translatesAutoresizingMaskIntoConstraints="NO" id="oTv-fp-JEF">
                                         <rect key="frame" x="0.0" y="0.0" width="124" height="124"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
@@ -137,7 +137,7 @@
                                     <constraint firstAttribute="width" secondItem="hCf-fQ-HSN" secondAttribute="height" multiplier="1:1" id="mBR-S3-VTb"/>
                                     <constraint firstAttribute="height" constant="70" id="qbb-9J-rX7"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="menu-button"/>
+                                <state key="normal" title="Button" image="add-alert"/>
                                 <connections>
                                     <action selector="sendPressed:" destination="atq-aC-81o" eventType="touchUpInside" id="WdD-eH-Kit"/>
                                 </connections>
@@ -512,10 +512,11 @@ is here!</string>
     </scenes>
     <resources>
         <image name="add-alert" width="877" height="877"/>
-        <image name="add-place" width="1025" height="1025"/>
+        <image name="add-place-pdf" width="246" height="246"/>
         <image name="characters-batman" width="596" height="842"/>
         <image name="characters-harley-quinn" width="596" height="842"/>
-        <image name="menu-button" width="900" height="900"/>
-        <image name="wiki" width="900" height="900"/>
+        <image name="menu-button-pdf" width="216" height="216"/>
+        <image name="report-button-pdf" width="211" height="211"/>
+        <image name="wiki-button-pdf" width="216" height="216"/>
     </resources>
 </document>
