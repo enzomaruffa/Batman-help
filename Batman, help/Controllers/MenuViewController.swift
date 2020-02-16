@@ -421,7 +421,7 @@ extension MenuViewController: MKMapViewDelegate {
         
         let calloutViewFrame = customView.frame
         
-        customView.frame = CGRect(x: -calloutViewFrame.size.width/2.23, y: -calloutViewFrame.size.height-7, width: 300, height: 250)
+        customView.frame = CGRect(x: -calloutViewFrame.size.width/2.5, y: -calloutViewFrame.size.height-3, width: 300, height: 250)
         
         customView.setup(sceneLocation: annotation.sceneLocation)
         customView.controller = self
