@@ -151,7 +151,7 @@
                                     <constraint firstAttribute="width" secondItem="4YV-ZQ-7wy" secondAttribute="height" multiplier="11:15" id="1nf-h6-zN1"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6C-6y-QAk">
+                            <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6C-6y-QAk">
                                 <rect key="frame" x="227" y="514" width="167" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="OyO-su-o5d"/>
@@ -180,7 +180,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvc-9e-lTE">
-                                <rect key="frame" x="215" y="410" width="179" height="94"/>
+                                <rect key="frame" x="215" y="410" width="179" height="144"/>
                                 <string key="text">I think that 
 Bane 
 is here!</string>
@@ -206,13 +206,13 @@ is here!</string>
                             <constraint firstItem="jU5-gX-w6O" firstAttribute="trailing" secondItem="ZVJ-nJ-e5P" secondAttribute="trailing" id="SBJ-NR-A0Q"/>
                             <constraint firstItem="nb7-zF-m6a" firstAttribute="leading" secondItem="jU5-gX-w6O" secondAttribute="leading" constant="20" id="SYU-qe-qUS"/>
                             <constraint firstItem="jU5-gX-w6O" firstAttribute="top" secondItem="ZVJ-nJ-e5P" secondAttribute="top" constant="5" id="Uf3-ax-hS6"/>
-                            <constraint firstItem="w6C-6y-QAk" firstAttribute="top" secondItem="pvc-9e-lTE" secondAttribute="bottom" constant="10" id="WCM-go-gvc"/>
                             <constraint firstItem="ZVJ-nJ-e5P" firstAttribute="centerX" secondItem="4YV-ZQ-7wy" secondAttribute="trailing" id="Ycw-BU-ptQ"/>
                             <constraint firstItem="jU5-gX-w6O" firstAttribute="bottom" secondItem="hCf-fQ-HSN" secondAttribute="bottom" constant="20" id="cUw-Kg-KwT"/>
                             <constraint firstItem="w6C-6y-QAk" firstAttribute="bottom" secondItem="4YV-ZQ-7wy" secondAttribute="bottom" id="ceA-I5-iM2"/>
                             <constraint firstItem="ZVJ-nJ-e5P" firstAttribute="leading" secondItem="jU5-gX-w6O" secondAttribute="leading" id="gf1-TP-02Y"/>
                             <constraint firstItem="jU5-gX-w6O" firstAttribute="trailing" secondItem="w6C-6y-QAk" secondAttribute="trailing" constant="20" id="nZO-mj-dra"/>
                             <constraint firstItem="mTt-14-Krk" firstAttribute="leading" secondItem="jU5-gX-w6O" secondAttribute="leading" constant="20" id="ssQ-nF-PYq"/>
+                            <constraint firstItem="pvc-9e-lTE" firstAttribute="bottom" secondItem="4YV-ZQ-7wy" secondAttribute="bottom" id="xF9-b0-W8m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jU5-gX-w6O"/>
                     </view>

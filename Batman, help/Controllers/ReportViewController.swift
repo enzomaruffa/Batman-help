@@ -128,14 +128,14 @@ class ReportViewController: UIViewController {
                     
                     self.currentCharacter = character
                     
-                    let characterName = character.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 18)!)
+                    let characterName = character.attributedString(withFont: UIFont(name: "BatmanForeverAlternate", size: 19)!)
                     
                     let font = UIFont(name: "BatmanForeverAlternate", size: 14)!
                     let attributes = [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: UIColor.white]
                     
                     let chance = villainChance * 100
                     
-                    let firstPartAttributed = NSMutableAttributedString(string: "\(chance.rounded())%\n", attributes: attributes)
+                    let firstPartAttributed = NSMutableAttributedString(string: "\(chance.rounded())%\n sure ", attributes: attributes)
                     let lastPartAttributed = NSMutableAttributedString(string: "\nis here!", attributes: attributes)
                     
                     firstPartAttributed.append(characterName)
